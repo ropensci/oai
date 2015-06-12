@@ -1,0 +1,14 @@
+Package: oai
+Type: Package
+Title: OAI-PMH Client
+Description: OAI-PMH Client for R.
+Version: 0.0.1.9000
+License: MIT + file LICENSE
+Authors@R: c(person("Scott", "Chamberlain", role = c("aut", "cre"),
+    email = "myrmecocystus@gmail.com"))
+URL: https://github.com/sckott/oai
+BugReports: https://github.com/sckott/oai/issues
+LazyData: TRUE
+Imports:
+    xml2,
+    httr
