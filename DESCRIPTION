@@ -12,3 +12,5 @@ LazyData: TRUE
 Imports:
     xml2,
     httr
+Suggests:
+    testthat

@@ -20,6 +20,7 @@
 list_records <- function(url = "http://oai.datacite.org/oai", prefix = "oai_dc", from = NULL,
                          until = NULL, set = NULL, token = NULL, ...) {
 
+  check_url(url)
   args <- sc(list(verb = "ListRecords", metadataPrefix = prefix, from = from,
                   until = until, set = set, token = token))
   iter <- 0
@@ -39,6 +40,7 @@ list_records <- function(url = "http://oai.datacite.org/oai", prefix = "oai_dc",
     res <- GET(url, query = args2, ...)
     stop_for_status(res)
     tt <- content(res, "text")
+    handle_errors(tt)
     xml_orig <- xml2::read_xml(tt)
     xml <- xml2::xml_children(xml2::xml_children(xml_orig)[[3]])
     tok <- xml2::xml_text(xml2::as_list(xml[sapply(xml, xml_name) == "resumptionToken"])[[1]])
@@ -52,7 +54,29 @@ list_records <- function(url = "http://oai.datacite.org/oai", prefix = "oai_dc",
     }
   }
   out <- do.call("c", out)
-  trunc_mat(rbind_fill(out))
+  structure(rbind_fill(out), class = c("oai_df", "data.frame"))
+}
+
+check_url <- function(x) {
+  if (!is.url(x)) {
+    stop("Your URL appears to not be a proper URL", call. = FALSE)
+  }
+}
+
+is.url <- function(x, ...){
+  grepl("https?://", x)
+}
+
+handle_errors <- function(x) {
+  nms <- xml2::xml_name(xml2::xml_children(xml2::read_xml(x)))
+  if ("error" %in% nms) {
+    stop(xml2::xml_text(xml2::xml_children(xml2::read_xml(x))[[3]]), call. = FALSE)
+  }
+}
+
+#' @export
+print.oai_df <- function(x, ..., n = 10) {
+  trunc_mat(x, n = n)
 }
 
 get_data <- function(x) {

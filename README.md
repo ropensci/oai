@@ -3,7 +3,7 @@ oai
 
 
 
-[![Build Status](https://travis-ci.org/sckott/oai)](https://travis-ci.org/sckott/oai)
+[![Build Status](https://travis-ci.org/sckott/oai.svg?branch=master)](https://travis-ci.org/sckott/oai)
 
 `httsnap` is an R client to work with OAI-PMH services.
 
