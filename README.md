@@ -5,7 +5,10 @@ oai
 
 [![Build Status](https://travis-ci.org/sckott/oai.svg?branch=master)](https://travis-ci.org/sckott/oai)
 
-`httsnap` is an R client to work with OAI-PMH services.
+`oai` is an R client to work with OAI-PMH services.
+
+There is [an OAI-PMH client][harv] but it's built on `XML` and `RCurl`, packages basically replaced now by `xml2` and `httr`/`curl`, respectively. `oai` is built on `xml2` and `httr`. In addition, attempt to give 
+back data.frame's whenever possible to make data comprehension, manipulation, and visualization easier. 
 
 ## Install
 
@@ -49,3 +52,5 @@ list_records(from = '2011-05-01T', until = '2011-08-15T')
 #>      title.1 (chr), relation.1 (chr), relation.2 (chr), contributor.1
 #>      (chr)
 ```
+
+[harv]: http://cran.rstudio.com/web/packages/OAIHarvester/
