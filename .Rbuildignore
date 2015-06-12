@@ -2,4 +2,5 @@
 ^\.Rproj\.user$
 cran-comments.md
 man-roxygen
+README.Rmd
 

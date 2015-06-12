@@ -1,6 +1,5 @@
 #' List records
 #'
-#' @import httr xml2
 #' @export
 #'
 #' @param url OAI-PMH base url
