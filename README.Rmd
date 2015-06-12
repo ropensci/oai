@@ -1,0 +1,31 @@
+oai
+=======
+
+```{r echo=FALSE}
+knitr::opts_chunk$set(
+  warning = FALSE,
+  message = FALSE,
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+[![Build Status](https://travis-ci.org/sckott/oai)](https://travis-ci.org/sckott/oai)
+
+`httsnap` is an R client to work with OAI-PMH services.
+
+## Install
+
+```{r eval=FALSE}
+devtools::install_github("sckott/oai")
+```
+
+```{r}
+library("oai")
+```
+
+## ListRecords
+
+```{r}
+list_records(from = '2011-05-01T', until = '2011-08-15T')
+```
