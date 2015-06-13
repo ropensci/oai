@@ -22,6 +22,21 @@ devtools::install_github("sckott/oai")
 library("oai")
 ```
 
+## Identify
+
+
+```r
+id("http://oai.datacite.org/oai")
+#>   repositoryName                     baseURL protocolVersion
+#> 1   DataCite MDS http://oai.datacite.org/oai             2.0
+#>           adminEmail    earliestDatestamp deletedRecord
+#> 1 admin@datacite.org 2011-01-01T00:00:00Z    persistent
+#>            granularity compression compression.1
+#> 1 YYYY-MM-DDThh:mm:ssZ        gzip       deflate
+#>                                      description
+#> 1 oaioai.datacite.org:oai:oai.datacite.org:12425
+```
+
 ## ListRecords
 
 

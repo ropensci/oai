@@ -27,6 +27,12 @@ devtools::install_github("sckott/oai")
 library("oai")
 ```
 
+## Identify
+
+```{r}
+id("http://oai.datacite.org/oai")
+```
+
 ## ListRecords
 
 ```{r}
