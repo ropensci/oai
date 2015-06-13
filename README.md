@@ -83,4 +83,13 @@ get_records(c("oai:oai.datacite.org:32255", "oai:oai.datacite.org:32325"))
 #>      (chr), type.1 (chr), format (chr), format.1 (chr), rights (chr)
 ```
 
+## Count Identifiers
+
+
+```r
+count_identifiers("http://oai.datacite.org/oai")
+#>                           url   count
+#> 1 http://oai.datacite.org/oai 5958088
+```
+
 [harv]: http://cran.rstudio.com/web/packages/OAIHarvester/

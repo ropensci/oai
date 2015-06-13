@@ -45,4 +45,10 @@ list_records(from = '2011-05-01T', until = '2011-08-15T')
 get_records(c("oai:oai.datacite.org:32255", "oai:oai.datacite.org:32325"))
 ```
 
+## Count Identifiers
+
+```{r}
+count_identifiers("http://oai.datacite.org/oai")
+```
+
 [harv]: http://cran.rstudio.com/web/packages/OAIHarvester/
