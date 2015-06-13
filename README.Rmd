@@ -33,4 +33,10 @@ library("oai")
 list_records(from = '2011-05-01T', until = '2011-08-15T')
 ```
 
+## GetRecords
+
+```{r}
+get_records(c("oai:oai.datacite.org:32255", "oai:oai.datacite.org:32325"))
+```
+
 [harv]: http://cran.rstudio.com/web/packages/OAIHarvester/

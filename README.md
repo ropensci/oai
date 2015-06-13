@@ -53,4 +53,19 @@ list_records(from = '2011-05-01T', until = '2011-08-15T')
 #>      (chr)
 ```
 
+## GetRecords
+
+
+```r
+get_records(c("oai:oai.datacite.org:32255", "oai:oai.datacite.org:32325"))
+#>                   identifier            datestamp setSpec setSpec.1
+#> 1 oai:oai.datacite.org:32255 2011-07-01T12:09:24Z     TIB TIB.DAGST
+#> 2 oai:oai.datacite.org:32325 2011-07-07T11:17:46Z     TIB TIB.DAGST
+#> Variables not shown: title (chr), creator (chr), creator.1 (chr),
+#>      creator.2 (chr), creator.3 (chr), publisher (chr), date (chr),
+#>      identifier.1 (chr), subject (chr), subject.1 (chr), description
+#>      (chr), description.1 (chr), contributor (chr), language (chr), type
+#>      (chr), type.1 (chr), format (chr), format.1 (chr), rights (chr)
+```
+
 [harv]: http://cran.rstudio.com/web/packages/OAIHarvester/
