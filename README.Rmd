@@ -57,4 +57,11 @@ count_identifiers("http://oai.datacite.org/oai")
 list_metadataformats(id = "oai:oai.datacite.org:32348")
 ```
 
+## List Sets
+
+```{r}
+list_sets("http://oai.datacite.org/oai")
+```
+
+
 [harv]: http://cran.rstudio.com/web/packages/OAIHarvester/

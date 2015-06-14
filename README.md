@@ -42,6 +42,8 @@ id("http://oai.datacite.org/oai")
 
 ```r
 list_records(from = '2011-05-01T', until = '2011-08-15T')
+#> <ListSets> 126 X 46 
+#> 
 #>                    identifier            datestamp setSpec setSpec.1
 #> 1  oai:oai.datacite.org:32153 2011-06-08T08:57:11Z     TIB  TIB.WDCC
 #> 2  oai:oai.datacite.org:32200 2011-06-20T08:12:41Z     TIB TIB.DAGST
@@ -73,6 +75,8 @@ list_records(from = '2011-05-01T', until = '2011-08-15T')
 
 ```r
 get_records(c("oai:oai.datacite.org:32255", "oai:oai.datacite.org:32325"))
+#>  
+#> 
 #>                   identifier            datestamp setSpec setSpec.1
 #> 1 oai:oai.datacite.org:32255 2011-07-01T12:09:24Z     TIB TIB.DAGST
 #> 2 oai:oai.datacite.org:32325 2011-07-07T11:17:46Z     TIB TIB.DAGST
@@ -111,5 +115,28 @@ list_metadataformats(id = "oai:oai.datacite.org:32348")
 #> 2      http://datacite.org/schema/nonexistant
 #> 3     http://schema.datacite.org/oai/oai-1.0/
 ```
+
+## List Sets
+
+
+```r
+list_sets("http://oai.datacite.org/oai")
+#> <ListSets> 1127 X 2 
+#> 
+#>                     setSpec
+#> 1                REFQUALITY
+#> 2                      ANDS
+#> 3           ANDS.REFQUALITY
+#> 4             ANDS.CENTRE-1
+#> 5  ANDS.CENTRE-1.REFQUALITY
+#> 6             ANDS.CENTRE-2
+#> 7  ANDS.CENTRE-2.REFQUALITY
+#> 8             ANDS.CENTRE-3
+#> 9  ANDS.CENTRE-3.REFQUALITY
+#> 10            ANDS.CENTRE-5
+#> ..                      ...
+#> Variables not shown: setName (chr)
+```
+
 
 [harv]: http://cran.rstudio.com/web/packages/OAIHarvester/
