@@ -7,6 +7,11 @@
 #' @param ... Curl options passed on to \code{\link[httr]{GET}}
 #' @examples \dontrun{
 #' count_identifiers()
+#' count_identifiers(c(
+#'  "http://oai.datacite.org/oai",
+#'  "http://archivesic.ccsd.cnrs.fr/oai/oai.php",
+#'  "http://www.hindawi.com/oai-pmh/oai.aspx"
+#' ))
 #'
 #' # curl options
 #' library("httr")
@@ -14,7 +19,7 @@
 #' }
 count_identifiers <- function(url = "http://oai.datacite.org/oai", prefix = 'oai_dc', ...) {
   args <- sc(list(verb = 'ListIdentifiers', metadataPrefix = prefix))
-  rbind_df(lapply(url, ci, args = args, ...))
+  rbind_fill(lapply(url, ci, args = args, ...))
 }
 
 ci <- function(x, args, ...) {

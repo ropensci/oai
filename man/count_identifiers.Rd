@@ -21,6 +21,11 @@ Count OAI-PMH identifiers for a data provider.
 \examples{
 \dontrun{
 count_identifiers()
+count_identifiers(c(
+ "http://oai.datacite.org/oai",
+ "http://archivesic.ccsd.cnrs.fr/oai/oai.php",
+ "http://www.hindawi.com/oai-pmh/oai.aspx"
+))
 
 # curl options
 library("httr")
