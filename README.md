@@ -92,4 +92,24 @@ count_identifiers("http://oai.datacite.org/oai")
 #> 1 http://oai.datacite.org/oai 5958088
 ```
 
+## List MetadataFormats
+
+
+```r
+list_metadataformats(id = "oai:oai.datacite.org:32348")
+#> $`oai:oai.datacite.org:32348`
+#>   metadataPrefix
+#> 1         oai_dc
+#> 2       datacite
+#> 3   oai_datacite
+#>                                                        schema
+#> 1              http://www.openarchives.org/OAI/2.0/oai_dc.xsd
+#> 2 http://schema.datacite.org/meta/nonexistant/nonexistant.xsd
+#> 3              http://schema.datacite.org/oai/oai-1.0/oai.xsd
+#>                             metadataNamespace
+#> 1 http://www.openarchives.org/OAI/2.0/oai_dc/
+#> 2      http://datacite.org/schema/nonexistant
+#> 3     http://schema.datacite.org/oai/oai-1.0/
+```
+
 [harv]: http://cran.rstudio.com/web/packages/OAIHarvester/

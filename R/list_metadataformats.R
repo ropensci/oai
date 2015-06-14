@@ -1,0 +1,35 @@
+#' List available metadata formats from various providers.
+#'
+#' @export
+#' @param url OAI-PMH base url
+#' @param id The OAI-PMH identifier for the record. Optional.
+#' @param ... Curl options passed on to \code{\link[httr]{GET}}
+#' @examples \dontrun{
+#' list_metadataformats()
+#'
+#' # no metadatformats for an identifier
+#' list_metadataformats(id = "oai:oai.datacite.org:22")
+#'
+#' # metadatformats available for an identifier
+#' list_metadataformats(id = "oai:oai.datacite.org:32348")
+#'
+#' # curl options
+#' library("httr")
+#' list_metadataformats(id = "oai:oai.datacite.org:32348", config = verbose())
+#' }
+list_metadataformats <- function(url = "http://oai.datacite.org/oai", id = NULL, ...) {
+  if (!is.null(id)) {
+    setNames(lapply(id, one_mf, url = url, ...), id)
+  } else {
+    one_mf(id, url, ...)
+  }
+}
+
+one_mf <- function(identifier, url, ...) {
+  args <- sc(list(verb = 'ListMetadataFormats', identifier = identifier))
+  res <- GET(url, query = args, ...)
+  stop_for_status(res)
+  out <- content(res, "text")
+  xml <- xml2::read_xml(out)
+  rbind_fill(lapply(xml_children(xml_children(xml)[[3]]), get_headers))
+}
