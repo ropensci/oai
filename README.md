@@ -42,7 +42,7 @@ id("http://oai.datacite.org/oai")
 
 ```r
 list_records(from = '2011-05-01T', until = '2011-08-15T')
-#> <ListSets> 126 X 46 
+#> <ListRecords> 126 X 46 
 #> 
 #>                    identifier            datestamp setSpec setSpec.1
 #> 1  oai:oai.datacite.org:32153 2011-06-08T08:57:11Z     TIB  TIB.WDCC
@@ -75,7 +75,7 @@ list_records(from = '2011-05-01T', until = '2011-08-15T')
 
 ```r
 get_records(c("oai:oai.datacite.org:32255", "oai:oai.datacite.org:32325"))
-#>  
+#> <GetRecord> 2 X 23 
 #> 
 #>                   identifier            datestamp setSpec setSpec.1
 #> 1 oai:oai.datacite.org:32255 2011-07-01T12:09:24Z     TIB TIB.DAGST

@@ -14,7 +14,7 @@
 get_records <- function(ids, prefix = "oai_dc", url = "http://oai.datacite.org/oai", ...) {
   check_url(url)
   out <- lapply(ids, each_record, url = url, prefix = prefix, ...)
-  structure(rbind_fill(do.call("c", out)), class = c("oai_df", "data.frame"))
+  structure(rbind_fill(do.call("c", out)), class = c("oai_df", "data.frame"), type = "GetRecord")
 }
 
 each_record <- function(identifier, url, prefix, ...) {

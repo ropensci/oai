@@ -54,7 +54,7 @@ list_records <- function(url = "http://oai.datacite.org/oai", prefix = "oai_dc",
     }
   }
   out <- do.call("c", out)
-  structure(rbind_fill(out), class = c("oai_df", "data.frame"), type = "ListSets")
+  structure(rbind_fill(out), class = c("oai_df", "data.frame"), type = "ListRecords")
 }
 
 check_url <- function(x) {
