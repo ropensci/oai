@@ -54,7 +54,7 @@ list_records <- function(url = "http://oai.datacite.org/oai", prefix = "oai_dc",
     }
   }
   out <- do.call("c", out)
-  structure(rbind_fill(out), class = c("oai_df", "data.frame"))
+  structure(rbind_fill(out), class = c("oai_df", "data.frame"), type = "ListSets")
 }
 
 check_url <- function(x) {
@@ -76,6 +76,7 @@ handle_errors <- function(x) {
 
 #' @export
 print.oai_df <- function(x, ..., n = 10) {
+  cat(sprintf("<%s> %s X %s", attr(x, "type"), NROW(x), NCOL(x)), "\n\n")
   trunc_mat(x, n = n)
 }
 

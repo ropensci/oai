@@ -18,6 +18,7 @@
 #' count_identifiers(config = verbose())
 #' }
 count_identifiers <- function(url = "http://oai.datacite.org/oai", prefix = 'oai_dc', ...) {
+  check_url(url)
   args <- sc(list(verb = 'ListIdentifiers', metadataPrefix = prefix))
   rbind_fill(lapply(url, ci, args = args, ...))
 }
