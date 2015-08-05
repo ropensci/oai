@@ -4,6 +4,7 @@ oai
 
 
 [![Build Status](https://travis-ci.org/sckott/oai.svg?branch=master)](https://travis-ci.org/sckott/oai)
+[![codecov.io](https://codecov.io/github/ropensci/sckott/oai.svg?branch=master)](https://codecov.io/github/sckott/oai?branch=master)
 
 `oai` is an R client to work with OAI-PMH services.
 

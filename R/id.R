@@ -4,7 +4,10 @@
 #' @param url OAI-PMH base url
 #' @param ... Curl options passed on to \code{\link[httr]{GET}}
 #' @examples \dontrun{
+#' # default, datacite
 #' id()
+#' # arxiv
+#' id("http://export.arxiv.org/oai2")
 #'
 #' # curl options
 #' library("httr")
