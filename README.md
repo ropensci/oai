@@ -4,12 +4,12 @@ oai
 
 
 [![Build Status](https://travis-ci.org/sckott/oai.svg?branch=master)](https://travis-ci.org/sckott/oai)
-[![codecov.io](https://codecov.io/github/ropensci/sckott/oai.svg?branch=master)](https://codecov.io/github/sckott/oai?branch=master)
+[![codecov.io](http://codecov.io/github/sckott/oai/coverage.svg?branch=master)](http://codecov.io/github/sckott/oai?branch=master)
 
 `oai` is an R client to work with OAI-PMH services.
 
-There is [an OAI-PMH client][harv] but it's built on `XML` and `RCurl`, packages basically replaced now by `xml2` and `httr`/`curl`, respectively. `oai` is built on `xml2` and `httr`. In addition, attempt to give 
-back data.frame's whenever possible to make data comprehension, manipulation, and visualization easier. 
+There is [an OAI-PMH client][harv] but it's built on `XML` and `RCurl`, packages basically replaced now by `xml2` and `httr`/`curl`, respectively. `oai` is built on `xml2` and `httr`. In addition, attempt to give
+back data.frame's whenever possible to make data comprehension, manipulation, and visualization easier.
 
 ## Install
 
@@ -36,6 +36,37 @@ id("http://oai.datacite.org/oai")
 #> 1 YYYY-MM-DDThh:mm:ssZ        gzip       deflate
 #>                                      description
 #> 1 oaioai.datacite.org:oai:oai.datacite.org:12425
+```
+
+## ListIdentifiers
+
+
+```r
+list_identifiers(from = '2011-05-01T', until = '2011-09-01T')
+#> <ListIdentifiers> 925 X 6 
+#> 
+#>                    identifier            datestamp setSpec setSpec.1
+#> 1  oai:oai.datacite.org:32153 2011-06-08T08:57:11Z     TIB  TIB.WDCC
+#> 2  oai:oai.datacite.org:32200 2011-06-20T08:12:41Z     TIB TIB.DAGST
+#> 3  oai:oai.datacite.org:32220 2011-06-28T14:11:08Z     TIB TIB.DAGST
+#> 4  oai:oai.datacite.org:32241 2011-06-30T13:24:45Z     TIB TIB.DAGST
+#> 5  oai:oai.datacite.org:32255 2011-07-01T12:09:24Z     TIB TIB.DAGST
+#> 6  oai:oai.datacite.org:32282 2011-07-05T09:08:10Z     TIB TIB.DAGST
+#> 7  oai:oai.datacite.org:32309 2011-07-06T12:30:54Z     TIB TIB.DAGST
+#> 8  oai:oai.datacite.org:32310 2011-07-06T12:42:32Z     TIB TIB.DAGST
+#> 9  oai:oai.datacite.org:32325 2011-07-07T11:17:46Z     TIB TIB.DAGST
+#> 10 oai:oai.datacite.org:32326 2011-07-07T11:18:47Z     TIB TIB.DAGST
+#> ..                        ...                  ...     ...       ...
+#> Variables not shown: setSpec.2 (chr), setSpec.3 (chr)
+```
+
+## Count Identifiers
+
+
+```r
+count_identifiers()
+#>                           url   count
+#> 1 http://oai.datacite.org/oai 6290943
 ```
 
 ## ListRecords
@@ -88,15 +119,6 @@ get_records(c("oai:oai.datacite.org:32255", "oai:oai.datacite.org:32325"))
 #>      (chr), type.1 (chr), format (chr), format.1 (chr), rights (chr)
 ```
 
-## Count Identifiers
-
-
-```r
-count_identifiers("http://oai.datacite.org/oai")
-#>                           url   count
-#> 1 http://oai.datacite.org/oai 5958088
-```
-
 ## List MetadataFormats
 
 
@@ -122,7 +144,7 @@ list_metadataformats(id = "oai:oai.datacite.org:32348")
 
 ```r
 list_sets("http://oai.datacite.org/oai")
-#> <ListSets> 1127 X 2 
+#> <ListSets> 1199 X 2 
 #> 
 #>                     setSpec
 #> 1                REFQUALITY

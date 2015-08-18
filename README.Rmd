@@ -11,7 +11,7 @@ knitr::opts_chunk$set(
 ```
 
 [![Build Status](https://travis-ci.org/sckott/oai.svg?branch=master)](https://travis-ci.org/sckott/oai)
-[![codecov.io](https://codecov.io/github/ropensci/sckott/oai.svg?branch=master)](https://codecov.io/github/sckott/oai?branch=master)
+[![codecov.io](http://codecov.io/github/sckott/oai/coverage.svg?branch=master)](http://codecov.io/github/sckott/oai?branch=master)
 
 `oai` is an R client to work with OAI-PMH services.
 
@@ -34,6 +34,18 @@ library("oai")
 id("http://oai.datacite.org/oai")
 ```
 
+## ListIdentifiers
+
+```{r}
+list_identifiers(from = '2011-05-01T', until = '2011-09-01T')
+```
+
+## Count Identifiers
+
+```{r}
+count_identifiers()
+```
+
 ## ListRecords
 
 ```{r}
@@ -44,12 +56,6 @@ list_records(from = '2011-05-01T', until = '2011-08-15T')
 
 ```{r}
 get_records(c("oai:oai.datacite.org:32255", "oai:oai.datacite.org:32325"))
-```
-
-## Count Identifiers
-
-```{r}
-count_identifiers("http://oai.datacite.org/oai")
 ```
 
 ## List MetadataFormats
