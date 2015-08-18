@@ -116,36 +116,3 @@ get_metadata <- function(x) {
 rbind_df <- function(x) {
   data.frame(rbind(unlist(x)), stringsAsFactors = FALSE)
 }
-
-# get_data <- function(x) {
-#   list(headers = get_headers(x), metadata = get_metadata(x))
-# }
-#
-# get_headers <- function(x) {
-#   do.call("rbind_fill", sc(lapply(x, function(z) {
-#     if (xml2::xml_name(z) != "resumptionToken") {
-#       tmp <- xml2::xml_children(z)[[1]]
-#       dat <- lapply(xml2::xml_children(tmp), function(w) {
-#         as.list(setNames(xml2::xml_text(w), xml2::xml_name(w)))
-#       })
-#       data.frame(rbind(unlist(dat)), stringsAsFactors = FALSE)
-#     }
-#   })))
-# }
-#
-# get_metadata <- function(x) {
-#   sc(lapply(x, function(y) {
-#     if (xml2::xml_name(y) != "resumptionToken") {
-#       tmp <- xml2::xml_children(y)
-#       status <- unlist(xml_attrs(tmp))
-#       if (length(status) != 0) {
-#         NULL
-#       } else {
-#         tmp <- xml2::xml_children(xml2::xml_children(tmp[[2]]))
-#         lapply(tmp, function(w) {
-#           as.list(setNames(xml2::xml_text(w), xml2::xml_name(w)))
-#         })
-#       }
-#     }
-#   }))
-# }
