@@ -13,8 +13,10 @@ Authors@R: c(person("Scott", "Chamberlain", role = c("aut", "cre"),
     email = "myrmecocystus@gmail.com"))
 URL: https://github.com/sckott/oai
 BugReports: https://github.com/sckott/oai/issues
-LazyData: TRUE
 Imports:
+    methods,
+    stats,
+    utils,
     xml2,
     httr
 Suggests:
