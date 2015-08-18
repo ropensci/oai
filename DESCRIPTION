@@ -1,7 +1,12 @@
 Package: oai
 Type: Package
-Title: OAI-PMH Client
-Description: OAI-PMH Client for R.
+Title: General Purpose 'OAI-PMH' Services Client
+Description: A general purpose client to work with any 'OAI-PMH'
+    service. The 'OAI-PMH' protocol is described at
+    http://www.openarchives.org/OAI/openarchivesprotocol.html.
+    Functions are provided to work with the 'OAI-PMH' verbs: 'GetRecord',
+    'Identify', 'ListIdentifiers', 'ListMetadataFormats', 'ListRecords', and
+    'ListSets'.
 Version: 0.0.4.9300
 License: MIT + file LICENSE
 Authors@R: c(person("Scott", "Chamberlain", role = c("aut", "cre"),
