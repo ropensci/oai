@@ -16,7 +16,10 @@ Identify the OAI-PMH service for each data provider.
 }
 \examples{
 \dontrun{
+# default, datacite
 id()
+# arxiv
+id("http://export.arxiv.org/oai2")
 
 # curl options
 library("httr")
