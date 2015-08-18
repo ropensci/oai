@@ -68,13 +68,7 @@ list_identifiers <- function(url = "http://oai.datacite.org/oai", prefix = "oai_
 parse_listid <- function(x) {
   sc(lapply(x, function(z) {
     if (xml2::xml_name(z) != "resumptionToken") {
-      hd <- get_headers(z)
-      met <- get_metadata(tmp)
-      if (NROW(met) != 0) {
-        data.frame(hd, met, stringsAsFactors = FALSE)
-      } else {
-        hd
-      }
+      get_headers(z)
     }
   }))
 }
