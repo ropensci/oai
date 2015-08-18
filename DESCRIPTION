@@ -1,6 +1,6 @@
 Package: oai
 Type: Package
-Title: General Purpose 'OAI-PMH' Services Client
+Title: General Purpose 'Oai-PMH' Services Client
 Description: A general purpose client to work with any 'OAI-PMH'
     service. The 'OAI-PMH' protocol is described at
     http://www.openarchives.org/OAI/openarchivesprotocol.html.
