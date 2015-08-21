@@ -13,6 +13,7 @@ Authors@R: c(person("Scott", "Chamberlain", role = c("aut", "cre"),
     email = "myrmecocystus@gmail.com"))
 URL: https://github.com/sckott/oai
 BugReports: https://github.com/sckott/oai/issues
+VignetteBuilder: knitr
 Imports:
     methods,
     stats,
@@ -20,4 +21,5 @@ Imports:
     xml2,
     httr
 Suggests:
-    testthat
+    testthat,
+    knitr
