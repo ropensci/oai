@@ -5,4 +5,4 @@ man-roxygen
 README.Rmd
 .travis.yml
 Makefile
-*-providers.rda
+^.*-providers.rda

@@ -12,3 +12,16 @@
 #' @author Scott Chamberlain \email{myrmecocystus@@gmail.com}
 #' @keywords package
 NULL
+
+#' Metadata providers data.frame.
+#'
+#' @name providers
+#' @docType data
+#' @keywords datasets
+#' @return A data.frame of three columns:
+#' \itemize{
+#'  \item repo_name - Name of the OAI repository
+#'  \item base_url - Base URL of the OAI repository
+#'  \item oai_identifier - OAI identifier for the OAI repository
+#' }
+NULL
