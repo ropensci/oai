@@ -5,6 +5,8 @@ oai
 
 [![Build Status](https://travis-ci.org/sckott/oai.svg?branch=master)](https://travis-ci.org/sckott/oai)
 [![codecov.io](http://codecov.io/github/sckott/oai/coverage.svg?branch=master)](http://codecov.io/github/sckott/oai?branch=master)
+[![rstudio mirror downloads](http://cranlogs.r-pkg.org/badges/oai?color=2ED968)](https://github.com/metacran/cranlogs.app)
+[![cran version](http://www.r-pkg.org/badges/version/oai)](https://cran.rstudio.com/web/packages/oai)
 
 `oai` is an R client to work with OAI-PMH services.
 
@@ -66,7 +68,7 @@ list_identifiers(from = '2011-05-01T', until = '2011-09-01T')
 ```r
 count_identifiers()
 #>                           url   count
-#> 1 http://oai.datacite.org/oai 6290943
+#> 1 http://oai.datacite.org/oai 6306050
 ```
 
 ## ListRecords
@@ -144,7 +146,7 @@ list_metadataformats(id = "oai:oai.datacite.org:32348")
 
 ```r
 list_sets("http://oai.datacite.org/oai")
-#> <ListSets> 1199 X 2 
+#> <ListSets> 1203 X 2 
 #> 
 #>                     setSpec
 #> 1                REFQUALITY
