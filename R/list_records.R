@@ -2,7 +2,7 @@
 #'
 #' @export
 #'
-#' @param url OAI-PMH base url
+#' @param url (character) OAI-PMH base url
 #' @param from specifies that records returned must have been created/update/deleted
 #'     on or after this date.
 #' @param until specifies that records returned must have been created/update/deleted
@@ -10,12 +10,18 @@
 #' @param set specifies the set that returned records must belong to.
 #' @param prefix specifies the metadata format that the records will be
 #'     returned in. Default: oai_dc
-#' @param token a token previously provided by the server to resume a request
-#'     where it last left off.
+#' @param token (character) a token previously provided by the server to resume a request
+#'     where it last left off. 50 is max number of records returned. We will
+#'     loop for you internally to get all the records you asked for.
 #' @param ... Curl options passed on to \code{\link[httr]{GET}}
 #' @examples \dontrun{
 #' list_records(from = '2011-05-01T', until = '2011-08-15T')
+#' list_records(from = '2011-05-01T', until = '2011-07-15T')
 #' list_records(from = '2011-06-01T', until = '2011-07-01T')
+#'
+#' # use curl options
+#' library("httr")
+#' list_records(from = '2011-05-01T', until = '2011-07-15T', config=verbose())
 #' }
 list_records <- function(url = "http://oai.datacite.org/oai", prefix = "oai_dc", from = NULL,
                          until = NULL, set = NULL, token = NULL, ...) {
@@ -23,38 +29,10 @@ list_records <- function(url = "http://oai.datacite.org/oai", prefix = "oai_dc",
   check_url(url)
   args <- sc(list(verb = "ListRecords", metadataPrefix = prefix, from = from,
                   until = until, set = set, token = token))
-  iter <- 0
-  token <- "characters"
-  out <- list()
-  while (is.character(token)) {
-    iter <- iter + 1
-    args2 <- args
-    if (token != "characters") {
-      args2$resumptionToken <- token
-      args2$from <- NULL
-      args2$until <- NULL
-      args2$set <- NULL
-      args2$metadataPrefix <- NULL
-    }
-
-    res <- GET(url, query = args2, ...)
-    stop_for_status(res)
-    tt <- content(res, "text")
-    handle_errors(tt)
-    xml_orig <- xml2::read_xml(tt)
-    xml <- xml2::xml_children(xml2::xml_children(xml_orig)[[3]])
-    tok <- xml2::xml_text(xml2::as_list(xml[sapply(xml, xml_name) == "resumptionToken"])[[1]])
-    tok_atts <- xml2::xml_attrs(xml2::as_list(xml[sapply(xml, xml_name) == "resumptionToken"])[[1]])
-    tok <- c(token = tok, as.list(tok_atts))
-    out[[iter]] <- get_data(xml)
-    if (tok$token == "") {
-      token <- 1
-    } else {
-      token <- tok$token
-    }
-  }
-  out <- do.call("c", out)
-  structure(rbind_fill(out), class = c("oai_df", "data.frame"), type = "ListRecords")
+  out <- while_oai(url, args, token, ...)
+  structure(rbind_fill(out),
+            class = c("oai_df", "data.frame"),
+            type = "ListRecords")
 }
 
 check_url <- function(x) {

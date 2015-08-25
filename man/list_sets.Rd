@@ -7,9 +7,9 @@
 list_sets(url = "http://oai.datacite.org/oai", token = NULL, ...)
 }
 \arguments{
-\item{url}{OAI-PMH base url}
+\item{url}{(character) OAI-PMH base url}
 
-\item{token}{a token previously provided by the server to resume a request
+\item{token}{(character) a token previously provided by the server to resume a request
 where it last left off.}
 
 \item{...}{Curl options passed on to \code{\link[httr]{GET}}}

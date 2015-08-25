@@ -8,7 +8,7 @@ list_records(url = "http://oai.datacite.org/oai", prefix = "oai_dc",
   from = NULL, until = NULL, set = NULL, token = NULL, ...)
 }
 \arguments{
-\item{url}{OAI-PMH base url}
+\item{url}{(character) OAI-PMH base url}
 
 \item{prefix}{specifies the metadata format that the records will be
 returned in. Default: oai_dc}
@@ -21,8 +21,9 @@ on or before this date.}
 
 \item{set}{specifies the set that returned records must belong to.}
 
-\item{token}{a token previously provided by the server to resume a request
-where it last left off.}
+\item{token}{(character) a token previously provided by the server to resume a request
+where it last left off. 50 is max number of records returned. We will
+loop for you internally to get all the records you asked for.}
 
 \item{...}{Curl options passed on to \code{\link[httr]{GET}}}
 }
@@ -32,7 +33,12 @@ List records
 \examples{
 \dontrun{
 list_records(from = '2011-05-01T', until = '2011-08-15T')
+list_records(from = '2011-05-01T', until = '2011-07-15T')
 list_records(from = '2011-06-01T', until = '2011-07-01T')
+
+# use curl options
+library("httr")
+list_records(from = '2011-05-01T', until = '2011-07-15T', config=verbose())
 }
 }
 
