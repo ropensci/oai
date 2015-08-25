@@ -8,6 +8,8 @@ update_providers(path = ".", ...)
 }
 \arguments{
 \item{path}{Path to put data in.}
+
+\item{...}{Curl options passed on to \code{\link[httr]{GET}}}
 }
 \description{
 Data comes from \url{http://www.openarchives.org/Register/BrowseSites}.

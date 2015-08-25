@@ -14,6 +14,7 @@
 #' 		This function updates the table for you. Does take a while though, so
 #' 		go get a coffee.
 #' @param path Path to put data in.
+#' @param ... Curl options passed on to \code{\link[httr]{GET}}
 #' @seealso \code{\link{load_providers}}
 #' @examples \dontrun{
 #' update_providers()
