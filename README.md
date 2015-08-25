@@ -1,5 +1,5 @@
 oai
-=======
+===
 
 
 
@@ -68,7 +68,7 @@ list_identifiers(from = '2011-05-01T', until = '2011-09-01T')
 ```r
 count_identifiers()
 #>                           url   count
-#> 1 http://oai.datacite.org/oai 6306050
+#> 1 http://oai.datacite.org/oai 6309453
 ```
 
 ## ListRecords
