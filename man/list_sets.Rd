@@ -20,6 +20,10 @@ List sets
 \examples{
 \dontrun{
 list_sets()
+
+# curl options
+library("httr")
+list_sets(config = verbose())
 }
 }
 

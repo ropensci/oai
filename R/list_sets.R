@@ -7,6 +7,10 @@
 #' @param ... Curl options passed on to \code{\link[httr]{GET}}
 #' @examples \dontrun{
 #' list_sets()
+#'
+#' # curl options
+#' library("httr")
+#' list_sets(config = verbose())
 #' }
 list_sets <- function(url = "http://oai.datacite.org/oai", token = NULL, ...) {
   check_url(url)
