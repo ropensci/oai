@@ -4,7 +4,7 @@
 \alias{id}
 \title{Identify the OAI-PMH service for each data provider.}
 \usage{
-id(url = "http://oai.datacite.org/oai", ...)
+id(url, ...)
 }
 \arguments{
 \item{url}{OAI-PMH base url}

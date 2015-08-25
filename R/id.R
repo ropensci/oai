@@ -13,7 +13,7 @@
 #' library("httr")
 #' id(config = verbose())
 #' }
-id <- function(url = "http://oai.datacite.org/oai", ...) {
+id <- function(url, ...) {
   check_url(url)
   rbind_fill(lapply(url, id_, ...))
 }
