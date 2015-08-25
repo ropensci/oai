@@ -28,8 +28,8 @@ while_oai <- function(url, args, token, ...) {
       tok <- c(token = tok, as.list(tok_atts))
     }
     out[[iter]] <- switch(args$verb,
-                          ListRecords = do.call("c", get_data(xml)),
-                          ListIdentifiers = do.call("c", parse_listid(xml)),
+                          ListRecords = get_data(xml),
+                          ListIdentifiers = parse_listid(xml),
                           ListSets = get_sets(xml)
     )
     if (tok$token == "") {
@@ -38,5 +38,10 @@ while_oai <- function(url, args, token, ...) {
       token <- tok$token
     }
   }
-  return(out)
+
+  switch(args$verb,
+         ListRecords = do.call("c", out),
+         ListIdentifiers = do.call("c", out),
+         ListSets = out
+  )
 }
