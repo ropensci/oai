@@ -8,12 +8,27 @@ oai
 [![rstudio mirror downloads](http://cranlogs.r-pkg.org/badges/oai?color=2ED968)](https://github.com/metacran/cranlogs.app)
 [![cran version](http://www.r-pkg.org/badges/version/oai)](https://cran.rstudio.com/web/packages/oai)
 
-`oai` is an R client to work with OAI-PMH services.
+`oai` is an R client to work with OAI-PMH (Open Archives Initiative Protocol for Metadata Harvesting) services, a protocol developed by the [Open Archives Initiative](https://en.wikipedia.org/wiki/Open_Archives_Initiative). OAI-PMH uses XML data format transported over HTTP.
 
-There is [an OAI-PMH client][harv] but it's built on `XML` and `RCurl`, packages basically replaced now by `xml2` and `httr`/`curl`, respectively. `oai` is built on `xml2` and `httr`. In addition, attempt to give
-back data.frame's whenever possible to make data comprehension, manipulation, and visualization easier.
+OAI-PMH Info:
+
+* [Wikipedia](https://en.wikipedia.org/wiki/Open_Archives_Initiative_Protocol_for_Metadata_Harvesting)
+* [OAI V2 specification](http://www.openarchives.org/OAI/openarchivesprotocol.html)
+
+`oai` is built on `xml2` and `httr`. In addition, we give back data.frame's whenever possible to make data comprehension, manipulation, and visualization easier. We also have functions to fetch a large directory of OAI-PMH services - it isn't exhaustive, but does contain a lot.
+
+OAI-PMH instead of paging with e.g., `page` and `per_page` parameters, uses (optionally) `resumptionTokens`, optionally with an expiration date. These tokens can be used to continue on to the next chunk of data, if the first request did not get to the end. Often, OAI-PMH services limit each request to 50 records, but this may vary by provider, I don't know for sure. The API of this package is such that we `while` loop for you internally until we get all records. We may in the future expose e.g., a `limit` parameter so you can say how many records you want, but we haven't done this yet. 
 
 ## Install
+
+Install from CRAN
+
+
+```r
+install.packages("oai")
+```
+
+Development version
 
 
 ```r
@@ -68,7 +83,7 @@ list_identifiers(from = '2011-05-01T', until = '2011-09-01T')
 ```r
 count_identifiers()
 #>                           url   count
-#> 1 http://oai.datacite.org/oai 6309453
+#> 1 http://oai.datacite.org/oai 6312525
 ```
 
 ## ListRecords
@@ -146,7 +161,7 @@ list_metadataformats(id = "oai:oai.datacite.org:32348")
 
 ```r
 list_sets("http://oai.datacite.org/oai")
-#> <ListSets> 1203 X 2 
+#> <ListSets> 1207 X 2 
 #> 
 #>                     setSpec
 #> 1                REFQUALITY
@@ -162,6 +177,3 @@ list_sets("http://oai.datacite.org/oai")
 #> ..                      ...
 #> Variables not shown: setName (chr)
 ```
-
-
-[harv]: http://cran.rstudio.com/web/packages/OAIHarvester/
