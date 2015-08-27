@@ -6,7 +6,6 @@ oai
 [![Build Status](https://travis-ci.org/sckott/oai.svg?branch=master)](https://travis-ci.org/sckott/oai)
 [![codecov.io](http://codecov.io/github/sckott/oai/coverage.svg?branch=master)](http://codecov.io/github/sckott/oai?branch=master)
 [![rstudio mirror downloads](http://cranlogs.r-pkg.org/badges/oai?color=2ED968)](https://github.com/metacran/cranlogs.app)
-[![cran version](http://www.r-pkg.org/badges/version/oai)](https://cran.rstudio.com/web/packages/oai)
 
 `oai` is an R client to work with OAI-PMH (Open Archives Initiative Protocol for Metadata Harvesting) services, a protocol developed by the [Open Archives Initiative](https://en.wikipedia.org/wiki/Open_Archives_Initiative). OAI-PMH uses XML data format transported over HTTP.
 
@@ -60,7 +59,7 @@ id("http://oai.datacite.org/oai")
 
 ```r
 list_identifiers(from = '2011-05-01T', until = '2011-09-01T')
-#> <ListIdentifiers> 925 X 6 
+#> <ListRecords> 925 X 6 
 #> 
 #>                    identifier            datestamp setSpec setSpec.1
 #> 1  oai:oai.datacite.org:32153 2011-06-08T08:57:11Z     TIB  TIB.WDCC
