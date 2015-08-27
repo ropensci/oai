@@ -22,7 +22,7 @@ Load an updated cache
 Loads the data object providers into the global workspace.
 }
 \examples{
-\donttest{
+\dontrun{
 # By default the new providers table goes to directory ".", so just
 # load from there
 update_providers()
