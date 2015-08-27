@@ -5,7 +5,7 @@
 \title{Get records}
 \usage{
 get_records(ids, prefix = "oai_dc", url = "http://oai.datacite.org/oai",
-  ...)
+  as = "df", ...)
 }
 \arguments{
 \item{ids}{The OAI-PMH identifier for the record. One or more. Required.}
@@ -14,6 +14,9 @@ get_records(ids, prefix = "oai_dc", url = "http://oai.datacite.org/oai",
 returned in. Default: oai_dc}
 
 \item{url}{OAI-PMH base url}
+
+\item{as}{(character) What to return. One of "df" (for data.frame; default),
+"list", or "raw" (raw text)}
 
 \item{...}{Curl options passed on to \code{\link[httr]{GET}}}
 }
@@ -24,6 +27,12 @@ Get records
 \dontrun{
 get_records("oai:oai.datacite.org:32255")
 get_records(c("oai:oai.datacite.org:32255", "oai:oai.datacite.org:32325"))
+
+# Get a list
+get_records("oai:oai.datacite.org:32255", as = "list")
+
+# Get raw text
+get_records("oai:oai.datacite.org:32255", as = "raw")
 
 # from arxiv.org
 get_records("oai:arXiv.org:0704.0001", url = "http://export.arxiv.org/oai2")

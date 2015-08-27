@@ -7,7 +7,7 @@
 #' @details Loads the data object providers into the global workspace.
 #' @return loads the object providers into the working space.
 #' @seealso \code{\link{update_providers}}
-#' @examples \donttest{
+#' @examples \dontrun{
 #' # By default the new providers table goes to directory ".", so just
 #' # load from there
 #' update_providers()

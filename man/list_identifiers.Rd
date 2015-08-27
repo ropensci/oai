@@ -5,7 +5,7 @@
 \title{List OAI-PMH identifiers}
 \usage{
 list_identifiers(url = "http://oai.datacite.org/oai", prefix = "oai_dc",
-  from = NULL, until = NULL, set = NULL, token = NULL, ...)
+  from = NULL, until = NULL, set = NULL, token = NULL, as = "df", ...)
 }
 \arguments{
 \item{url}{OAI-PMH base url}
@@ -23,6 +23,9 @@ on or before this date.}
 
 \item{token}{a token previously provided by the server to resume a request
 where it last left off.}
+
+\item{as}{(character) What to return. One of "df" (for data.frame; default),
+"list", or "raw" (raw text)}
 
 \item{...}{Curl options passed on to \code{\link[httr]{GET}}}
 }
@@ -43,6 +46,12 @@ list_identifiers(from = '2011-06-01T', until = '2011-09-01T')
 
 # set parameter - here, using ANDS - Australian National Data Service
 list_identifiers(from = '2011-09-01T', until = '2012-09-01T', set = "ANDS")
+
+# Get a list
+list_identifiers(from = today, as = "list")
+
+# Get raw text
+list_identifiers(from = today, as = "raw")
 }
 }
 

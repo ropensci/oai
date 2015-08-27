@@ -5,7 +5,7 @@
 \title{List records}
 \usage{
 list_records(url = "http://oai.datacite.org/oai", prefix = "oai_dc",
-  from = NULL, until = NULL, set = NULL, token = NULL, ...)
+  from = NULL, until = NULL, set = NULL, token = NULL, as = "df", ...)
 }
 \arguments{
 \item{url}{(character) OAI-PMH base url}
@@ -25,6 +25,9 @@ on or before this date.}
 where it last left off. 50 is max number of records returned. We will
 loop for you internally to get all the records you asked for.}
 
+\item{as}{(character) What to return. One of "df" (for data.frame; default),
+"list", or "raw" (raw text)}
+
 \item{...}{Curl options passed on to \code{\link[httr]{GET}}}
 }
 \description{
@@ -32,9 +35,17 @@ List records
 }
 \examples{
 \dontrun{
+# By default you get back a single data.frame
 list_records(from = '2011-05-01T', until = '2011-08-15T')
 list_records(from = '2011-05-01T', until = '2011-07-15T')
 list_records(from = '2011-06-01T', until = '2011-07-01T')
+
+# Get a list
+list_records(from = '2011-06-01T', until = '2011-07-01T', as = "list")
+
+# Get raw text
+list_records(from = '2011-06-01T', until = '2011-07-01T', as = "raw")
+list_records(from = '2011-06-01T', until = '2011-07-30T', as = "raw")
 
 # use curl options
 library("httr")

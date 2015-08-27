@@ -4,13 +4,17 @@
 \alias{list_sets}
 \title{List sets}
 \usage{
-list_sets(url = "http://oai.datacite.org/oai", token = NULL, ...)
+list_sets(url = "http://oai.datacite.org/oai", token = NULL, as = "df",
+  ...)
 }
 \arguments{
 \item{url}{(character) OAI-PMH base url}
 
 \item{token}{(character) a token previously provided by the server to resume a request
 where it last left off.}
+
+\item{as}{(character) What to return. One of "df" (for data.frame; default),
+"list", or "raw" (raw text)}
 
 \item{...}{Curl options passed on to \code{\link[httr]{GET}}}
 }
@@ -19,7 +23,14 @@ List sets
 }
 \examples{
 \dontrun{
+# Get back a data.frame
 list_sets()
+
+# Get back a list
+list_sets(as = "list")
+
+# Get back raw text
+list_sets(as = "raw")
 
 # curl options
 library("httr")

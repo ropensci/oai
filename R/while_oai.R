@@ -1,4 +1,4 @@
-while_oai <- function(url, args, token, ...) {
+while_oai <- function(url, args, token, as, ...) {
   iter <- 0
   token <- "characters"
   out <- list()
@@ -27,11 +27,16 @@ while_oai <- function(url, args, token, ...) {
       tok_atts <- xml2::xml_attrs(trytok[[1]])
       tok <- c(token = tok, as.list(tok_atts))
     }
-    out[[iter]] <- switch(args$verb,
-                          ListRecords = get_data(xml),
-                          ListIdentifiers = parse_listid(xml),
-                          ListSets = get_sets(xml)
-    )
+    out[[iter]] <-
+      if (as == "raw") {
+        tt
+      } else {
+        switch(args$verb,
+               ListRecords = get_data(xml, as = as),
+               ListIdentifiers = parse_listid(xml, as = as),
+               ListSets = get_sets(xml, as = as)
+        )
+      }
     if (tok$token == "") {
       token <- 1
     } else {

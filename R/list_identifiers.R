@@ -11,6 +11,8 @@
 #' @param set specifies the set that returned records must belong to.
 #' @param token a token previously provided by the server to resume a request
 #'     where it last left off.
+#' @param as (character) What to return. One of "df" (for data.frame; default),
+#'     "list", or "raw" (raw text)
 #' @param ... Curl options passed on to \code{\link[httr]{GET}}
 #' @examples \dontrun{
 #' # from
@@ -25,22 +27,26 @@
 #'
 #' # set parameter - here, using ANDS - Australian National Data Service
 #' list_identifiers(from = '2011-09-01T', until = '2012-09-01T', set = "ANDS")
+#'
+#' # Get a list
+#' list_identifiers(from = today, as = "list")
+#'
+#' # Get raw text
+#' list_identifiers(from = today, as = "raw")
 #' }
 list_identifiers <- function(url = "http://oai.datacite.org/oai", prefix = "oai_dc", from = NULL,
-                             until = NULL, set = NULL, token = NULL, ...) {
+                             until = NULL, set = NULL, token = NULL, as = "df", ...) {
   check_url(url)
   args <- sc(list(verb = "ListIdentifiers", metadataPrefix = prefix, from = from,
                   until = until, set = set, token = token))
-  out <- while_oai(url, args, token, ...)
-  structure(rbind_fill(out),
-            class = c("oai_df", "data.frame"),
-            type = "ListIdentifiers")
+  out <- while_oai(url, args, token, as, ...)
+  oai_give(out, as, "ListRecords")
 }
 
-parse_listid <- function(x) {
+parse_listid <- function(x, as = "df") {
   sc(lapply(x, function(z) {
     if (xml2::xml_name(z) != "resumptionToken") {
-      get_headers(z)
+      get_headers(z, as = as)
     }
   }))
 }
