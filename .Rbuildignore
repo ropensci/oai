@@ -6,3 +6,5 @@ README.Rmd
 .travis.yml
 Makefile
 ^.*-providers.rda
+NEWS.md
+^CONDUCT\.md$
