@@ -6,6 +6,7 @@ oai
 [![Build Status](https://travis-ci.org/sckott/oai.svg?branch=master)](https://travis-ci.org/sckott/oai)
 [![codecov.io](http://codecov.io/github/sckott/oai/coverage.svg?branch=master)](http://codecov.io/github/sckott/oai?branch=master)
 [![rstudio mirror downloads](http://cranlogs.r-pkg.org/badges/oai?color=2ED968)](https://github.com/metacran/cranlogs.app)
+[![cran version](http://www.r-pkg.org/badges/version/oai)](http://cran.rstudio.com/web/packages/oai)
 
 `oai` is an R client to work with OAI-PMH (Open Archives Initiative Protocol for Metadata Harvesting) services, a protocol developed by the [Open Archives Initiative](https://en.wikipedia.org/wiki/Open_Archives_Initiative). OAI-PMH uses XML data format transported over HTTP.
 
