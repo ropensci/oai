@@ -1,4 +1,4 @@
-while_oai <- function(url, args, token, as, ...) {
+while_oai <- function(url, args, token, as, dumper=NULL, dumper_args=NULL, ...) {
   iter <- 0
   token <- "characters"
   out <- list()
@@ -27,8 +27,7 @@ while_oai <- function(url, args, token, as, ...) {
       tok_atts <- xml2::xml_attrs(trytok[[1]])
       tok <- c(token = tok, as.list(tok_atts))
     }
-    out[[iter]] <-
-      if (as == "raw") {
+    res <- if (as == "raw") {
         tt
       } else {
         switch(args$verb,
@@ -37,6 +36,12 @@ while_oai <- function(url, args, token, as, ...) {
                ListSets = get_sets(xml, as = as)
         )
       }
+    if(is.null(dumper)) {
+      out[[iter]] <- res
+    } else {
+      stopifnot(is.function(dumper))
+      dumper(res, args=args2, dumper_args=dumper_args)
+    }
     if (tok$token == "") {
       token <- 1
     } else {
