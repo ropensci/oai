@@ -1,17 +1,18 @@
 #' Identify the OAI-PMH service for each data provider.
 #'
 #' @export
-#' @param url OAI-PMH base url
+#' @param url OAI-PMH base url. Required.
 #' @param ... Curl options passed on to \code{\link[httr]{GET}}
 #' @examples \dontrun{
-#' # default, datacite
-#' id()
+#' # datacite
+#' id("http://oai.datacite.org/oai")
+#'
 #' # arxiv
 #' id("http://export.arxiv.org/oai2")
 #'
 #' # curl options
 #' library("httr")
-#' id(config = verbose())
+#' id("http://export.arxiv.org/oai2", config = verbose())
 #' }
 id <- function(url, ...) {
   check_url(url)

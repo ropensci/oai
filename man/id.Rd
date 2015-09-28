@@ -7,7 +7,7 @@
 id(url, ...)
 }
 \arguments{
-\item{url}{OAI-PMH base url}
+\item{url}{OAI-PMH base url. Required.}
 
 \item{...}{Curl options passed on to \code{\link[httr]{GET}}}
 }
@@ -16,14 +16,15 @@ Identify the OAI-PMH service for each data provider.
 }
 \examples{
 \dontrun{
-# default, datacite
-id()
+# datacite
+id("http://oai.datacite.org/oai")
+
 # arxiv
 id("http://export.arxiv.org/oai2")
 
 # curl options
 library("httr")
-id(config = verbose())
+id("http://export.arxiv.org/oai2", config = verbose())
 }
 }
 
