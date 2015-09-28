@@ -31,6 +31,6 @@ one_mf <- function(identifier, url, ...) {
   res <- GET(url, query = args, ...)
   stop_for_status(res)
   out <- content(res, "text")
-  xml <- xml2::read_xml(out)
+  xml <- read_xml_safely(out)
   rbind_fill(lapply(xml_children(xml_children(xml)[[3]]), get_headers))
 }

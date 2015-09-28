@@ -33,7 +33,7 @@ each_record <- function(identifier, url, prefix, as, ...) {
   res <- GET(url, query = args, ...)
   stop_for_status(res)
   tt <- content(res, "text")
-  xml_orig <- xml2::read_xml(tt)
+  xml_orig <- read_xml_safely(tt)
   handle_errors(xml_orig)
   if (as == "raw") {
     tt
