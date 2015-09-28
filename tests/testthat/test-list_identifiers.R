@@ -3,14 +3,14 @@ context("list_identifiers")
 test_that("list_identifiers - from", {
   skip_on_cran()
 
-  today <- format(Sys.Date(), "%Y-%m-%d")
-  aa <- list_identifiers(from = today)
+  yesterday <- format(Sys.Date()-1, "%Y-%m-%d")
+  aa <- list_identifiers(from = yesterday)
 
   expect_is(aa, "data.frame")
   expect_is(aa, "oai_df")
   expect_is(aa$identifier, "character")
   expect_is(aa$datestamp, "character")
-  expect_equal(as.character(as.Date(aa$datestamp[1])), today)
+  expect_equal(as.character(as.Date(aa$datestamp[1])), yesterday)
 })
 
 test_that("list_identifiers - from & until", {
