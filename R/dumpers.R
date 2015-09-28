@@ -15,9 +15,3 @@ dump_xml_to_txt <- function(res, args, file=NULL, ...) {
   cat(res, file=file)
   cat("Dumped to file ", file, "\n", sep="")
 }
-
-
-if(FALSE) {
-  con <- file("dupa")
-}
-
