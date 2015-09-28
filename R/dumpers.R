@@ -6,16 +6,17 @@
 #' Details for how to write your own.
 #'
 #' A dumper is a function that needs to accept at least the arguments:
-#' \code{res}, \code{args}, \code{as}.
+#' \code{res}, \code{args}, \code{as}. They will get values by the enclosing
+#' function internally.
 #'
-#' @param res results, depends on \code{as}
-#' @param args list, query arguments
-#' @param as character, type of result to return
+#' @param res results, depends on \code{as}, not to be specified by the user
+#' @param args list, query arguments, not to be specified by the user
+#' @param as character, type of result to return, not to be specified by the
+#'   user
 #' @param ... arguments passed to other functions
 #'
-#' @return
-#' Dumpers should return \code{NULL} or a value that will be collected and
-#' returned by the function calling the dumper (e.g.
+#' @return Dumpers should return \code{NULL} or a value that will be collected
+#' and returned by the function calling the dumper (e.g.
 #' \code{\link{list_records}}).
 #'
 #' @aliases dumpers

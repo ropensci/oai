@@ -14,11 +14,12 @@ dump_raw_to_db(res, args, as, dbcon, table_name, field_name, ...)
 dump_to_rds(res, args, as, file_prefix = NULL, ...)
 }
 \arguments{
-\item{res}{results, depends on \code{as}}
+\item{res}{results, depends on \code{as}, not to be specified by the user}
 
-\item{args}{list, query arguments}
+\item{args}{list, query arguments, not to be specified by the user}
 
-\item{as}{character, type of result to return}
+\item{as}{character, type of result to return, not to be specified by the
+user}
 
 \item{file_prefix}{character or \code{NULL} a file name prefix prepended to
   the target file name with \code{\link{file.path}}}
@@ -32,8 +33,8 @@ dump_to_rds(res, args, as, file_prefix = NULL, ...)
 \item{field_name}{character, name of the field to write into}
 }
 \value{
-Dumpers should return \code{NULL} or a value that will be collected and
-returned by the function calling the dumper (e.g.
+Dumpers should return \code{NULL} or a value that will be collected
+and returned by the function calling the dumper (e.g.
 \code{\link{list_records}}).
 
 `dump_raw_to_txt` returns the name of the created file
@@ -50,7 +51,8 @@ Details for how to write your own.
 }
 \details{
 A dumper is a function that needs to accept at least the arguments:
-\code{res}, \code{args}, \code{as}.
+\code{res}, \code{args}, \code{as}. They will get values by the enclosing
+function internally.
 
 `dump_raw_to_txt` writes raw XML to text files. It requires \code{as=="raw"}.
 File names are created with \code{\link{Sys.time}} with ":" and spaces
