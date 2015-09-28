@@ -1,4 +1,13 @@
 while_oai <- function(url, args, token, as, dumper=NULL, dumper_args=NULL, ...) {
+  if( !is.null(dumper) ) {
+    stopifnot(is.function(dumper))
+    a <- c("res", "args")
+    has_args <- a %in% formals(dumper)
+    if(!all(has_args))
+      stop("supplied dumper does not accept argument(s):",
+           paste(a[has_args], collapse=", ") )
+  }
+  if( !is.null(dumper) && !is.null(dumper_args)) stopifnot(is.list(dumper_args))
   iter <- 0
   token <- "characters"
   out <- list()
@@ -27,20 +36,23 @@ while_oai <- function(url, args, token, as, dumper=NULL, dumper_args=NULL, ...) 
       tok_atts <- xml2::xml_attrs(trytok[[1]])
       tok <- c(token = tok, as.list(tok_atts))
     }
+    # `as` determines what the `dumper` gets
     res <- if (as == "raw") {
-        tt
-      } else {
-        switch(args$verb,
-               ListRecords = get_data(xml, as = as),
-               ListIdentifiers = parse_listid(xml, as = as),
-               ListSets = get_sets(xml, as = as)
-        )
-      }
+      tt
+    } else {
+      switch(args$verb,
+             ListRecords = get_data(xml, as = as),
+             ListIdentifiers = parse_listid(xml, as = as),
+             ListSets = get_sets(xml, as = as)
+      )
+    }
+    # Collect values returned by `dumper` if they are not NULL
     if(is.null(dumper)) {
       out[[iter]] <- res
     } else {
-      stopifnot(is.function(dumper))
-      dumper(res, args=args2, dumper_args=dumper_args)
+      dumper_res <- do.call("dumper", c(list(res=res, args=args2), dumper_args))
+      if(!is.null(dumper_res))
+        out[[iter]] <- dumper_res
     }
     if (tok$token == "") {
       token <- 1
