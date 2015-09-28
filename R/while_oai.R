@@ -16,8 +16,8 @@ while_oai <- function(url, args, token, as, ...) {
     res <- GET(url, query = args2, ...)
     stop_for_status(res)
     tt <- content(res, "text")
-    handle_errors(tt)
     xml_orig <- xml2::read_xml(tt)
+    handle_errors(xml_orig)
     xml <- xml2::xml_children(xml2::xml_children(xml_orig)[[3]])
     trytok <- xml2::as_list(xml[sapply(xml, xml_name) == "resumptionToken"])
     if (length(trytok) == 0) {
