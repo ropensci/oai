@@ -1,13 +1,4 @@
 while_oai <- function(url, args, token, as, dumper=NULL, dumper_args=NULL, ...) {
-  if( !is.null(dumper) ) {
-    stopifnot(is.function(dumper))
-    a <- c("res", "args")
-    has_args <- a %in% formals(dumper)
-    if(!all(has_args))
-      stop("supplied dumper does not accept argument(s):",
-           paste(a[has_args], collapse=", ") )
-  }
-  if( !is.null(dumper) && !is.null(dumper_args)) stopifnot(is.list(dumper_args))
   iter <- 0
   token <- "characters"
   out <- list()
@@ -50,7 +41,7 @@ while_oai <- function(url, args, token, as, dumper=NULL, dumper_args=NULL, ...) 
     if(is.null(dumper)) {
       out[[iter]] <- res
     } else {
-      dumper_res <- do.call("dumper", c(list(res=res, args=args2), dumper_args))
+      dumper_res <- do.call("dumper", c(list(res=res, args=args2, as=as), dumper_args))
       if(!is.null(dumper_res))
         out[[iter]] <- dumper_res
     }
