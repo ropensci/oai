@@ -25,7 +25,7 @@ count_identifiers <- function(url = "http://oai.datacite.org/oai", prefix = 'oai
 
 ci <- function(x, args, ...) {
   res <- GET(x, query = args, ...)
-  xml <- xml2::read_xml(content(res, "text"))
+  xml <- read_xml_safely(content(res, "text"))
   children <- xml_children(xml_children(xml))
   count <- as.numeric(
     xml_attr(

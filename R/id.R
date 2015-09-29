@@ -22,5 +22,5 @@ id <- function(url, ...) {
 id_ <- function(x, ...) {
   res <- GET(x, query = list(verb = "Identify"), ...)
   tt <- content(res, as = "text")
-  get_headers(xml_children(xml2::read_xml(tt))[[3]])
+  get_headers(xml_children(read_xml_safely(tt))[[3]])
 }
