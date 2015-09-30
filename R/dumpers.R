@@ -42,7 +42,7 @@ NULL
 #' @export
 dump_raw_to_txt <- function(res, args, as, file_prefix=NULL, ...) {
   stopifnot(as == "raw")
-  filename <- paste0(chartr(": ", "-_", Sys.time()), ".xml")
+  filename <- paste0("oaidump", args$resumptionToken, ".xml")
   if( !is.null(file_prefix) ) {
     filename <- file.path(file_prefix, filename)
   }

@@ -55,8 +55,10 @@ test_that("user did not supply extra argument but dumper has a default", {
 context("Testing text file dumper")
 
 test_that("list_identifiers saves raw XML to text files", {
+  tdir <- tempdir()
   fnames <- list_identifiers(from=as.character(Sys.Date()-1), as="raw",
-                             dumper=dump_raw_to_txt)
+                             dumper=dump_raw_to_txt,
+                             dumper_args=list(file_prefix=tdir))
   expect_true(is.character(fnames))
   expect_true(all(sapply(fnames, file.exists)))
 
