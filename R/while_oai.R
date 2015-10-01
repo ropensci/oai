@@ -1,4 +1,4 @@
-while_oai <- function(url, args, token, as, ...) {
+while_oai <- function(url, args, token, as, dumper=NULL, dumper_args=NULL, ...) {
   iter <- 0
   token <- "characters"
   out <- list()
@@ -27,16 +27,25 @@ while_oai <- function(url, args, token, as, ...) {
       tok_atts <- xml2::xml_attrs(trytok[[1]])
       tok <- c(token = tok, as.list(tok_atts))
     }
-    out[[iter]] <-
-      if (as == "raw") {
-        tt
-      } else {
-        switch(args$verb,
-               ListRecords = get_data(xml, as = as),
-               ListIdentifiers = parse_listid(xml, as = as),
-               ListSets = get_sets(xml, as = as)
-        )
-      }
+    # `as` determines what the `dumper` gets
+    res <- if (as == "raw") {
+      tt
+    } else {
+      switch(args$verb,
+             ListRecords = get_data(xml, as = as),
+             ListIdentifiers = parse_listid(xml, as = as),
+             ListSets = get_sets(xml, as = as)
+      )
+    }
+    # Collect values returned by `dumper` if they are not NULL
+    if(is.null(dumper)) {
+      out[[iter]] <- res
+    } else {
+      valid_dumper(dumper, dumper_args)
+      dumper_res <- do.call("dumper", c(list(res=res, args=args2, as=as), dumper_args))
+      if(!is.null(dumper_res))
+        out[[iter]] <- dumper_res
+    }
     if (tok$token == "") {
       token <- 1
     } else {

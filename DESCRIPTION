@@ -24,4 +24,6 @@ Imports:
     httr
 Suggests:
     testthat,
-    knitr
+    knitr,
+    DBI,
+    RSQLite
