@@ -39,13 +39,11 @@ user}
 }
 \value{
 Dumpers should return \code{NULL} or a value that will be collected
-  and returned by the function calling the dumper (e.g.
-  \code{\link{list_records}}).
+  and returned by the function using the dumper.
 
-\code{dump_raw_to_txt} returns the name of the created file the
-  results have beed written into.
+\code{dump_raw_to_txt} returns the name of the created file.
 
-`dump_to_rds` returns a vector of names of created files.
+\code{dump_to_rds} returns the name of the created file.
 
 \code{dump_xml_to_db} returns \code{NULL}
 }
@@ -62,8 +60,8 @@ split into chunks that need to be requested separately using
 chunks under the hood and return all concatenated in a single R object. It is
 convenient but insufficient when dealing with large result sets that might
 not fit into RAM. A result dumper is a function that is called on each result
-chunk. Chunks can be written to files or databases with initial
-pre-processing, and so on.
+chunk. Dumper functions can write chunks to files or databases, include initial
+pre-processing or extraction, and so on.
 
 A result dumper needs to be function that accepts at least the arguments:
 \code{res}, \code{args}, \code{as}. They will get values by the enclosing
@@ -72,34 +70,44 @@ Dumpers should return \code{NULL} or a value that will
 be collected and returned by the function calling the dumper (e.g.
 \code{\link{list_records}}).
 
-To use a dumper you need to:
+Currently result dumpers can be used with functions:
+\code{\link{list_identifiers}},
+\code{\link{list_records}}, and
+\code{\link{list_sets}}.
+To use a dumper with one of these functions you need to:
 \enumerate{
-\item{Pass it as an argument \code{dumper}}
-\item{Addtional arguments to a dumper might be passed as a list to \code{dumper_args} argument}
+\item{Pass it as an additional argument \code{dumper}}
+\item{Pass optional addtional arguments to the dumper function in a list as the \code{dumper_args} argument}
 }
-See Examples.
+See Examples. Below we provide more details on the dumpers currently implemented.
 
 \code{dump_raw_to_txt} writes raw XML to text files. It requires
 \code{as=="raw"}. File names are created using \code{\link{tempfile}}. By
-default they are written in the current directory and have a format
+default they are written in the current working directory and have a format
 \code{oaidump*.xml} where \code{*} is a random string in hex.
 
 \code{dump_to_rds} saves results in an \code{.rds} file via \code{\link{saveRDS}}.
-Type of object being saved is determined by \code{as} argument. File names
+Type of object being saved is determined by the \code{as} argument. File names
 are generated in the same way as by \code{dump_raw_to_txt}, but with default
 extension \code{.rds}.
 
-\code{dump_xml_to_db} writes raw XMLs to a single text column of a table in a
+\code{dump_xml_to_db} writes raw XML to a single text column of a table in a
 database. Requires \code{as == "raw"}. Database connection \code{dbcon}
 should be a connection object as created by \code{\link[DBI]{dbConnect}} from
 package \pkg{DBI}. As such, it can connect to any database supported by
 \pkg{DBI}. The records are written to a field \code{field_name} in a table
 \code{table_name} using \code{\link[DBI]{dbWriteTable}}. If the table does not
-exist, it is created. If it does, the records are appended. Additional
+exist, it is created. If it does, the records are appended. Any additional
 arguments are passed to \code{\link[DBI]{dbWriteTable}}.
 }
 \references{
 OAI-PMH specification
   \url{https://www.openarchives.org/OAI/openarchivesprotocol.html}
+}
+\seealso{
+Functions supporting the dumpers:
+\code{\link{list_identifiers}},
+\code{\link{list_sets}}, and
+\code{\link{list_records}}
 }
 
