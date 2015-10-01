@@ -1,23 +1,45 @@
 #' Result dumpers
 #'
-#' Result dumpers are functions allowing to handle the results from OAI-PMH
-#' service "on the fly". Handling can include processing, writing to files,
-#' databases etc. This package implements a couple of exemplary dumpers. See
-#' Details for how to write your own.
+#' Result dumpers are functions allowing to handle the chunks of results from
+#' OAI-PMH service "on the fly". Handling can include processing, writing to
+#' files, databases etc.
 #'
-#' A dumper is a function that needs to accept at least the arguments:
+#' Often the result of a request to a OAI-PMH service are so large that it is
+#' split into chunks that need to be requested separately using
+#' \code{resumptionToken}. By default functions like
+#' \code{\link{list_identifiers}} or \code{\link{list_records}} request these
+#' chunks under the hood and return all concatenated in a single R object. It is
+#' convenient but insufficient when dealing with large result sets that might
+#' not fit into RAM. A result dumper is a function that is called on each result
+#' chunk. Chunks can be written to files or databases with initial
+#' pre-processing, and so on.
+#'
+#' A result dumper needs to be function that accepts at least the arguments:
 #' \code{res}, \code{args}, \code{as}. They will get values by the enclosing
-#' function internally.
+#' function internally. There may be additional arguments, including \code{...}.
+#' Dumpers should return \code{NULL} or a value that will
+#' be collected and returned by the function calling the dumper (e.g.
+#' \code{\link{list_records}}).
+#'
+#' To use a dumper you need to:
+#' \enumerate{
+#' \item{Pass it as an argument \code{dumper}}
+#' \item{Addtional arguments to a dumper might be passed as a list to \code{dumper_args} argument}
+#' }
+#' See Examples.
 #'
 #' @param res results, depends on \code{as}, not to be specified by the user
 #' @param args list, query arguments, not to be specified by the user
 #' @param as character, type of result to return, not to be specified by the
 #'   user
-#' @param ... arguments passed to other functions
+#' @param ... arguments passed to/from other functions
 #'
 #' @return Dumpers should return \code{NULL} or a value that will be collected
-#' and returned by the function calling the dumper (e.g.
-#' \code{\link{list_records}}).
+#'   and returned by the function calling the dumper (e.g.
+#'   \code{\link{list_records}}).
+#'
+#' @references OAI-PMH specification
+#'   \url{https://www.openarchives.org/OAI/openarchivesprotocol.html}
 #'
 #' @aliases dumpers
 #' @name dumpers
@@ -29,26 +51,47 @@ NULL
 #'
 #' @details
 #'
-#' `dump_raw_to_txt` writes raw XML to text files. It requires \code{as=="raw"}.
-#' File names are created with \code{\link{Sys.time}} with ":" and spaces
-#' replaced with "-" and "_" respectively. \code{file_prefix} is used when
-#' provided.
+#' \code{dump_raw_to_txt} writes raw XML to text files. It requires
+#' \code{as=="raw"}. File names are created using \code{\link{tempfile}}. By
+#' default they are written in the current directory and have a format
+#' \code{oaidump*.xml} where \code{*} is a random string in hex.
 #'
-#' @param file_prefix character or \code{NULL} a file name prefix prepended to
-#'   the target file name with \code{\link{file.path}}
+#' @param file_pattern,file_dir,file_ext character respectively: initial part of
+#'   the file name, directory name, and file extension used to create file
+#'   names. These arguments are passed to \code{\link{tempfile}} arguments
+#'   \code{pattern}, \code{tmpdir}, and \code{fileext} respectively.
 #'
-#' @return `dump_raw_to_txt` returns the name of the created file
+#' @return \code{dump_raw_to_txt} returns the name of the created file the
+#'   results have beed written into.
 #'
 #' @export
-dump_raw_to_txt <- function(res, args, as, file_prefix=NULL, ...) {
+dump_raw_to_txt <- function(res, args, as, file_pattern="oaidump", file_dir=".",
+                            file_ext=".xml") {
   stopifnot(as == "raw")
-  filename <- paste0("oaidump", args$resumptionToken, ".xml")
-  if( !is.null(file_prefix) ) {
-    filename <- file.path(file_prefix, filename)
-  }
-  cat( as.character(res), file=filename, ... )
+  filename <- tempfile(pattern=file_pattern, tmpdir=file_dir, fileext = file_ext)
+  cat( as.character(res), file=filename )
   filename
 }
+
+
+#' @rdname dumpers
+#'
+#' @details
+#'
+#' \code{dump_to_rds} saves results in an \code{.rds} file via \code{\link{saveRDS}}.
+#' Type of object being saved is determined by \code{as} argument. File names
+#' are generated in the same way as by \code{dump_raw_to_txt}, but with default
+#' extension \code{.rds}.
+#'
+#' @return `dump_to_rds` returns a vector of names of created files.
+#'
+#' @export
+dump_to_rds <- function(res, args, as, file_pattern="oaidump", file_dir=".", file_ext=".rds") {
+  filename <- tempfile(pattern=file_pattern, tmpdir=file_dir, fileext = file_ext)
+  saveRDS(res, file=filename)
+  filename
+}
+
 
 
 
@@ -57,14 +100,21 @@ dump_raw_to_txt <- function(res, args, as, file_prefix=NULL, ...) {
 #'
 #' @details
 #'
-#' `dump_xml_to_db` writes raw XMLs to a single text column in a database.
-#' Requires \code{as == "raw"}.
+#' \code{dump_xml_to_db} writes raw XMLs to a single text column of a table in a
+#' database. Requires \code{as == "raw"}. Database connection \code{dbcon}
+#' should be a connection object as created by \code{\link[DBI]{dbConnect}} from
+#' package \pkg{DBI}. As such, it can connect to any database supported by
+#' \pkg{DBI}. The records are written to a field \code{field_name} in a table
+#' \code{table_name} using \code{\link[DBI]{dbWriteTable}}. If the table does not
+#' exist, it is created. If it does, the records are appended. Additional
+#' arguments are passed to \code{\link[DBI]{dbWriteTable}}.
 #'
-#' @param dbcon DBI-compliant database connection
-#' @param table_name character, name of the table to write into
-#' @param field_name character, name of the field to write into
+#' @param dbcon \pkg{DBI}-compliant database connection
+#' @param table_name character, name of the database table to write into
+#' @param field_name character, name of the field in database table to write
+#'   into
 #'
-#' @return `dump_xml_to_db` returns \code{NULL}
+#' @return \code{dump_xml_to_db} returns \code{NULL}
 #'
 #' @export
 dump_raw_to_db <- function(res, args, as, dbcon, table_name, field_name, ...) {
@@ -79,26 +129,6 @@ dump_raw_to_db <- function(res, args, as, dbcon, table_name, field_name, ...) {
 
 
 
-#' @rdname dumpers
-#'
-#' @details
-#'
-#' `dump_to_rds` saves results in an `.rds` file via \code{\link{saveRDS}}. Type
-#' of object being saved is determined by \code{as} argument. File names are
-#' created with \code{\link{Sys.time}} with ":" and spaces replaced with "-" and
-#' "_" respectively. \code{file_prefix} is used when provided.
-#'
-#' @return `dump_to_rds` returns the name of the created file.
-#'
-#' @export
-dump_to_rds <- function(res, args, as, file_prefix=NULL, ...) {
-  filename <- paste0(chartr(": ", "-_", Sys.time()), ".rds")
-  if( !is.null(file_prefix) ) {
-    filename <- file.path(file_prefix, filename)
-  }
-  saveRDS(res, file=filename, ...)
-  filename
-}
 
 
 
