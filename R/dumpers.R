@@ -53,6 +53,7 @@
 #'
 #' @aliases dumpers
 #' @name dumpers
+#' @example examples/dumpers.R
 NULL
 
 
