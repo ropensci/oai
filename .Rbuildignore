@@ -8,4 +8,4 @@ Makefile
 ^.*-providers.rda
 NEWS.md
 ^CONDUCT\.md$
-examples
+man-roxygen

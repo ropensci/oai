@@ -53,7 +53,7 @@
 #'
 #' @aliases dumpers
 #' @name dumpers
-#' @example examples/dumpers.R
+#' @example man-roxygen/dumpers.R
 NULL
 
 
