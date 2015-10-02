@@ -29,6 +29,9 @@
 #' list_records(from = '2011-06-01T', until = '2011-07-01T', as = "raw")
 #' list_records(from = '2011-06-01T', until = '2011-07-30T', as = "raw")
 #'
+#' # Use a resumption token
+#' list_records(token = "1443799900201,2015-09-01T00:00:00Z,2015-10-01T23:59:59Z,50,null,oai_dc")
+#'
 #' # use curl options
 #' library("httr")
 #' list_records(from = '2011-05-01T', until = '2011-07-15T', config=verbose())
@@ -37,8 +40,9 @@ list_records <- function(url = "http://oai.datacite.org/oai", prefix = "oai_dc",
   until = NULL, set = NULL, token = NULL, as = "df", ...) {
 
   check_url(url)
+  if (!is.null(token)) from <- until <- set <- prefix <- NULL
   args <- sc(list(verb = "ListRecords", metadataPrefix = prefix, from = from,
-                  until = until, set = set, token = token))
+                  until = until, set = set, resumptionToken = token))
   out <- while_oai(url, args, token, as, ...)
   oai_give(out, as, "ListRecords")
 }

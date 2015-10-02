@@ -38,12 +38,12 @@ while_oai <- function(url, args, token, as, dumper=NULL, dumper_args=NULL, ...) 
       )
     }
     # Collect values returned by `dumper` if they are not NULL
-    if(is.null(dumper)) {
+    if (is.null(dumper)) {
       out[[iter]] <- res
     } else {
       valid_dumper(dumper, dumper_args)
-      dumper_res <- do.call("dumper", c(list(res=res, args=args2, as=as), dumper_args))
-      if(!is.null(dumper_res))
+      dumper_res <- do.call("dumper", c(list(res = res, args = args2, as = as), dumper_args))
+      if (!is.null(dumper_res))
         out[[iter]] <- dumper_res
     }
     if (tok$token == "") {

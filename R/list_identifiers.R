@@ -37,8 +37,9 @@
 list_identifiers <- function(url = "http://oai.datacite.org/oai", prefix = "oai_dc", from = NULL,
                              until = NULL, set = NULL, token = NULL, as = "df", ...) {
   check_url(url)
+  if (!is.null(token)) from <- until <- set <- prefix <- NULL
   args <- sc(list(verb = "ListIdentifiers", metadataPrefix = prefix, from = from,
-                  until = until, set = set, token = token))
+                  until = until, set = set, resumptionToken = token))
   out <- while_oai(url, args, token, as, ...)
   oai_give(out, as, "ListRecords")
 }
