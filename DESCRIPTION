@@ -21,7 +21,7 @@ Imports:
     stats,
     utils,
     xml2,
-    httr
+    httr (≥ 1.0.0)
 Suggests:
     testthat,
     knitr,
