@@ -69,7 +69,7 @@ test_that("list_identifiers saves raw XML to text files", {
 
 
 test_that("list_records saves raw XML to text files", {
-  fnames <- list_records(from = '2014-06-01T', until = '2014-06-01T',
+  fnames <- list_records(from = '2014-06-01T', until = '2014-06-02T',
                          as = "raw",
                          dumper=dump_raw_to_txt,
                          dumper_args=list(file_dir=tempdir()))
@@ -94,7 +94,7 @@ test_that("list_records saves raw XML to text files", {
 context("Testing RDS file dumper")
 
 test_that("list_identifiers saves raw XML to RDS files", {
-  fnames <- list_identifiers(from="2014-06-01T", to="2014-06-01T", as="raw",
+  fnames <- list_identifiers(from="2014-06-01T", until="2014-06-02T", as="raw",
                              dumper=dump_to_rds,
                              dumper_args=list(file_dir=tempdir()))
   expect_true(is.character(fnames))
