@@ -22,6 +22,7 @@ gnp <- function(u) {
 
 
 test_that("badArgument is triggered", {
+  skip_on_cran()
   xml <- gnp(error_url$badArgument)
   expect_error( handle_errors(xml) )
   expect_true( tryCatch( handle_errors(xml), error=function(er) inherits(er, "oai-pmh_error") ) )
@@ -30,6 +31,7 @@ test_that("badArgument is triggered", {
 
 
 test_that("badResumptionToken is triggered", {
+  skip_on_cran()
   xml <- gnp(error_url$badResumptionToken)
   expect_error( handle_errors(xml) )
   expect_true( tryCatch( handle_errors(xml), error=function(er) inherits(er, "oai-pmh_error") ) )
@@ -37,6 +39,7 @@ test_that("badResumptionToken is triggered", {
 } )
 
 test_that("badVerb is triggered", {
+  skip_on_cran()
   xml <- gnp(error_url$badVerb)
   expect_error( handle_errors(xml) )
   expect_true( tryCatch( handle_errors(xml), error=function(er) inherits(er, "oai-pmh_error") ) )
@@ -44,6 +47,7 @@ test_that("badVerb is triggered", {
 } )
 
 test_that("cannotDisseminateFormat is triggered", {
+  skip_on_cran()
   xml <- gnp(error_url$cannotDisseminateFormat)
   expect_error( handle_errors(xml) )
   expect_true( tryCatch( handle_errors(xml), error=function(er) inherits(er, "oai-pmh_error") ) )
@@ -51,6 +55,7 @@ test_that("cannotDisseminateFormat is triggered", {
 } )
 
 test_that("idDoesNotExist is triggered", {
+  skip_on_cran()
   xml <- gnp(error_url$idDoesNotExist)
   expect_error( handle_errors(xml) )
   expect_true( tryCatch( handle_errors(xml), error=function(er) inherits(er, "oai-pmh_error") ) )
@@ -58,6 +63,7 @@ test_that("idDoesNotExist is triggered", {
 } )
 
 test_that("noRecordsMatch is triggered", {
+  skip_on_cran()
   xml <- gnp(error_url$noRecordsMatch)
   expect_error( handle_errors(xml) )
   expect_true( tryCatch( handle_errors(xml), error=function(er) inherits(er, "oai-pmh_error") ) )
@@ -66,6 +72,7 @@ test_that("noRecordsMatch is triggered", {
 
 
 test_that("noSetHierarchy is triggered", {
+  skip_on_cran()
   xml <- gnp(error_url$noSetHierarchy)
   expect_error( handle_errors(xml) )
   expect_true( tryCatch( handle_errors(xml), error=function(er) inherits(er, "oai-pmh_error") ) )
