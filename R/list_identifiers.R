@@ -43,11 +43,3 @@ list_identifiers <- function(url = "http://oai.datacite.org/oai", prefix = "oai_
   out <- while_oai(url, args, token, as, ...)
   oai_give(out, as, "ListRecords")
 }
-
-parse_listid <- function(x, as = "df") {
-  sc(lapply(x, function(z) {
-    if (xml2::xml_name(z) != "resumptionToken") {
-      get_headers(z, as = as)
-    }
-  }))
-}

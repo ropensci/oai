@@ -17,14 +17,11 @@ test_that("list_identifiers - from & until", {
 
   aa <- list_identifiers(from = '2015-09-03T00:00:00Z', until = '2015-09-03T00:30:00Z')
   bb <- list_identifiers(from = '2015-09-03T00:30:00Z', until = '2015-09-03T01:15:00Z')
-  cc <- list_identifiers(from = '2015-09-04T00:00:00Z', until = '2015-09-04T02:00:00Z')
 
   expect_is(aa, "oai_df")
   expect_is(bb, "oai_df")
-  expect_is(cc, "oai_df")
 
   expect_less_than(NROW(aa), NROW(bb))
-  expect_less_than(NROW(cc), NROW(bb))
 })
 
 test_that("list_identifiers - set", {
@@ -32,15 +29,12 @@ test_that("list_identifiers - set", {
 
   aa <- list_identifiers(from = '2011-06-01T', until = '2011-11-01T', set = "ANDS")
   bb <- list_identifiers(from = '2011-06-01T', until = '2012-11-01T', set = "CDL.OSU")
-  cc <- list_identifiers(from = '2014-06-01T', until = '2014-10-01T', set = "DK.SA")
 
   expect_is(aa, "oai_df")
   expect_is(bb, "oai_df")
-  expect_is(cc, "oai_df")
 
   expect_equal(aa$setSpec[1], "ANDS")
   expect_equal(bb$setSpec[1], "CDL")
-  expect_equal(cc$setSpec[1], "DK")
 })
 
 test_that("list_identifiers fails well", {

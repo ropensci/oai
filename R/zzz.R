@@ -1,3 +1,4 @@
+# general utility fxns ------------------------------
 sc <- function(l) Filter(Negate(is.null), l)
 
 pluck <- function(x, name, type) {
@@ -10,9 +11,10 @@ pluck <- function(x, name, type) {
 
 last <- function(x) x[length(x)][[1]]
 
+# base datacite url ------------------------------
 datacite_base <- function() "http://oai.datacite.org/oai"
 
-
+# condition  ----------------------------------------
 # Simple condition generator as shown here
 # http://adv-r.had.co.nz/Exceptions-Debugging.html#condition-handling
 condition <- function(subclass, message, call = sys.call(-1), ...) {
@@ -25,6 +27,46 @@ condition <- function(subclass, message, call = sys.call(-1), ...) {
 
 # is it a condition?
 is.condition <- function(x) inherits(x, "condition")
+
+# return result from main oai functions --------------
+oai_give <- function(x, as, type) {
+  switch(as,
+         df = {
+           structure(rbind_fill(x),
+                     class = c("oai_df", "data.frame"),
+                     type = type)
+         },
+         list = x,
+         raw = x
+  )
+}
+
+#' @export
+print.oai_df <- function(x, ..., n = 10) {
+  cat(sprintf("<%s> %s X %s", attr(x, "type"), NROW(x), NCOL(x)), "\n\n")
+  trunc_mat(x, n = n)
+}
+
+
+# check urls ----------------------------------------
+check_url <- function(x) {
+  if (!all(is.url(x))) {
+    stop("One or more of your URLs appears to not be a proper URL", call. = FALSE)
+  }
+}
+
+is.url <- function(x, ...){
+  grepl("https?://", x)
+}
+
+# while_oai helpers ----------------------------------------
+parse_listid <- function(x, as = "df") {
+  sc(lapply(x, function(z) {
+    if (xml2::xml_name(z) != "resumptionToken") {
+      get_headers(z, as = as)
+    }
+  }))
+}
 
 get_data <- function(x, as = "df") {
   sc(lapply(x, function(z) {
@@ -71,32 +113,23 @@ rbind_df <- function(x) {
   data.frame(rbind(unlist(x)), stringsAsFactors = FALSE)
 }
 
-oai_give <- function(x, as, type) {
+get_sets <- function(x, as = "df") {
   switch(as,
          df = {
-           structure(rbind_fill(x),
-                     class = c("oai_df", "data.frame"),
-                     type = type)
+           rbind_fill(sc(lapply(x, function(z) {
+             if (xml2::xml_name(z) != "resumptionToken") {
+               tmp <- xml2::xml_children(z)
+               rbind_df(as.list(setNames(xml2::xml_text(tmp), xml2::xml_name(tmp))))
+             }
+           })))
          },
-         list = x,
-         raw = x
+         list = {
+           sc(lapply(x, function(z) {
+             if (xml2::xml_name(z) != "resumptionToken") {
+               tmp <- xml2::xml_children(z)
+               as.list(setNames(xml2::xml_text(tmp), xml2::xml_name(tmp)))
+             }
+           }))
+         }
   )
-}
-
-#' @export
-print.oai_df <- function(x, ..., n = 10) {
-  cat(sprintf("<%s> %s X %s", attr(x, "type"), NROW(x), NCOL(x)), "\n\n")
-  trunc_mat(x, n = n)
-}
-
-
-# check urls
-check_url <- function(x) {
-  if (!all(is.url(x))) {
-    stop("One or more of your URLs appears to not be a proper URL", call. = FALSE)
-  }
-}
-
-is.url <- function(x, ...){
-  grepl("https?://", x)
 }

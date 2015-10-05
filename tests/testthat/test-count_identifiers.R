@@ -16,15 +16,14 @@ test_that("count_identifiers - works with many input urls", {
 
   aa <- count_identifiers(c(
     "http://oai.datacite.org/oai",
-    "http://archivesic.ccsd.cnrs.fr/oai/oai.php",
-    "http://www.hindawi.com/oai-pmh/oai.aspx"
+    "http://archivesic.ccsd.cnrs.fr/oai/oai.php"
   ))
 
   expect_is(aa, "data.frame")
   expect_is(aa$url, "character")
   expect_is(aa$count, "numeric")
 
-  expect_equal(NROW(aa), 3)
+  expect_equal(NROW(aa), 2)
 })
 
 test_that("count_identifiers - prefix param works", {

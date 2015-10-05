@@ -27,24 +27,3 @@ list_sets <- function(url = "http://oai.datacite.org/oai", token = NULL, as = "d
   out <- while_oai(url, args, token, as, ...)
   oai_give(out, as, "ListSets")
 }
-
-get_sets <- function(x, as = "df") {
-  switch(as,
-         df = {
-           rbind_fill(sc(lapply(x, function(z) {
-             if (xml2::xml_name(z) != "resumptionToken") {
-               tmp <- xml2::xml_children(z)
-               rbind_df(as.list(setNames(xml2::xml_text(tmp), xml2::xml_name(tmp))))
-             }
-           })))
-         },
-         list = {
-           sc(lapply(x, function(z) {
-             if (xml2::xml_name(z) != "resumptionToken") {
-               tmp <- xml2::xml_children(z)
-               as.list(setNames(xml2::xml_text(tmp), xml2::xml_name(tmp)))
-             }
-           }))
-         }
-  )
-}
