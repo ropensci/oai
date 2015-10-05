@@ -61,15 +61,21 @@ read_xml_with_errors <- function(x, ...) {
 # Read XML safely
 #
 # Removes illegal characters
-read_xml_safely <- function(x, ...) {
+# @param invalid_as NULL or character. If not NULL, replace invalid characters with `invalid_as`
+read_xml_safely <- function(x, ..., xml_invalid_as=getOption("oai.xml_invalid_as", "") ) {
   repeat {
     tryCatch( return(read_xml_with_errors(x, ...)),
               # Removing offending characters
-              invalid_char_value = function(er) {
+              invalid_char_value = function(er, invalid_as=xml_invalid_as) {
                 charint <- attr(er, "char_value")
-                x <<- gsub(intToUtf8(charint), "", x)
-                msg <- paste0(er$message, ", removing offending characters")
-                warning(msg)
+                if(is.null(invalid_as)) {
+                  stop(er)
+                } else {
+                  stopifnot(is.character(xml_invalid_as))
+                  x <<- gsub(intToUtf8(charint), invalid_as, x)
+                  msg <- paste0(er$message, ", replacing offending characters with ", dQuote(invalid_as))
+                  warning(msg)
+                }
               }
     )
   }
