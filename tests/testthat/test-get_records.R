@@ -33,5 +33,5 @@ test_that("get_records fails well", {
   expect_error(get_records(5),
                "\"5\" is unknown or illegal in this repository")
   expect_error(get_records("oai:oai.datacite.org:32255", url = "stuff"),
-               "Your URL appears to not be a proper URL")
+               "One or more of your URLs")
 })

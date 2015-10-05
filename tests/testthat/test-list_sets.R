@@ -37,5 +37,5 @@ test_that("list_sets fails well", {
   expect_error(list_sets(token = 454),
                "The value of the resumptionToken argument is invalid or expired")
   expect_error(list_sets("stuff"),
-               "Your URL appears to not be a proper URL")
+               "One or more of your URLs")
 })

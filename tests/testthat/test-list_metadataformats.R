@@ -35,6 +35,6 @@ test_that("list_metadataformats fails well", {
   skip_on_cran()
 
   expect_error(list_metadataformats("stuff"),
-               "Your URL appears to not be a proper URL")
+               "One or more of your URLs")
   expect_null(list_metadataformats(id = "adfadfsdf")[[1]])
 })

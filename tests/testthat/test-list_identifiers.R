@@ -52,6 +52,6 @@ test_that("list_identifiers fails well", {
                "The request includes illegal arguments")
   expect_error(list_identifiers(from = '2011-06-01T', until = 5),
                "The request includes illegal arguments")
-  expect_error(list_identifiers(url = 5), "Your URL appears to not be a proper URL")
+  expect_error(list_identifiers(url = 5), "One or more of your URLs")
   expect_error(list_identifiers(from = '2011-06-01T', until = '2011-11-01T', set = "STUFF"), no_msg)
 })

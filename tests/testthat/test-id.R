@@ -32,5 +32,5 @@ test_that("id fails well", {
   expect_error(id(),
                "argument \"url\" is missing")
   expect_error(id("things"),
-               "Your URL appears to not be a proper URL")
+               "One or more of your URLs")
 })
