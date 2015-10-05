@@ -18,15 +18,8 @@ while_oai <- function(url, args, token, as, dumper=NULL, dumper_args=NULL, ...) 
     tt <- content(res, "text")
     xml_orig <- xml2::read_xml(tt)
     handle_errors(xml_orig)
+    tok <- get_token(xml_orig, verb=args2$verb)
     xml <- xml2::xml_children(xml2::xml_children(xml_orig)[[3]])
-    trytok <- xml2::as_list(xml[sapply(xml, xml_name) == "resumptionToken"])
-    if (length(trytok) == 0) {
-      tok <- list(token = "")
-    } else {
-      tok <- xml2::xml_text(trytok[[1]])
-      tok_atts <- xml2::xml_attrs(trytok[[1]])
-      tok <- c(token = tok, as.list(tok_atts))
-    }
     # `as` determines what the `dumper` gets
     res <- if (as == "raw") {
       tt
@@ -58,4 +51,22 @@ while_oai <- function(url, args, token, as, dumper=NULL, dumper_args=NULL, ...) 
          ListIdentifiers = do.call("c", out),
          ListSets = out
   )
+}
+
+# Get resumptionToken from parsed XML/HTML
+# @param x result of read_xml or read_html
+# @param is_html is it XML or HTML (incl. malformed XML)
+get_token <- function(x, verb, is_html=FALSE) {
+  xp <- paste0("/*[local-name()='OAI-PMH']/*[local-name()='", verb, "']/*[local-name()='",
+               if(is_html) "resumptiontoken" else "resumptionToken", "']" )
+  node <- xml2::xml_find_one(x, xp)
+  if(length(node) == 0) {
+    return( list(token="") )
+  }
+  else {
+    return( c(
+      token=xml2::xml_text(node),
+      as.list(xml2::xml_attrs(node))
+    ) )
+  }
 }
