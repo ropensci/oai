@@ -16,14 +16,27 @@ while_oai <- function(url, args, token, as, dumper=NULL, dumper_args=NULL, ...) 
     res <- GET(url, query = args2, ...)
     stop_for_status(res)
     tt <- content(res, "text")
-    xml_orig <- read_xml_safely(tt)
-    handle_errors(xml_orig)
-    tok <- get_token(xml_orig, verb=args2$verb)
-    xml <- xml2::xml_children(xml2::xml_children(xml_orig)[[3]])
+    xml_orig <- try( read_xml_safely(tt) )
+    if(inherits(xml_orig, "error")) {
+      warning("XML parsing failed, trying read_html")
+      html_orig <- try( xml2::read_html(tt) )
+      if( inherits(html_orig, "error") ) {
+        fname <- tempfile()
+        cat(tt, file=fname)
+        stop(paste0("cannot parse XML, dumping to file ", fname))
+      } else {
+        handle_errors(html_orig)
+        tok <- get_token(html_orig, verb=args2$verb, is_html=TRUE)
+      }
+    } else {
+      handle_errors(xml_orig)
+      tok <- get_token(xml_orig, verb=args2$verb)
+    }
     # `as` determines what the `dumper` gets
     res <- if (as == "raw") {
       tt
     } else {
+      xml <- xml2::xml_children(xml2::xml_children(xml_orig)[[3]])
       switch(args$verb,
              ListRecords = get_data(xml, as = as),
              ListIdentifiers = parse_listid(xml, as = as),
