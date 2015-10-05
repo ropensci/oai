@@ -3,29 +3,28 @@ context("list_identifiers")
 test_that("list_identifiers - from", {
   skip_on_cran()
 
-  yesterday <- format(Sys.Date()-1, "%Y-%m-%d")
-  aa <- list_identifiers(from = yesterday)
+  aa <- list_identifiers(from = "2015-09-03T00:00:00Z", until="2015-09-03T00:30:00Z")
 
   expect_is(aa, "data.frame")
   expect_is(aa, "oai_df")
   expect_is(aa$identifier, "character")
   expect_is(aa$datestamp, "character")
-  expect_equal(as.character(as.Date(aa$datestamp[1])), yesterday)
+  expect_equal(as.character(as.Date(aa$datestamp[1])), "2015-09-03")
 })
 
 test_that("list_identifiers - from & until", {
   skip_on_cran()
 
-  aa <- list_identifiers(from = '2011-06-01T', until = '2011-06-10T')
-  bb <- list_identifiers(from = '2011-06-01T', until = '2011-07-01T')
-  cc <- list_identifiers(from = '2011-06-01T', until = '2011-10-01T')
+  aa <- list_identifiers(from = '2015-09-03T00:00:00Z', until = '2015-09-03T00:30:00Z')
+  bb <- list_identifiers(from = '2015-09-03T00:30:00Z', until = '2015-09-03T01:15:00Z')
+  cc <- list_identifiers(from = '2015-09-04T00:00:00Z', until = '2015-09-04T02:00:00Z')
 
   expect_is(aa, "oai_df")
   expect_is(bb, "oai_df")
   expect_is(cc, "oai_df")
 
   expect_less_than(NROW(aa), NROW(bb))
-  expect_less_than(NROW(bb), NROW(cc))
+  expect_less_than(NROW(cc), NROW(bb))
 })
 
 test_that("list_identifiers - set", {
