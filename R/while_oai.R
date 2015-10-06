@@ -27,7 +27,7 @@ while_oai <- function(url, args, token, as, dumper=NULL, dumper_args=NULL, ...) 
           pattern=paste0("oaidump_", chartr(" :", "_-", Sys.time())),
           tmpdir=".", fileext="xml")
         cat(tt, file=fname)
-        stop(paste0("cannot parse downloaded XML, dumping to file ", fname))
+        stop(paste0("cannot parse downloaded XML, dumped raw XML to file ", fname))
       }
       is_html <- TRUE
     } else {
