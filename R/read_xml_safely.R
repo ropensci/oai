@@ -1,18 +1,3 @@
-# Simple condition generator as shown here
-# http://adv-r.had.co.nz/Exceptions-Debugging.html#condition-handling
-condition <- function(subclass, message, call = sys.call(-1), ...) {
-  structure(
-    class = unique(c(subclass, "condition")),
-    list(message = message, call = call),
-    ...
-  )
-}
-# is it a condition?
-is.condition <- function(x) inherits(x, "condition")
-
-
-
-
 # Read XML while fishing-out some errors
 
 # Function `tryCatch` looks at conditions thrown by `read_xml`. If the condition
@@ -61,14 +46,14 @@ read_xml_with_errors <- function(x, ...) {
 # Read XML safely
 #
 # Removes illegal characters
-# @param invalid_as NULL or character. If not NULL, replace invalid characters with `invalid_as`
+# @param invalid_as NA or character. If not NA, replace invalid characters with `invalid_as`
 read_xml_safely <- function(x, ..., xml_invalid_as=getOption("oai.xml_invalid_as", "") ) {
   repeat {
     tryCatch( return(read_xml_with_errors(x, ...)),
               # Removing offending characters
               invalid_char_value = function(er, invalid_as=xml_invalid_as) {
                 charint <- attr(er, "char_value")
-                if(is.null(invalid_as)) {
+                if(is.na(invalid_as)) {
                   stop(er)
                 } else {
                   stopifnot(is.character(xml_invalid_as))
