@@ -32,7 +32,7 @@ is.condition <- function(x) inherits(x, "condition")
 oai_give <- function(x, as, type) {
   switch(as,
          df = {
-           structure(rbind_fill(x),
+           structure(rbind.fill(x),
                      class = c("oai_df", "data.frame"),
                      type = type)
          },
@@ -116,7 +116,7 @@ rbind_df <- function(x) {
 get_sets <- function(x, as = "df") {
   switch(as,
          df = {
-           rbind_fill(sc(lapply(x, function(z) {
+           rbind.fill(sc(lapply(x, function(z) {
              if (xml2::xml_name(z) != "resumptionToken") {
                tmp <- xml2::xml_children(z)
                rbind_df(as.list(setNames(xml2::xml_text(tmp), xml2::xml_name(tmp))))

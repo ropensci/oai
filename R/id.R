@@ -16,7 +16,7 @@
 #' }
 id <- function(url, ...) {
   check_url(url)
-  rbind_fill(lapply(url, id_, ...))
+  rbind.fill(lapply(url, id_, ...))
 }
 
 id_ <- function(x, ...) {

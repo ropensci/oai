@@ -28,7 +28,7 @@ update_providers <- function(path = ".", ...) {
   prov <- xml2::read_html(temp)
   tab <- xml2::xml_find_all(prov, "//table")[[2]]
   children <- xml2::xml_children(tab)
-  providers <- rbind_fill(lapply(children[-1], function(z) {
+  providers <- rbind.fill(lapply(children[-1], function(z) {
     data.frame(t(gsub("\n|\\s\\s+", "", xml2::xml_text(xml2::xml_children(z)[3:5]))),
                stringsAsFactors = FALSE)
   }))
