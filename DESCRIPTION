@@ -24,7 +24,7 @@ Imports:
     xml2,
     httr (>= 1.0.0)
 Suggests:
-    testthat,
-    knitr,
     DBI,
-    RSQLite
+    knitr,
+    RSQLite,
+    testthat
