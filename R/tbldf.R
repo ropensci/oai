@@ -1,3 +1,5 @@
+# Internal functions for printing dplyr like tidy summary data.frames
+# see https://github.com/hadley/dplyr
 trunc_mat <- function(x, n = NULL){
   rows <- nrow(x)
   if (!is.na(rows) && rows == 0)
