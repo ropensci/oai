@@ -32,7 +32,7 @@ trunc_mat <- function(x, n = NULL){
   print(shrunk)
   if (any(too_wide)) {
     vars <- colnames(mat)[too_wide]
-    types <- vapply(df[too_wide], type_sum, character(1))
+    types <- vapply(df[too_wide], tsum, character(1))
     var_types <- paste0(vars, " (", types, ")", collapse = ", ")
     cat(lawn_wrap("Variables not shown: ", var_types), "\n", sep = "")
   }
@@ -47,68 +47,68 @@ lawn_wrap <- function (..., indent = 0, width = getOption("width")){
 #' Type summary
 #' @export
 #' @keywords internal
-type_sum <- function (x) UseMethod("type_sum")
+tsum <- function (x) UseMethod("tsum")
 
-#' @method type_sum default
+#' @method tsum default
 #' @export
-#' @rdname type_sum
-type_sum.default <- function (x) unname(abbreviate(class(x)[1], 4))
+#' @rdname tsum
+tsum.default <- function (x) unname(abbreviate(class(x)[1], 4))
 
-#' @method type_sum character
+#' @method tsum character
 #' @export
-#' @rdname type_sum
-type_sum.character <- function (x) "chr"
+#' @rdname tsum
+tsum.character <- function (x) "chr"
 
-#' @method type_sum Date
+#' @method tsum Date
 #' @export
-#' @rdname type_sum
-type_sum.Date <- function (x) "date"
+#' @rdname tsum
+tsum.Date <- function (x) "date"
 
-#' @method type_sum factor
+#' @method tsum factor
 #' @export
-#' @rdname type_sum
-type_sum.factor <- function (x) "fctr"
+#' @rdname tsum
+tsum.factor <- function (x) "fctr"
 
-#' @method type_sum integer
+#' @method tsum integer
 #' @export
-#' @rdname type_sum
-type_sum.integer <- function (x) "int"
+#' @rdname tsum
+tsum.integer <- function (x) "int"
 
-#' @method type_sum logical
+#' @method tsum logical
 #' @export
-#' @rdname type_sum
-type_sum.logical <- function (x) "lgl"
+#' @rdname tsum
+tsum.logical <- function (x) "lgl"
 
-#' @method type_sum array
+#' @method tsum array
 #' @export
-#' @rdname type_sum
-type_sum.array <- function (x){
+#' @rdname tsum
+tsum.array <- function (x){
   paste0(NextMethod(), "[", paste0(dim(x), collapse = ","),
          "]")
 }
 
-#' @method type_sum matrix
+#' @method tsum matrix
 #' @export
-#' @rdname type_sum
-type_sum.matrix <- function (x){
+#' @rdname tsum
+tsum.matrix <- function (x){
   paste0(NextMethod(), "[", paste0(dim(x), collapse = ","),
          "]")
 }
 
-#' @method type_sum numeric
+#' @method tsum numeric
 #' @export
-#' @rdname type_sum
-type_sum.numeric <- function (x) "dbl"
+#' @rdname tsum
+tsum.numeric <- function (x) "dbl"
 
-#' @method type_sum POSIXt
+#' @method tsum POSIXt
 #' @export
-#' @rdname type_sum
-type_sum.POSIXt <- function (x) "time"
+#' @rdname tsum
+tsum.POSIXt <- function (x) "time"
 
 obj_type <- function (x)
 {
   if (!is.object(x)) {
-    paste0("<", type_sum(x), if (!is.array(x))
+    paste0("<", tsum(x), if (!is.array(x))
       paste0("[", length(x), "]"), ">")
   }
   else if (!isS4(x)) {
