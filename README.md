@@ -3,8 +3,8 @@ oai
 
 
 
-[![Build Status](https://travis-ci.org/sckott/oai.svg?branch=master)](https://travis-ci.org/sckott/oai)
-[![codecov.io](http://codecov.io/github/sckott/oai/coverage.svg?branch=master)](http://codecov.io/github/sckott/oai?branch=master)
+[![Build Status](https://travis-ci.org/ropensci/oai.svg?branch=master)](https://travis-ci.org/ropensci/oai)
+[![codecov.io](http://codecov.io/github/ropensci/oai/coverage.svg?branch=master)](http://codecov.io/github/ropensci/oai?branch=master)
 [![rstudio mirror downloads](http://cranlogs.r-pkg.org/badges/oai?color=2ED968)](https://github.com/metacran/cranlogs.app)
 [![cran version](http://www.r-pkg.org/badges/version/oai)](http://cran.rstudio.com/web/packages/oai)
 
@@ -32,7 +32,7 @@ Development version
 
 
 ```r
-devtools::install_github("sckott/oai")
+devtools::install_github("ropensci/oai")
 ```
 
 
@@ -179,4 +179,10 @@ list_sets("http://oai.datacite.org/oai")
 
 ## Meta
 
-Please note that this project is released with a [Contributor Code of Conduct](CONDUCT.md). By participating in this project you agree to abide by its terms.
+* Please [report any issues or bugs](https://github.com/ropensci/oai/issues).
+* License: MIT
+* Get citation information for `oai` in R doing `citation(package = 'oai')`
+* Please note that this project is released with a [Contributor Code of Conduct](CONDUCT.md). By participating in this project you agree to abide by its terms.
+
+[![ropensci_footer](http://ropensci.org/public_images/github_footer.png)](http://ropensci.org)
+
