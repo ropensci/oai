@@ -47,7 +47,7 @@ library("oai")
 ## Identify
 
 ```{r}
-id("http://oai.datacite.org/oai")
+id_entify("http://oai.datacite.org/oai")
 ```
 
 ## ListIdentifiers

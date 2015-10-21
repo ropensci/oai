@@ -5,16 +5,16 @@
 #' @param ... Curl options passed on to \code{\link[httr]{GET}}
 #' @examples \dontrun{
 #' # datacite
-#' id("http://oai.datacite.org/oai")
+#' id_entify("http://oai.datacite.org/oai")
 #'
 #' # arxiv
-#' id("http://export.arxiv.org/oai2")
+#' id_entify("http://export.arxiv.org/oai2")
 #'
 #' # curl options
 #' library("httr")
-#' id("http://export.arxiv.org/oai2", config = verbose())
+#' id_entify("http://export.arxiv.org/oai2", config = verbose())
 #' }
-id <- function(url, ...) {
+id_entify <- function(url, ...) {
   check_url(url)
   rbind.fill(lapply(url, id_, ...))
 }

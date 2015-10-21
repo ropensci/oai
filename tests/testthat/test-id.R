@@ -1,21 +1,21 @@
-context("id")
+context("id_entify")
 
-test_that("id - default uses datacite", {
+test_that("id_entify - default uses datacite", {
   skip_on_cran()
 
-  aa <- id("http://oai.datacite.org/oai")
+  aa <- id_entify("http://oai.datacite.org/oai")
 
   expect_is(aa, "data.frame")
   expect_match(aa$repositoryName, "DataCite")
   expect_match(aa$baseURL, "oai.datacite.org")
 })
 
-test_that("id - url param works", {
+test_that("id_entify - url param works", {
   skip_on_cran()
 
-  aa <- id("http://export.arxiv.org/oai2")
-  bb <- id("http://pub.bsalut.net/cgi/oai2.cgi")
-  cc <- id("http://www.diva-portal.org/oai/OAI")
+  aa <- id_entify("http://export.arxiv.org/oai2")
+  bb <- id_entify("http://pub.bsalut.net/cgi/oai2.cgi")
+  cc <- id_entify("http://www.diva-portal.org/oai/OAI")
 
   expect_is(aa, "data.frame")
   expect_is(bb, "data.frame")
@@ -26,11 +26,11 @@ test_that("id - url param works", {
   expect_equal(NROW(cc), 1)
 })
 
-test_that("id fails well", {
+test_that("id_entify fails well", {
   skip_on_cran()
 
-  expect_error(id(),
+  expect_error(id_entify(),
                "argument \"url\" is missing")
-  expect_error(id("things"),
+  expect_error(id_entify("things"),
                "One or more of your URLs")
 })

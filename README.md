@@ -44,7 +44,7 @@ library("oai")
 
 
 ```r
-id("http://oai.datacite.org/oai")
+id_entify("http://oai.datacite.org/oai")
 #>   repositoryName                     baseURL protocolVersion
 #> 1   DataCite MDS http://oai.datacite.org/oai             2.0
 #>           adminEmail    earliestDatestamp deletedRecord
@@ -60,7 +60,7 @@ id("http://oai.datacite.org/oai")
 
 ```r
 list_identifiers(from = '2011-05-01T', until = '2011-09-01T')
-#> <ListRecords> 925 X 6 
+#> <ListRecords> 923 X 6 
 #> 
 #>                    identifier            datestamp setSpec setSpec.1
 #> 1  oai:oai.datacite.org:32153 2011-06-08T08:57:11Z     TIB  TIB.WDCC
@@ -83,7 +83,7 @@ list_identifiers(from = '2011-05-01T', until = '2011-09-01T')
 ```r
 count_identifiers()
 #>                           url   count
-#> 1 http://oai.datacite.org/oai 6348310
+#> 1 http://oai.datacite.org/oai 6480064
 ```
 
 ## ListRecords
@@ -91,7 +91,7 @@ count_identifiers()
 
 ```r
 list_records(from = '2011-05-01T', until = '2011-08-15T')
-#> <ListRecords> 126 X 46 
+#> <ListRecords> 124 X 44 
 #> 
 #>                    identifier            datestamp setSpec setSpec.1
 #> 1  oai:oai.datacite.org:32153 2011-06-08T08:57:11Z     TIB  TIB.WDCC
@@ -115,8 +115,7 @@ list_records(from = '2011-05-01T', until = '2011-08-15T')
 #>      subject.4 (chr), setSpec.2 (chr), setSpec.3 (chr), format.2 (chr),
 #>      subject.5 (chr), subject.6 (chr), subject.7 (chr), description.2
 #>      (chr), description.3 (chr), description.4 (chr), description.5 (chr),
-#>      title.1 (chr), relation.1 (chr), relation.2 (chr), contributor.1
-#>      (chr)
+#>      title.1 (chr), contributor.1 (chr)
 ```
 
 ## GetRecords
@@ -161,7 +160,7 @@ list_metadataformats(id = "oai:oai.datacite.org:32348")
 
 ```r
 list_sets("http://oai.datacite.org/oai")
-#> <ListSets> 1227 X 2 
+#> <ListSets> 1301 X 2 
 #> 
 #>                     setSpec
 #> 1                REFQUALITY
