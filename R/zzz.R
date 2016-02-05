@@ -30,6 +30,9 @@ is.condition <- function(x) inherits(x, "condition")
 
 # return result from main oai functions --------------
 oai_give <- function(x, as, type) {
+  if (!as %in% c('df', 'list', 'raw')) {
+    stop(sprintf("'%s' not in acceptable set: df, list, raw", as) , call. = FALSE)
+  }
   switch(as,
          df = {
            structure(rbind.fill(x),
