@@ -30,7 +30,7 @@ one_mf <- function(identifier, url, ...) {
   args <- sc(list(verb = 'ListMetadataFormats', identifier = identifier))
   res <- GET(url, query = args, ...)
   stop_for_status(res)
-  out <- content(res, "text")
+  out <- content(res, "text", encoding = "UTF-8")
   xml <- xml2::read_xml(out)
   rbind.fill(lapply(xml_children(xml_children(xml)[[3]]), get_headers))
 }

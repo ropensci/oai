@@ -24,7 +24,7 @@
 update_providers <- function(path = ".", ...) {
   tt <- GET(oai_base(), ...)
   stop_for_status(tt)
-  temp <- content(tt, "text")
+  temp <- content(tt, "text", encoding = "UTF-8")
   prov <- xml2::read_html(temp)
   tab <- xml2::xml_find_all(prov, "//table")[[2]]
   children <- xml2::xml_children(tab)

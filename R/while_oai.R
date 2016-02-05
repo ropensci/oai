@@ -15,7 +15,7 @@ while_oai <- function(url, args, token, as, dumper=NULL, dumper_args=NULL, ...) 
 
     res <- GET(url, query = args2, ...)
     stop_for_status(res)
-    tt <- content(res, "text")
+    tt <- content(res, "text", encoding = "UTF-8")
 
     # try parsing
     parsed <- try( read_xml_safely(tt), silent=TRUE )

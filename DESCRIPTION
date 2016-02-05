@@ -8,7 +8,7 @@ Description: A general purpose client to work with any 'OAI-PMH'
     Functions are provided to work with the 'OAI-PMH' verbs: 'GetRecord',
     'Identify', 'ListIdentifiers', 'ListMetadataFormats', 'ListRecords', and
     'ListSets'.
-Version: 0.1.1.9500
+Version: 0.1.1.9600
 License: MIT + file LICENSE
 Authors@R: c(
     person("Scott", "Chamberlain", role = c("aut", "cre"), email = "myrmecocystus@gmail.com"),
@@ -29,3 +29,4 @@ Suggests:
     knitr,
     RSQLite,
     testthat
+RoxygenNote: 5.0.1

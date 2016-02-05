@@ -21,6 +21,6 @@ id_entify <- function(url, ...) {
 
 id_ <- function(x, ...) {
   res <- GET(x, query = list(verb = "Identify"), ...)
-  tt <- content(res, as = "text")
+  tt <- content(res, as = "text", encoding = "UTF-8")
   get_headers(xml_children(xml2::read_xml(tt))[[3]])
 }

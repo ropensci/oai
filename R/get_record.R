@@ -32,7 +32,7 @@ each_record <- function(identifier, url, prefix, as, ...) {
   args <- sc(list(verb = "GetRecord", metadataPrefix = prefix, identifier = identifier))
   res <- GET(url, query = args, ...)
   stop_for_status(res)
-  tt <- content(res, "text")
+  tt <- content(res, "text", encoding = "UTF-8")
   xml_orig <- xml2::read_xml(tt)
   handle_errors(xml_orig)
   if (as == "raw") {
