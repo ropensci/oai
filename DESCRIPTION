@@ -23,7 +23,8 @@ Imports:
     utils,
     xml2 (>= 0.1.2),
     httr (>= 1.0.0),
-    plyr (>= 1.8.3)
+    plyr (>= 1.8.3),
+    stringr (>= 1.0.0)
 Suggests:
     DBI,
     knitr,
