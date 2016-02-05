@@ -86,6 +86,39 @@ list_metadataformats(id = "oai:oai.datacite.org:32348")
 list_sets("http://oai.datacite.org/oai")
 ```
 
+## Examples of other OAI providers
+
+### Global Biodiversity Information Facility
+
+Identify
+
+```{r}
+id_entify("http://api.gbif.org/v1/oai-pmh/registry")
+```
+
+Get records
+
+```{r}
+get_records(c("816f4734-6b49-41ab-8a1d-1b21e6b5486d", "95e3042f-f48d-4a04-8251-f755bebeced6"),
+            url = "http://api.gbif.org/v1/oai-pmh/registry")
+```
+
+### Biodiversity Heritage Library
+
+Identify
+
+```{r}
+id_entify("http://www.biodiversitylibrary.org/oai")
+```
+
+Get records
+
+```{r}
+get_records(c("oai:biodiversitylibrary.org:item/7", "oai:biodiversitylibrary.org:item/9"),
+            url = "http://www.biodiversitylibrary.org/oai")
+```
+
+
 ## Meta
 
 * Please [report any issues or bugs](https://github.com/ropensci/oai/issues).

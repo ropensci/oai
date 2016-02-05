@@ -36,6 +36,10 @@ get_records("oai:oai.datacite.org:32255", as = "raw")
 
 # from arxiv.org
 get_records("oai:arXiv.org:0704.0001", url = "http://export.arxiv.org/oai2")
+
+# GBIF - http://www.gbif.org/
+get_records(c("816f4734-6b49-41ab-8a1d-1b21e6b5486d", "95e3042f-f48d-4a04-8251-f755bebeced6"),
+   url = "http://api.gbif.org/v1/oai-pmh/registry")
 }
 }
 

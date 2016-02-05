@@ -10,6 +10,9 @@
 #' # arxiv
 #' id_entify("http://export.arxiv.org/oai2")
 #'
+#' # GBIF - http://www.gbif.org/
+#' id_entify("http://api.gbif.org/v1/oai-pmh/registry")
+#'
 #' # curl options
 #' library("httr")
 #' id_entify("http://export.arxiv.org/oai2", config = verbose())

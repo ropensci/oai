@@ -60,7 +60,7 @@ id_entify("http://oai.datacite.org/oai")
 
 ```r
 list_identifiers(from = '2011-05-01T', until = '2011-09-01T')
-#> <ListRecords> 923 X 6 
+#> <ListRecords> 922 X 6 
 #> 
 #>                    identifier            datestamp setSpec setSpec.1
 #> 1  oai:oai.datacite.org:32153 2011-06-08T08:57:11Z     TIB  TIB.WDCC
@@ -83,7 +83,7 @@ list_identifiers(from = '2011-05-01T', until = '2011-09-01T')
 ```r
 count_identifiers()
 #>                           url   count
-#> 1 http://oai.datacite.org/oai 6480064
+#> 1 http://oai.datacite.org/oai 7070730
 ```
 
 ## ListRecords
@@ -160,7 +160,7 @@ list_metadataformats(id = "oai:oai.datacite.org:32348")
 
 ```r
 list_sets("http://oai.datacite.org/oai")
-#> <ListSets> 1301 X 2 
+#> <ListSets> 1363 X 2 
 #> 
 #>                     setSpec
 #> 1                REFQUALITY
@@ -177,6 +177,82 @@ list_sets("http://oai.datacite.org/oai")
 #> Variables not shown: setName (chr)
 ```
 
+## Examples of other OAI providers
+
+### Global Biodiversity Information Facility
+
+Identify
+
+
+```r
+id_entify("http://api.gbif.org/v1/oai-pmh/registry")
+#>   repositoryName                                 baseURL protocolVersion
+#> 1  GBIF Registry http://api.gbif.org/v1/oai-pmh/registry             2.0
+#>     adminEmail    earliestDatestamp deletedRecord          granularity
+#> 1 dev@gbif.org 2007-01-01T00:00:01Z    persistent YYYY-MM-DDThh:mm:ssZ
+#>                                                                                                                                                                                                                                                                                                                                  description
+#> 1 \n\tGBIF Registry\n\tGlobal Biodiversity Information Facility Secretariat\n\t\n\t\tThe GBIF Registry — the entities that make up the GBIF network.\n\t\tThis OAI-PMH service exposes Datasets, organized into sets of country, installation and resource type.\n\t\tFor more information, see http://www.gbif.org/developer/registry\n\t\n
+```
+
+Get records
+
+
+```r
+get_records(c("816f4734-6b49-41ab-8a1d-1b21e6b5486d", "95e3042f-f48d-4a04-8251-f755bebeced6"),
+            url = "http://api.gbif.org/v1/oai-pmh/registry")
+#> <GetRecord> 2 X 29 
+#> 
+#>                             identifier            datestamp
+#> 1 816f4734-6b49-41ab-8a1d-1b21e6b5486d 2016-01-28T15:36:07Z
+#> 2 95e3042f-f48d-4a04-8251-f755bebeced6 2016-01-24T23:01:17Z
+#> Variables not shown: setSpec (chr), setSpec.1 (chr), setSpec.2 (chr),
+#>      title (chr), publisher (chr), identifier.1 (chr), source (chr),
+#>      description (chr), description.1 (chr), type (chr), language (chr),
+#>      format (chr), source.1 (chr), subject (chr), subject.1 (chr),
+#>      subject.2 (chr), subject.3 (chr), subject.4 (chr), subject.5 (chr),
+#>      description.2 (chr), creator (chr), creator.1 (chr), date (chr),
+#>      rights (chr), coverage (chr), coverage.1 (chr), coverage.2 (chr)
+```
+
+### Biodiversity Heritage Library
+
+Identify
+
+
+```r
+id_entify("http://www.biodiversitylibrary.org/oai")
+#>                                 repositoryName
+#> 1 Biodiversity Heritage Library OAI Repository
+#>                                  baseURL protocolVersion
+#> 1 http://www.biodiversitylibrary.org/oai             2.0
+#>                    adminEmail earliestDatestamp deletedRecord granularity
+#> 1 oai@biodiversitylibrary.org        2006-01-01            no  YYYY-MM-DD
+#>                                                                                                        description
+#> 1 \n\t\t\n\t\t\toai\n\t\t\tbiodiversitylibrary.org\n\t\t\t:\n\t\t\toai:biodiversitylibrary.org:item/1000\n\t\t\n\t
+```
+
+Get records
+
+
+```r
+get_records(c("oai:biodiversitylibrary.org:item/7", "oai:biodiversitylibrary.org:item/9"),
+            url = "http://www.biodiversitylibrary.org/oai")
+#> <GetRecord> 2 X 32 
+#> 
+#>                           identifier            datestamp setSpec
+#> 1 oai:biodiversitylibrary.org:item/7 2016-01-26T05:05:20Z    item
+#> 2 oai:biodiversitylibrary.org:item/9 2016-01-26T05:05:20Z    item
+#> Variables not shown: title (chr), creator (chr), creator.1 (chr),
+#>      creator.2 (chr), subject (chr), subject.1 (chr), subject.2 (chr),
+#>      subject.3 (chr), subject.4 (chr), subject.5 (chr), subject.6 (chr),
+#>      subject.7 (chr), subject.8 (chr), subject.9 (chr), subject.10 (chr),
+#>      subject.11 (chr), subject.12 (chr), subject.13 (chr), subject.14
+#>      (chr), subject.15 (chr), description (chr), publisher (chr),
+#>      contributor (chr), date (chr), type (chr), type.1 (chr), identifier.1
+#>      (chr), language (chr), rights (chr)
+```
+
+
 ## Meta
 
 * Please [report any issues or bugs](https://github.com/ropensci/oai/issues).
@@ -185,4 +261,3 @@ list_sets("http://oai.datacite.org/oai")
 * Please note that this project is released with a [Contributor Code of Conduct](CONDUCT.md). By participating in this project you agree to abide by its terms.
 
 [![ropensci_footer](http://ropensci.org/public_images/github_footer.png)](http://ropensci.org)
-
