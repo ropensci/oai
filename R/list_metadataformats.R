@@ -1,9 +1,8 @@
 #' List available metadata formats from various providers.
 #'
 #' @export
-#' @param url OAI-PMH base url
+#' @template url_ddd
 #' @param id The OAI-PMH identifier for the record. Optional.
-#' @param ... Curl options passed on to \code{\link[httr]{GET}}
 #' @examples \dontrun{
 #' list_metadataformats()
 #'

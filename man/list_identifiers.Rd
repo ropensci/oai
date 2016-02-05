@@ -8,7 +8,7 @@ list_identifiers(url = "http://oai.datacite.org/oai", prefix = "oai_dc",
   from = NULL, until = NULL, set = NULL, token = NULL, as = "df", ...)
 }
 \arguments{
-\item{url}{OAI-PMH base url}
+\item{url}{(character) OAI-PMH base url}
 
 \item{prefix}{Specifies the metadata format that the records will be
 returned in.}

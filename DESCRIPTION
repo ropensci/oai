@@ -12,7 +12,8 @@ Version: 0.1.8.9300
 License: MIT + file LICENSE
 Authors@R: c(
     person("Scott", "Chamberlain", role = c("aut", "cre"), email = "myrmecocystus@gmail.com"),
-    person("Michal", "Bojanowski", role = "aut"))
+    person("Michal", "Bojanowski", role = "aut")
+    )
 URL: https://github.com/sckott/oai
 BugReports: https://github.com/sckott/oai/issues
 VignetteBuilder: knitr

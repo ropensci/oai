@@ -2,7 +2,8 @@
 #'
 #' @export
 #'
-#' @param url (character) OAI-PMH base url
+#' @template url_ddd
+#' @template as
 #' @param from specifies that records returned must have been created/update/deleted
 #'     on or after this date.
 #' @param until specifies that records returned must have been created/update/deleted
@@ -13,9 +14,6 @@
 #' @param token (character) a token previously provided by the server to resume a request
 #'     where it last left off. 50 is max number of records returned. We will
 #'     loop for you internally to get all the records you asked for.
-#' @param as (character) What to return. One of "df" (for data.frame; default),
-#'     "list", or "raw" (raw text)
-#' @param ... Curl options passed on to \code{\link[httr]{GET}}
 #' @examples \dontrun{
 #' # By default you get back a single data.frame
 #' list_records(from = '2011-05-01T', until = '2011-08-15T')

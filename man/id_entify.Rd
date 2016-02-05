@@ -7,7 +7,7 @@
 id_entify(url, ...)
 }
 \arguments{
-\item{url}{OAI-PMH base url. Required.}
+\item{url}{(character) OAI-PMH base url}
 
 \item{...}{Curl options passed on to \code{\link[httr]{GET}}}
 }

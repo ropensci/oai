@@ -2,13 +2,11 @@
 #'
 #' @export
 #'
+#' @template url_ddd
+#' @template as
 #' @param ids The OAI-PMH identifier for the record. One or more. Required.
 #' @param prefix specifies the metadata format that the records will be
 #'     returned in. Default: oai_dc
-#' @param url OAI-PMH base url
-#' @param as (character) What to return. One of "df" (for data.frame; default),
-#'     "list", or "raw" (raw text)
-#' @param ... Curl options passed on to \code{\link[httr]{GET}}
 #' @examples \dontrun{
 #' get_records("oai:oai.datacite.org:32255")
 #' get_records(c("oai:oai.datacite.org:32255", "oai:oai.datacite.org:32325"))

@@ -13,7 +13,7 @@ get_records(ids, prefix = "oai_dc", url = "http://oai.datacite.org/oai",
 \item{prefix}{specifies the metadata format that the records will be
 returned in. Default: oai_dc}
 
-\item{url}{OAI-PMH base url}
+\item{url}{(character) OAI-PMH base url}
 
 \item{as}{(character) What to return. One of "df" (for data.frame; default),
 "list", or "raw" (raw text)}

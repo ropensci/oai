@@ -7,7 +7,7 @@
 list_metadataformats(url = "http://oai.datacite.org/oai", id = NULL, ...)
 }
 \arguments{
-\item{url}{OAI-PMH base url}
+\item{url}{(character) OAI-PMH base url}
 
 \item{id}{The OAI-PMH identifier for the record. Optional.}
 

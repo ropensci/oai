@@ -1,8 +1,7 @@
 #' Identify the OAI-PMH service for each data provider.
 #'
 #' @export
-#' @param url OAI-PMH base url. Required.
-#' @param ... Curl options passed on to \code{\link[httr]{GET}}
+#' @template url_ddd
 #' @examples \dontrun{
 #' # datacite
 #' id_entify("http://oai.datacite.org/oai")

@@ -1,10 +1,9 @@
 #' Count OAI-PMH identifiers for a data provider.
 #'
 #' @export
-#' @param url OAI-PMH base url
+#' @template url_ddd
 #' @param prefix Specifies the metadata format that the records will be
 #'     returned in.
-#' @param ... Curl options passed on to \code{\link[httr]{GET}}
 #' @examples \dontrun{
 #' count_identifiers()
 #' count_identifiers(c(
