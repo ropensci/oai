@@ -4,6 +4,7 @@ cran-comments.md
 man-roxygen
 README.Rmd
 .travis.yml
+appveyor.yml
 Makefile
 ^.*-providers.rda
 NEWS.md

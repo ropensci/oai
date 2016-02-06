@@ -4,6 +4,7 @@ oai
 
 
 [![Build Status](https://travis-ci.org/ropensci/oai.svg?branch=master)](https://travis-ci.org/ropensci/oai)
+[![Build status](https://ci.appveyor.com/api/projects/status/h5qu574ky0rk3xxv?svg=true)](https://ci.appveyor.com/project/sckott/oai)
 [![codecov.io](http://codecov.io/github/ropensci/oai/coverage.svg?branch=master)](http://codecov.io/github/ropensci/oai?branch=master)
 [![rstudio mirror downloads](http://cranlogs.r-pkg.org/badges/oai?color=2ED968)](https://github.com/metacran/cranlogs.app)
 [![cran version](http://www.r-pkg.org/badges/version/oai)](http://cran.rstudio.com/web/packages/oai)
