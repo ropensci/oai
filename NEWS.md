@@ -3,8 +3,6 @@ oai 0.2.0
 
 ### NEW FEATURES
 
-* Changed `id()` to `id_entify()` to not conflict with `dplyr::id()`, and 
-didn't want to conflict with `graphics::identify()` (#30)
 * A set of new functions for dealing with larger data results: `dump_raw_to_txt()`, `dump_to_rds()`, and `dump_raw_to_db()`. They can be used with `oai` functions 
 `list_identifiers()`, `list_sets()`, and `list_records()` (#9) (#15) (#21) 
 thanks @mbojan

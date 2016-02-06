@@ -48,7 +48,7 @@ library("oai")
 ## Identify
 
 ```{r}
-id_entify("http://oai.datacite.org/oai")
+id("http://oai.datacite.org/oai")
 ```
 
 ## ListIdentifiers
@@ -94,7 +94,7 @@ list_sets("http://oai.datacite.org/oai")
 Identify
 
 ```{r}
-id_entify("http://api.gbif.org/v1/oai-pmh/registry")
+id("http://api.gbif.org/v1/oai-pmh/registry")
 ```
 
 Get records
@@ -109,7 +109,7 @@ get_records(c("816f4734-6b49-41ab-8a1d-1b21e6b5486d", "95e3042f-f48d-4a04-8251-f
 Identify
 
 ```{r}
-id_entify("http://www.biodiversitylibrary.org/oai")
+id("http://www.biodiversitylibrary.org/oai")
 ```
 
 Get records

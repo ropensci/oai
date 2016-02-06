@@ -45,7 +45,7 @@ library("oai")
 
 
 ```r
-id_entify("http://oai.datacite.org/oai")
+id("http://oai.datacite.org/oai")
 #>   repositoryName                     baseURL protocolVersion
 #> 1   DataCite MDS http://oai.datacite.org/oai             2.0
 #>           adminEmail    earliestDatestamp deletedRecord
@@ -186,7 +186,7 @@ Identify
 
 
 ```r
-id_entify("http://api.gbif.org/v1/oai-pmh/registry")
+id("http://api.gbif.org/v1/oai-pmh/registry")
 #>   repositoryName                                 baseURL protocolVersion
 #> 1  GBIF Registry http://api.gbif.org/v1/oai-pmh/registry             2.0
 #>     adminEmail    earliestDatestamp deletedRecord          granularity
@@ -221,7 +221,7 @@ Identify
 
 
 ```r
-id_entify("http://www.biodiversitylibrary.org/oai")
+id("http://www.biodiversitylibrary.org/oai")
 #>                                 repositoryName
 #> 1 Biodiversity Heritage Library OAI Repository
 #>                                  baseURL protocolVersion

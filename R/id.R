@@ -4,19 +4,19 @@
 #' @template url_ddd
 #' @examples \dontrun{
 #' # datacite
-#' id_entify("http://oai.datacite.org/oai")
+#' id("http://oai.datacite.org/oai")
 #'
 #' # arxiv
-#' id_entify("http://export.arxiv.org/oai2")
+#' id("http://export.arxiv.org/oai2")
 #'
 #' # GBIF - http://www.gbif.org/
-#' id_entify("http://api.gbif.org/v1/oai-pmh/registry")
+#' id("http://api.gbif.org/v1/oai-pmh/registry")
 #'
 #' # curl options
 #' library("httr")
-#' id_entify("http://export.arxiv.org/oai2", config = verbose())
+#' id("http://export.arxiv.org/oai2", config = verbose())
 #' }
-id_entify <- function(url, ...) {
+id <- function(url, ...) {
   check_url(url)
   rbind.fill(lapply(url, id_, ...))
 }
