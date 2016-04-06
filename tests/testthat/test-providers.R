@@ -20,5 +20,5 @@ test_that("load_providers", {
 
 test_that("providers data set", {
   expect_is(providers, "data.frame")
-  expect_less_than(2500, NROW(providers))
+  expect_lt(2500, NROW(providers))
 })
