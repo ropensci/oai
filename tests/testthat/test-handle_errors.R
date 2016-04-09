@@ -11,7 +11,7 @@ error_url <- list(
   noRecordsMatch=paste0("http://oai.datacite.org/oai?verb=ListIdentifiers&from=",
                         tomorrow, "&until=", tomorrow, "&metadataPrefix=oai_dc"),
   noMetadataFormats=NULL,
-  noSetHierarchy="https://pbn.nauka.gov.pl/OAI-PMH?verb=ListSets"
+  noSetHierarchy=NULL    # "https://pbn.nauka.gov.pl/OAI-PMH?verb=ListSets"
 )
 
 # GET and parse
@@ -80,10 +80,13 @@ test_that("noRecordsMatch is triggered", {
 test_that("noSetHierarchy is triggered", {
   skip_on_cran()
 
-  xml <- gnp(error_url$noSetHierarchy)
-  expect_error( handle_errors(xml) )
-  expect_true( tryCatch( handle_errors(xml), error=function(er) inherits(er, "oai-pmh_error") ) )
-  expect_true( tryCatch( handle_errors(xml), error=function(er) "noSetHierarchy" %in% attr(er, "error_codes")))
+  if( !is.null(error_url$noSetHierarchy) ) {
+    xml <- gnp(error_url$noSetHierarchy)
+    expect_error( handle_errors(xml) )
+    expect_true( tryCatch( handle_errors(xml), error=function(er) inherits(er, "oai-pmh_error") ) )
+    expect_true( tryCatch( handle_errors(xml), error=function(er) "noSetHierarchy" %in% attr(er, "error_codes")))
+  }
+
 } )
 
 
