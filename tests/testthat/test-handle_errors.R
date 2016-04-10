@@ -6,12 +6,12 @@ error_url <- list(
   badArgument="http://arXiv.org/oai2?verb=ListRecords&metadataPrefix=oai_dc&foo=bar",
   badResumptionToken="http://oai.datacite.org/oai?verb=ListRecords&resumptionToken=foobar",
   badVerb="http://arXiv.org/oai2?verb=someverb",
-  cannotDisseminateFormat="https://pbn.nauka.gov.pl/OAI-PMH?verb=GetRecord&identifier=3&metadataPrefix=oai_dc",
+  cannotDisseminateFormat="http://oai.datacite.org/oai?verb=GetRecord&metadataPrefix=foobar&identifier=oai:oai.datacite.org:32255",
   idDoesNotExist="http://arXiv.org/oai2?verb=GetRecord&identifier=foobar&metadataPrefix=oai_dc",
   noRecordsMatch=paste0("http://oai.datacite.org/oai?verb=ListIdentifiers&from=",
                         tomorrow, "&until=", tomorrow, "&metadataPrefix=oai_dc"),
   noMetadataFormats=NULL,
-  noSetHierarchy="https://pbn.nauka.gov.pl/OAI-PMH?verb=ListSets"
+  noSetHierarchy=NULL    # "https://pbn.nauka.gov.pl/OAI-PMH?verb=ListSets"
 )
 
 # GET and parse
@@ -80,10 +80,13 @@ test_that("noRecordsMatch is triggered", {
 test_that("noSetHierarchy is triggered", {
   skip_on_cran()
 
-  xml <- gnp(error_url$noSetHierarchy)
-  expect_error( handle_errors(xml) )
-  expect_true( tryCatch( handle_errors(xml), error=function(er) inherits(er, "oai-pmh_error") ) )
-  expect_true( tryCatch( handle_errors(xml), error=function(er) "noSetHierarchy" %in% attr(er, "error_codes")))
+  if( !is.null(error_url$noSetHierarchy) ) {
+    xml <- gnp(error_url$noSetHierarchy)
+    expect_error( handle_errors(xml) )
+    expect_true( tryCatch( handle_errors(xml), error=function(er) inherits(er, "oai-pmh_error") ) )
+    expect_true( tryCatch( handle_errors(xml), error=function(er) "noSetHierarchy" %in% attr(er, "error_codes")))
+  }
+
 } )
 
 
