@@ -18,7 +18,7 @@
 
 handle_errors <- function(xml) {
   # find error tags
-  req <- xml2::xml_text(xml2::xml_find_one(xml, ".//*[local-name()='request']" ))
+  req <- xml2::xml_text(xml2::xml_find_first(xml, ".//*[local-name()='request']" ))
   nodeset <- xml2::xml_find_all(xml, ".//*[local-name()='error']")
   # collect error information, if any
   if( length(nodeset) == 0 ) {
