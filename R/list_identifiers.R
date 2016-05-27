@@ -14,8 +14,8 @@
 #'     where it last left off.
 #' @examples \dontrun{
 #' # from
-#' today <- format(Sys.Date(), "%Y-%m-%d")
-#' list_identifiers(from = today)
+#' recently <- format(Sys.Date() - 2, "%Y-%m-%d")
+#' list_identifiers(from = recently)
 #'
 #' # from and until
 #' list_identifiers(from = '2011-06-01T', until = '2011-07-01T')
@@ -27,10 +27,10 @@
 #' list_identifiers(from = '2011-09-01T', until = '2012-09-01T', set = "ANDS")
 #'
 #' # Get a list
-#' list_identifiers(from = today, as = "list")
+#' list_identifiers(from = recently, as = "list")
 #'
 #' # Get raw text
-#' list_identifiers(from = today, as = "raw")
+#' list_identifiers(from = recently, as = "raw")
 #' }
 list_identifiers <- function(url = "http://oai.datacite.org/oai", prefix = "oai_dc", from = NULL,
                              until = NULL, set = NULL, token = NULL, as = "df", ...) {

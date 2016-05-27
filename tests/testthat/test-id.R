@@ -14,15 +14,15 @@ test_that("id - url param works", {
   skip_on_cran()
 
   aa <- id("http://export.arxiv.org/oai2")
-  bb <- id("http://pub.bsalut.net/cgi/oai2.cgi")
+  #bb <- id("http://pub.bsalut.net/cgi/oai2.cgi")
   cc <- id("http://www.diva-portal.org/oai/OAI")
 
   expect_is(aa, "data.frame")
-  expect_is(bb, "data.frame")
+  #expect_is(bb, "data.frame")
   expect_is(cc, "data.frame")
 
   expect_equal(NROW(aa), 1)
-  expect_equal(NROW(bb), 1)
+  #expect_equal(NROW(bb), 1)
   expect_equal(NROW(cc), 1)
 })
 
