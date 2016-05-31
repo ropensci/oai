@@ -3,3 +3,6 @@
 .RData
 .DS_Store
 *-providers.rda
+src/*.o
+src/*.so
+src/*.a
