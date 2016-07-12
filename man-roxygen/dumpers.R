@@ -30,7 +30,7 @@ list_identifiers(from="2015-09-01",
 # Count records, should be 101
 DBI::dbGetQuery(con, "SELECT count(*) as no_records FROM foo")
 
-dbDisconnect(con)
+DBI::dbDisconnect(con)
 
 
 
