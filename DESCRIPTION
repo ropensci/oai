@@ -22,8 +22,8 @@ Imports:
     methods,
     stats,
     utils,
-    xml2 (>= 0.1.2),
-    httr (>= 1.0.0),
+    xml2 (>= 1.0.0),
+    httr (>= 1.2.0),
     plyr (>= 1.8.3),
     stringr (>= 1.0.0)
 Suggests:
@@ -32,5 +32,4 @@ Suggests:
     RSQLite,
     testthat,
     covr
-Remotes: hadley/xml2
 RoxygenNote: 5.0.1
