@@ -23,8 +23,7 @@
 oai_available <- function( u, ... ) {
   # Identify yourself!
   r <- try( id(u, ...), silent=TRUE )
-  if( inherits(r, "try-error") ) return(FALSE)
-  else return(TRUE)
+  inherits(r, "try-error")
 }
 
 
