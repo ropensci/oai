@@ -3,7 +3,8 @@ context("get_records")
 test_that("get_records - basic functionality works", {
   skip_on_cran()
 
-  aa <- get_records("oai:oai.datacite.org:32255")
+  aa <- get_records("b146a93c-657b-4768-aa51-9cabe3dac808",
+                    url = "http://api.gbif.org/v1/oai-pmh/registry")
 
   expect_is(aa, "data.frame")
   expect_is(aa, "oai_df")
@@ -14,8 +15,9 @@ test_that("get_records - basic functionality works", {
 test_that("get_records - many record Ids input works", {
   skip_on_cran()
 
-  recs <- c("oai:oai.datacite.org:32255", "oai:oai.datacite.org:32325")
-  aa <- get_records(recs)
+  recs <- c("b146a93c-657b-4768-aa51-9cabe3dac808",
+            "38f06820-08c5-42b2-94f6-47cc3e83a54a")
+  aa <- get_records(recs, url = "http://api.gbif.org/v1/oai-pmh/registry")
 
   expect_is(aa, "data.frame")
   expect_is(aa, "oai_df")
@@ -30,8 +32,8 @@ test_that("get_records fails well", {
 
   expect_error(get_records(),
                "argument \"ids\" is missing, with no default")
-  expect_error(get_records(5),
-               "\"5\" is unknown or illegal in this repository")
+  expect_error(get_records(5, url = "http://api.gbif.org/v1/oai-pmh/registry"),
+               "idDoesNotExist: The given id does not exist")
   expect_error(get_records("oai:oai.datacite.org:32255", url = "stuff"),
                "One or more of your URLs")
 })

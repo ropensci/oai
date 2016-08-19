@@ -69,7 +69,8 @@ context("Testing text file dumper")
 test_that("list_identifiers saves raw XML to text files", {
   skip_on_cran()
 
-  fnames <- list_identifiers(from = '2014-06-01T', until = '2014-06-01T', as="raw",
+  fnames <- list_identifiers("http://api.gbif.org/v1/oai-pmh/registry",
+                             set = "dataset_type:SAMPLING_EVENT", as="raw",
                              dumper=dump_raw_to_txt,
                              dumper_args=list(file_dir=tempdir()))
   expect_true(is.character(fnames))
@@ -85,7 +86,8 @@ test_that("list_identifiers saves raw XML to text files", {
 test_that("list_records saves raw XML to text files", {
   skip_on_cran()
 
-  fnames <- list_records(from = '2014-06-01T', until = '2014-06-02T',
+  fnames <- list_records("http://api.gbif.org/v1/oai-pmh/registry",
+                         set = "dataset_type:SAMPLING_EVENT",
                          as = "raw",
                          dumper=dump_raw_to_txt,
                          dumper_args=list(file_dir=tempdir()))
@@ -112,7 +114,8 @@ context("Testing RDS file dumper")
 test_that("list_identifiers saves raw XML to RDS files", {
   skip_on_cran()
 
-  fnames <- list_identifiers(from="2014-06-01T", until="2014-06-02T", as="raw",
+  fnames <- list_identifiers("http://api.gbif.org/v1/oai-pmh/registry",
+                             set = "dataset_type:SAMPLING_EVENT", as="raw",
                              dumper=dump_to_rds,
                              dumper_args=list(file_dir=tempdir()))
   expect_true(is.character(fnames))
@@ -129,7 +132,8 @@ test_that("list_identifiers saves raw XML to RDS files", {
 test_that("list_records saves raw XML to RDS files", {
   skip_on_cran()
 
-  fnames <- list_records(from = '2014-06-01T', until = '2014-06-01T',
+  fnames <- list_records("http://api.gbif.org/v1/oai-pmh/registry",
+                         set = "dataset_type:SAMPLING_EVENT",
                          as = "raw",
                          dumper=dump_to_rds,
                          dumper_args=list(file_dir=tempdir()))
@@ -156,7 +160,8 @@ test_that("list_identifiers dumps results to SQLite", {
   skip_on_cran()
 
   con <- DBI::dbConnect(RSQLite::SQLite(), dbname=":memory:")
-  dumprval <- list_identifiers(from = '2014-06-01T', until = '2014-06-01T', as="raw",
+  dumprval <- list_identifiers("http://api.gbif.org/v1/oai-pmh/registry",
+                               set = "dataset_type:SAMPLING_EVENT", as="raw",
                              dumper=dump_raw_to_db,
                              dumper_args=list(dbcon=con, table_name="foo",
                                               field_name="bar") )
@@ -178,7 +183,8 @@ test_that("list_records dumps results to SQLite", {
   skip_on_cran()
 
   con <- DBI::dbConnect(RSQLite::SQLite(), dbname=":memory:")
-  dumprval <- list_records(from = '2014-06-01T', until = '2014-06-01T',
+  dumprval <- list_records("http://api.gbif.org/v1/oai-pmh/registry",
+                           set = "dataset_type:SAMPLING_EVENT",
                            as="raw",
                            dumper=dump_raw_to_db,
                            dumper_args=list(dbcon=con, table_name="foo",

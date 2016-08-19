@@ -80,19 +80,13 @@ test_that("noRecordsMatch is triggered", {
 test_that("noSetHierarchy is triggered", {
   skip_on_cran()
 
-  if( !is.null(error_url$noSetHierarchy) ) {
+  if (!is.null(error_url$noSetHierarchy)) {
     xml <- gnp(error_url$noSetHierarchy)
     expect_error( handle_errors(xml) )
     expect_true( tryCatch( handle_errors(xml), error=function(er) inherits(er, "oai-pmh_error") ) )
     expect_true( tryCatch( handle_errors(xml), error=function(er) "noSetHierarchy" %in% attr(er, "error_codes")))
   }
 
-} )
-
-
-
-
-
-
+})
 
 rm(tomorrow, error_url, gnp)
