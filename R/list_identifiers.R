@@ -14,7 +14,7 @@
 #'     where it last left off.
 #' @examples \dontrun{
 #' # from
-#' recently <- format(Sys.Date() - 2, "%Y-%m-%d")
+#' recently <- format(Sys.Date() - 1, "%Y-%m-%d")
 #' list_identifiers(from = recently)
 #'
 #' # from and until
@@ -39,5 +39,5 @@ list_identifiers <- function(url = "http://oai.datacite.org/oai", prefix = "oai_
   args <- sc(list(verb = "ListIdentifiers", metadataPrefix = prefix, from = from,
                   until = until, set = set, resumptionToken = token))
   out <- while_oai(url, args, token, as, ...)
-  oai_give(out, as, "ListRecords")
+  oai_give(out, as)
 }

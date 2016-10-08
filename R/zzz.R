@@ -29,32 +29,24 @@ condition <- function(subclass, message, call = sys.call(-1), ...) {
 is.condition <- function(x) inherits(x, "condition")
 
 # return result from main oai functions --------------
-oai_give <- function(x, as, type) {
+oai_give <- function(x, as) {
   if (!as %in% c('df', 'list', 'raw')) {
-    stop(sprintf("'%s' not in acceptable set: df, list, raw", as) , call. = FALSE)
+    stop(sprintf("'%s' not in acceptable set: df, list, raw", as) ,
+         call. = FALSE)
   }
-  switch(as,
-         df = {
-           structure(rbind.fill(x),
-                     class = c("oai_df", "data.frame"),
-                     type = type)
-         },
-         list = x,
-         raw = x
+  switch(
+    as,
+    df = tibble::as_data_frame(rbind.fill(x)),
+    list = x,
+    raw = x
   )
 }
-
-#' @export
-print.oai_df <- function(x, ..., n = 10) {
-  cat(sprintf("<%s> %s X %s", attr(x, "type"), NROW(x), NCOL(x)), "\n\n")
-  trunc_mat(x, n = n)
-}
-
 
 # check urls ----------------------------------------
 check_url <- function(x) {
   if (!all(is.url(x))) {
-    stop("One or more of your URLs appears to not be a proper URL", call. = FALSE)
+    stop("One or more of your URLs appears to not be a proper URL",
+         call. = FALSE)
   }
 }
 

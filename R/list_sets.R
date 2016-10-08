@@ -23,5 +23,5 @@ list_sets <- function(url = "http://oai.datacite.org/oai", token = NULL, as = "d
   check_url(url)
   args <- sc(list(verb = "ListSets", resumptionToken = token))
   out <- while_oai(url, args, token, as, ...)
-  oai_give(out, as, "ListSets")
+  oai_give(out, as)
 }

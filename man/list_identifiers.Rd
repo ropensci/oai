@@ -35,7 +35,7 @@ List OAI-PMH identifiers
 \examples{
 \dontrun{
 # from
-recently <- format(Sys.Date() - 2, "\%Y-\%m-\%d")
+recently <- format(Sys.Date() - 1, "\%Y-\%m-\%d")
 list_identifiers(from = recently)
 
 # from and until

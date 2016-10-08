@@ -42,5 +42,5 @@ list_records <- function(url = "http://oai.datacite.org/oai", prefix = "oai_dc",
   args <- sc(list(verb = "ListRecords", metadataPrefix = prefix, from = from,
                   until = until, set = set, resumptionToken = token))
   out <- while_oai(url, args, token, as, ...)
-  oai_give(out, as, "ListRecords")
+  oai_give(out, as)
 }
