@@ -61,8 +61,8 @@ id("http://oai.datacite.org/oai")
 
 ```r
 list_identifiers(from = '2011-05-01T', until = '2011-09-01T')
-#> <ListRecords> 922 X 6 
-#> 
+#> <ListRecords> 922 X 6
+#>
 #>                    identifier            datestamp setSpec setSpec.1
 #> 1  oai:oai.datacite.org:32153 2011-06-08T08:57:11Z     TIB  TIB.WDCC
 #> 2  oai:oai.datacite.org:32200 2011-06-20T08:12:41Z     TIB TIB.DAGST
@@ -92,8 +92,8 @@ count_identifiers()
 
 ```r
 list_records(from = '2011-05-01T', until = '2011-08-15T')
-#> <ListRecords> 124 X 44 
-#> 
+#> <ListRecords> 124 X 44
+#>
 #>                    identifier            datestamp setSpec setSpec.1
 #> 1  oai:oai.datacite.org:32153 2011-06-08T08:57:11Z     TIB  TIB.WDCC
 #> 2  oai:oai.datacite.org:32200 2011-06-20T08:12:41Z     TIB TIB.DAGST
@@ -124,8 +124,8 @@ list_records(from = '2011-05-01T', until = '2011-08-15T')
 
 ```r
 get_records(c("oai:oai.datacite.org:32255", "oai:oai.datacite.org:32325"))
-#> <GetRecord> 2 X 23 
-#> 
+#> <GetRecord> 2 X 23
+#>
 #>                   identifier            datestamp setSpec setSpec.1
 #> 1 oai:oai.datacite.org:32255 2011-07-01T12:09:24Z     TIB TIB.DAGST
 #> 2 oai:oai.datacite.org:32325 2011-07-07T11:17:46Z     TIB TIB.DAGST
@@ -161,8 +161,8 @@ list_metadataformats(id = "oai:oai.datacite.org:32348")
 
 ```r
 list_sets("http://oai.datacite.org/oai")
-#> <ListSets> 1363 X 2 
-#> 
+#> <ListSets> 1363 X 2
+#>
 #>                     setSpec
 #> 1                REFQUALITY
 #> 2                      ANDS
@@ -201,8 +201,8 @@ Get records
 ```r
 get_records(c("816f4734-6b49-41ab-8a1d-1b21e6b5486d", "95e3042f-f48d-4a04-8251-f755bebeced6"),
             url = "http://api.gbif.org/v1/oai-pmh/registry")
-#> <GetRecord> 2 X 29 
-#> 
+#> <GetRecord> 2 X 29
+#>
 #>                             identifier            datestamp
 #> 1 816f4734-6b49-41ab-8a1d-1b21e6b5486d 2016-01-28T15:36:07Z
 #> 2 95e3042f-f48d-4a04-8251-f755bebeced6 2016-01-24T23:01:17Z
@@ -238,8 +238,8 @@ Get records
 ```r
 get_records(c("oai:biodiversitylibrary.org:item/7", "oai:biodiversitylibrary.org:item/9"),
             url = "http://www.biodiversitylibrary.org/oai")
-#> <GetRecord> 2 X 32 
-#> 
+#> <GetRecord> 2 X 32
+#>
 #>                           identifier            datestamp setSpec
 #> 1 oai:biodiversitylibrary.org:item/7 2016-01-26T05:05:20Z    item
 #> 2 oai:biodiversitylibrary.org:item/9 2016-01-26T05:05:20Z    item

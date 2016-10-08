@@ -4,18 +4,18 @@ Title: General Purpose 'Oai-PMH' Services Client
 Description: A general purpose client to work with any 'OAI-PMH'
     (Open Archives Initiative Protocol for 'Metadata' Harvesting) service.
     The 'OAI-PMH' protocol is described at
-    http://www.openarchives.org/OAI/openarchivesprotocol.html.
+    <http://www.openarchives.org/OAI/openarchivesprotocol.html>.
     Functions are provided to work with the 'OAI-PMH' verbs: 'GetRecord',
     'Identify', 'ListIdentifiers', 'ListMetadataFormats', 'ListRecords', and
     'ListSets'.
-Version: 0.2.0.9300
+Version: 0.2.0.9350
 License: MIT + file LICENSE
 Authors@R: c(
     person("Scott", "Chamberlain", role = c("aut", "cre"), email = "myrmecocystus@gmail.com"),
     person("Michal", "Bojanowski", role = "aut")
     )
-URL: https://github.com/sckott/oai
-BugReports: https://github.com/sckott/oai/issues
+URL: https://github.com/ropensci/oai
+BugReports: https://github.com/ropensci/oai/issues
 VignetteBuilder: knitr
 LazyData: true
 Imports:
@@ -24,9 +24,10 @@ Imports:
     utils,
     xml2 (>= 1.0.0),
     httr (>= 1.2.0),
-    plyr (>= 1.8.3),
-    stringr (>= 1.0.0)
+    plyr (>= 1.8.4),
+    stringr (>= 1.1.0)
 Suggests:
+    roxygen2 (>= 5.0.1),
     DBI,
     knitr,
     RSQLite,
