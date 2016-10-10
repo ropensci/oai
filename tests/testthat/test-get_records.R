@@ -7,7 +7,7 @@ test_that("get_records - basic functionality works", {
                     url = "http://api.gbif.org/v1/oai-pmh/registry")
 
   expect_is(aa, "data.frame")
-  expect_is(aa, "oai_df")
+  expect_is(aa, "tbl_df")
   expect_is(aa$identifier, "character")
   expect_is(aa$title, "character")
 })
@@ -20,7 +20,7 @@ test_that("get_records - many record Ids input works", {
   aa <- get_records(recs, url = "http://api.gbif.org/v1/oai-pmh/registry")
 
   expect_is(aa, "data.frame")
-  expect_is(aa, "oai_df")
+  expect_is(aa, "tbl_df")
   expect_is(aa$identifier, "character")
   expect_is(aa$title, "character")
   expect_equal(NROW(aa), 2)
