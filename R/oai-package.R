@@ -32,7 +32,8 @@
 #' @importFrom stats setNames
 #' @importFrom utils head
 #' @importFrom httr GET content stop_for_status
-#' @importFrom xml2 read_xml xml_children xml_text as_list xml_attrs xml_name xml_attr
+#' @importFrom xml2 read_xml xml_children xml_text as_list xml_attrs
+#' xml_name xml_attr xml_ns
 #' @importFrom plyr rbind.fill
 #' @importFrom stringr str_extract
 #' @docType package
