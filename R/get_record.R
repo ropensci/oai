@@ -3,16 +3,33 @@
 #' @export
 #'
 #' @template url_ddd
-#' @template as
 #' @param ids The OAI-PMH identifier for the record. One or more. Required.
 #' @param prefix specifies the metadata format that the records will be
-#'     returned in. Default: oai_dc
+#'     returned in. Default: \code{oai_dc}
+#' @param as (character) What to return. One of "parsed" (default),
+#'     or "raw" (raw text)
+#' @return a named list of data.frame's, or lists, or raw text
+#' @details There are some finite set of results based on the OAI prefix.
+#' We will provide parsers as we have time, and as users express interest.
+#' For prefix types we have parsers for we return a list of data.frame's,
+#' for each identifier, one data.frame for the \code{header} bits of data, and
+#' one data.frame for the \code{metadata} bits of data.
+#'
+#' For prefixes we don't have parsers for, we fall back to returning raw
+#' XML, so you can at least parse the XML yourself.
+#'
+#' Because some XML nodes are duplicated, we join values together of
+#' duplicated node names, separated by a semicolon (\code{;}) with no
+#' spaces. You can seprarate them yourself easily.
 #' @examples \dontrun{
 #' get_records("oai:oai.datacite.org:32255")
-#' get_records(c("oai:oai.datacite.org:32255", "oai:oai.datacite.org:32325"))
 #'
-#' # Get a list
-#' get_records("oai:oai.datacite.org:32255", as = "list")
+#' ids <- c("oai:oai.datacite.org:32255", "oai:oai.datacite.org:32325")
+#' (res <- get_records(ids))
+#' lapply(res, "[[", "header")
+#' lapply(res, "[[", "metadata")
+#' do.call(rbind, lapply(res, "[[", "header"))
+#' do.call(rbind, lapply(res, "[[", "metadata"))
 #'
 #' # Get raw text
 #' get_records("oai:oai.datacite.org:32255", as = "raw")
@@ -25,11 +42,21 @@
 #'   c("816f4734-6b49-41ab-8a1d-1b21e6b5486d",
 #'   "95e3042f-f48d-4a04-8251-f755bebeced6"),
 #'   url = "http://api.gbif.org/v1/oai-pmh/registry")
+#'
+#' # oai_datacite
+#' get_records(ids="oai:zenodo.org:159890", prefix="oai_datacite",
+#'   url = "https://zenodo.org/oai2d")
+#'
+#' get_records(ids="oai:oai.datacite.org:32255", prefix="oai_datacite")
 #' }
-get_records <- function(ids, prefix = "oai_dc", url = "http://oai.datacite.org/oai", as = "df", ...) {
+get_records <- function(ids, prefix = "oai_dc", url = "http://oai.datacite.org/oai",
+                        as = "parsed", ...) {
   check_url(url)
-  out <- lapply(ids, each_record, url = url, prefix = prefix, as = as, ...)
-  oai_give(do.call("c", out), as)
+  if (!as %in% c('parsed', 'raw')) stop("'as' must be one of 'parsed' or 'raw'", call. = FALSE)
+  stats::setNames(
+    lapply(ids, each_record, url = url, prefix = prefix, as = as, ...),
+    ids
+  )
 }
 
 each_record <- function(identifier, url, prefix, as, ...) {
@@ -42,7 +69,12 @@ each_record <- function(identifier, url, prefix, as, ...) {
   if (as == "raw") {
     tt
   } else {
-    xml <- xml2::xml_children(xml2::xml_children(xml_orig)[[3]])
-    get_data(xml, as = as)
+    if (prefix == "oai_dc") {
+      parse_oai_dc(xml_orig)
+    } else if (prefix == "oai_datacite") {
+      parse_oai_datacite(xml_orig)
+    } else {
+      tt
+    }
   }
 }

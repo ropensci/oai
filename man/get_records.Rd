@@ -5,31 +5,51 @@
 \title{Get records}
 \usage{
 get_records(ids, prefix = "oai_dc", url = "http://oai.datacite.org/oai",
-  as = "df", ...)
+  as = "parsed", ...)
 }
 \arguments{
 \item{ids}{The OAI-PMH identifier for the record. One or more. Required.}
 
 \item{prefix}{specifies the metadata format that the records will be
-returned in. Default: oai_dc}
+returned in. Default: \code{oai_dc}}
 
 \item{url}{(character) OAI-PMH base url}
 
-\item{as}{(character) What to return. One of "df" (for data.frame; default),
-"list", or "raw" (raw text)}
+\item{as}{(character) What to return. One of "parsed" (default),
+or "raw" (raw text)}
 
 \item{...}{Curl options passed on to \code{\link[httr]{GET}}}
+}
+\value{
+a named list of data.frame's, or lists, or raw text
 }
 \description{
 Get records
 }
+\details{
+There are some finite set of results based on the OAI prefix.
+We will provide parsers as we have time, and as users express interest.
+For prefix types we have parsers for we return a list of data.frame's,
+for each identifier, one data.frame for the \code{header} bits of data, and
+one data.frame for the \code{metadata} bits of data.
+
+For prefixes we don't have parsers for, we fall back to returning raw
+XML, so you can at least parse the XML yourself.
+
+Because some XML nodes are duplicated, we join values together of
+duplicated node names, separated by a semicolon (\code{;}) with no
+spaces. You can seprarate them yourself easily.
+}
 \examples{
 \dontrun{
 get_records("oai:oai.datacite.org:32255")
-get_records(c("oai:oai.datacite.org:32255", "oai:oai.datacite.org:32325"))
 
-# Get a list
-get_records("oai:oai.datacite.org:32255", as = "list")
+ids <- c("oai:oai.datacite.org:32255", "oai:oai.datacite.org:32325")
+(res <- get_records(ids))
+lapply(res, "[[", "header")
+lapply(res, "[[", "metadata")
+do.call(rbind, lapply(res, "[[", "header"))
+do.call(rbind, lapply(res, "[[", "metadata"))
 
 # Get raw text
 get_records("oai:oai.datacite.org:32255", as = "raw")
@@ -42,6 +62,12 @@ get_records(
   c("816f4734-6b49-41ab-8a1d-1b21e6b5486d",
   "95e3042f-f48d-4a04-8251-f755bebeced6"),
   url = "http://api.gbif.org/v1/oai-pmh/registry")
+
+# oai_datacite
+get_records(ids="oai:zenodo.org:159890", prefix="oai_datacite",
+  url = "https://zenodo.org/oai2d")
+
+get_records(ids="oai:oai.datacite.org:32255", prefix="oai_datacite")
 }
 }
 
