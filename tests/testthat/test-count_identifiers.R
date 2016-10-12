@@ -3,19 +3,19 @@ context("count_identifiers")
 test_that("count_identifiers - basic functionality", {
   skip_on_cran()
 
-  aa <- count_identifiers("http://www.hindawi.com/oai-pmh/oai.aspx")
+  aa <- count_identifiers()
 
   expect_is(aa, "data.frame")
   expect_is(aa$url, "character")
   expect_is(aa$count, "numeric")
-  expect_match(aa$url, "hindawi.com/oai")
+  expect_match(aa$url, "oai.datacite.org/oai")
 })
 
 test_that("count_identifiers - works with many input urls", {
   skip_on_cran()
 
   aa <- count_identifiers(c(
-    "http://www.hindawi.com/oai-pmh/oai.aspx",
+    "http://oai.datacite.org/oai",
     "http://archivesic.ccsd.cnrs.fr/oai/oai.php"
   ))
 
@@ -29,8 +29,8 @@ test_that("count_identifiers - works with many input urls", {
 test_that("count_identifiers - prefix param works", {
   skip_on_cran()
 
-  aa <- count_identifiers("http://www.hindawi.com/oai-pmh/oai.aspx", prefix = "oai_dc")
-  bb <- count_identifiers("http://www.hindawi.com/oai-pmh/oai.aspx", prefix = "marc21")
+  aa <- count_identifiers(prefix = "oai_dc")
+  bb <- count_identifiers(prefix = "oai_datacite")
 
   expect_is(aa, "data.frame")
   expect_is(bb, "data.frame")
@@ -49,8 +49,6 @@ test_that("count_identifiers - curl options", {
 test_that("count_identifiers fails well", {
   skip_on_cran()
 
-  expect_error(list_sets("http://www.hindawi.com/oai-pmh/oai.aspx", token = 454),
-               "Illegal arguments given")
-  expect_error(list_sets("stuff"),
-               "One or more of your URLs")
+  expect_error(count_identifiers(5), "One or more of your URLs")
+  expect_error(count_identifiers(prefix = 5), "cannotDisseminateFormat")
 })

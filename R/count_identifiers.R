@@ -4,6 +4,11 @@
 #' @template url_ddd
 #' @param prefix Specifies the metadata format that the records will be
 #'     returned in.
+#' @details Note that some OAI providers do not include the entry
+#' \code{completeListSize}
+#' (\url{http://www.openarchives.org/OAI/openarchivesprotocol.html#FlowControl})
+#' in which case we return an NA - which does not mean 0, but rather we don't
+#' know.
 #' @examples \dontrun{
 #' count_identifiers()
 #' count_identifiers(c(
@@ -25,6 +30,7 @@ count_identifiers <- function(url = "http://oai.datacite.org/oai", prefix = 'oai
 ci <- function(x, args, ...) {
   res <- GET(x, query = args, ...)
   xml <- xml2::read_xml(content(res, "text", encoding = "UTF-8"))
+  handle_errors(xml)
   children <- xml_children(xml_children(xml))
   count <- as.numeric(
     xml_attr(

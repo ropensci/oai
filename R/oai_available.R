@@ -29,7 +29,7 @@ oai_available <- function( u, ... ) {
 
 # Skip a testthat test if the service is not available
 check_oai <- function(u, ...) {
-  if( !oai_available(u, ...) ) {
+  if ( oai_available(u, ...) ) {
     testthat::skip( paste("OAI-PMH service at", u, "is not avaiable") )
   }
 }
