@@ -13,11 +13,11 @@ list_identifiers(url = "http://oai.datacite.org/oai", prefix = "oai_dc",
 \item{prefix}{Specifies the metadata format that the records will be
 returned in.}
 
-\item{from}{specifies that records returned must have been created/update/deleted
-on or after this date.}
+\item{from}{specifies that records returned must have been
+created/update/deleted on or after this date.}
 
-\item{until}{specifies that records returned must have been created/update/deleted
-on or before this date.}
+\item{until}{specifies that records returned must have been
+created/update/deleted on or before this date.}
 
 \item{set}{specifies the set that returned records must belong to.}
 
@@ -46,12 +46,6 @@ list_identifiers(from = '2011-06-01T', until = '2011-09-01T')
 
 # set parameter - here, using ANDS - Australian National Data Service
 list_identifiers(from = '2011-09-01T', until = '2012-09-01T', set = "ANDS")
-
-# Get a list
-list_identifiers(from = recently, as = "list")
-
-# Get raw text
-list_identifiers(from = recently, as = "raw")
 }
 }
 

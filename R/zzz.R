@@ -99,7 +99,7 @@ get_metadata <- function(x, as = "df") {
   } else {
     tmp <- xml2::xml_children(xml2::xml_children(x))
     tmpm <- lapply(tmp, function(w) {
-      as.list(stats::etNames(xml2::xml_text(w), xml2::xml_name(w)))
+      as.list(stats::setNames(xml2::xml_text(w), xml2::xml_name(w)))
     })
     switch(as, df = rbind_df(tmpm), list = unlist(tmpm, recursive = FALSE))
   }

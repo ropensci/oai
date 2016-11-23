@@ -9,4 +9,5 @@ Makefile
 ^.*-providers.rda
 NEWS.md
 ^CONDUCT\.md$
-man-roxygen
+revdep
+^cran-comments\.md$

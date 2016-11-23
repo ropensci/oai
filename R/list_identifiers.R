@@ -4,11 +4,11 @@
 #' @template url_ddd
 #' @template as
 #' @param prefix Specifies the metadata format that the records will be
-#'     returned in.
-#' @param from specifies that records returned must have been created/update/deleted
-#'     on or after this date.
-#' @param until specifies that records returned must have been created/update/deleted
-#'     on or before this date.
+#' returned in.
+#' @param from specifies that records returned must have been
+#' created/update/deleted on or after this date.
+#' @param until specifies that records returned must have been
+#' created/update/deleted on or before this date.
 #' @param set specifies the set that returned records must belong to.
 #' @param token a token previously provided by the server to resume a request
 #'     where it last left off.
@@ -25,15 +25,11 @@
 #'
 #' # set parameter - here, using ANDS - Australian National Data Service
 #' list_identifiers(from = '2011-09-01T', until = '2012-09-01T', set = "ANDS")
-#'
-#' # Get a list
-#' list_identifiers(from = recently, as = "list")
-#'
-#' # Get raw text
-#' list_identifiers(from = recently, as = "raw")
 #' }
-list_identifiers <- function(url = "http://oai.datacite.org/oai", prefix = "oai_dc", from = NULL,
-                             until = NULL, set = NULL, token = NULL, as = "df", ...) {
+list_identifiers <- function(url = "http://oai.datacite.org/oai",
+                             prefix = "oai_dc", from = NULL,
+                             until = NULL, set = NULL, token = NULL,
+                             as = "df", ...) {
   check_url(url)
   if (!is.null(token)) from <- until <- set <- prefix <- NULL
   args <- sc(list(verb = "ListIdentifiers", metadataPrefix = prefix, from = from,
