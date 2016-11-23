@@ -52,7 +52,8 @@
 get_records <- function(ids, prefix = "oai_dc", url = "http://oai.datacite.org/oai",
                         as = "parsed", ...) {
   check_url(url)
-  if (!as %in% c('parsed', 'raw')) stop("'as' must be one of 'parsed' or 'raw'", call. = FALSE)
+  if (as %in% c('list', 'df')) as <- "parsed"
+  #if (!as %in% c('parsed', 'raw')) stop("'as' must be one of 'parsed' or 'raw'", call. = FALSE)
   stats::setNames(
     lapply(ids, each_record, url = url, prefix = prefix, as = as, ...),
     ids
