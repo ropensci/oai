@@ -24,22 +24,23 @@ See the OAI-PMH V2 specification at
 
 \section{oai package details}{
 
-oai is built on \code{xml2} and `httr`. In addition, we give back data.frame's
-whenever possible to make data comprehension, manipulation, and visualization
-easier. We also have functions to fetch a large directory of OAI-PMH services -
-it isn't exhaustive, but does contain a lot.
+oai is built on \code{xml2} and `httr`. In addition, we give back
+data.frame's whenever possible to make data comprehension, manipulation,
+and visualization easier. We also have functions to fetch a large directory
+of OAI-PMH services - it isn't exhaustive, but does contain a lot.
 }
 
 \section{Paging}{
 
-Instead of paging with e.g., \code{page} and \code{per_page} parameters, OAI-PMH uses
-(optionally) \code{resumptionTokens}, with an optional expiration date. These tokens
-can be used to continue on to the next chunk of data, if the first request did not
-get to the end. Often, OAI-PMH services limit each request to 50 records, but this
-may vary by provider, I don't know for sure. The API of this package is such that
-we \code{while} loop for you internally until we get all records. We may in the future
-expose e.g., a \code{limit} parameter so you can say how many records you want, but we
-haven't done this yet.
+Instead of paging with e.g., \code{page} and \code{per_page} parameters,
+OAI-PMH uses (optionally) \code{resumptionTokens}, with an optional
+expiration date. These tokens can be used to continue on to the next chunk
+of data, if the first request did not get to the end. Often, OAI-PMH
+services limit each request to 50 records, but this may vary by provider,
+I don't know for sure. The API of this package is such that we \code{while}
+loop for you internally until we get all records. We may in the future
+expose e.g., a \code{limit} parameter so you can say how many records
+you want, but we haven't done this yet.
 }
 \author{
 Scott Chamberlain \email{myrmecocystus@gmail.com}

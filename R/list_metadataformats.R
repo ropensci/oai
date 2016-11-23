@@ -19,7 +19,7 @@
 list_metadataformats <- function(url = "http://oai.datacite.org/oai", id = NULL, ...) {
   check_url(url)
   if (!is.null(id)) {
-    setNames(lapply(id, one_mf, url = url, ...), id)
+    stats::setNames(lapply(id, one_mf, url = url, ...), id)
   } else {
     one_mf(id, url, ...)
   }

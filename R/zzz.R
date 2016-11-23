@@ -87,7 +87,7 @@ get_data <- function(x, as = "df") {
 
 get_headers <- function(m, as = "df") {
   tmpm <- lapply(xml2::xml_children(m), function(w) {
-    as.list(setNames(xml2::xml_text(w), xml2::xml_name(w)))
+    as.list(stats::setNames(xml2::xml_text(w), xml2::xml_name(w)))
   })
   switch(as, df = rbind_df(tmpm), list = unlist(tmpm, recursive = FALSE))
 }
@@ -99,7 +99,7 @@ get_metadata <- function(x, as = "df") {
   } else {
     tmp <- xml2::xml_children(xml2::xml_children(x))
     tmpm <- lapply(tmp, function(w) {
-      as.list(setNames(xml2::xml_text(w), xml2::xml_name(w)))
+      as.list(stats::etNames(xml2::xml_text(w), xml2::xml_name(w)))
     })
     switch(as, df = rbind_df(tmpm), list = unlist(tmpm, recursive = FALSE))
   }
@@ -116,7 +116,7 @@ get_sets <- function(x, as = "df") {
       rbind.fill(sc(lapply(x, function(z) {
         if (xml2::xml_name(z) != "resumptionToken") {
           tmp <- xml2::xml_children(z)
-          rbind_df(as.list(setNames(xml2::xml_text(tmp), xml2::xml_name(tmp))))
+          rbind_df(as.list(stats::setNames(xml2::xml_text(tmp), xml2::xml_name(tmp))))
         }
       })))
     },
@@ -124,7 +124,7 @@ get_sets <- function(x, as = "df") {
       sc(lapply(x, function(z) {
         if (xml2::xml_name(z) != "resumptionToken") {
           tmp <- xml2::xml_children(z)
-          as.list(setNames(xml2::xml_text(tmp), xml2::xml_name(tmp)))
+          as.list(stats::setNames(xml2::xml_text(tmp), xml2::xml_name(tmp)))
         }
       }))
     }

@@ -101,7 +101,7 @@ just_text_all <- function(x, xpath) {
 }
 
 name_vec <- function(x) {
-  as.list(setNames(xml2::xml_text(x), xml2::xml_name(x)))
+  as.list(stats::setNames(xml2::xml_text(x), xml2::xml_name(x)))
 }
 
 uniqify <- function(w) {
