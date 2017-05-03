@@ -25,9 +25,9 @@ Imports:
     stringr (>= 1.1.0),
     tibble (>= 1.2)
 Suggests:
-    roxygen2 (>= 5.0.1),
+    roxygen2 (>= 6.0.1),
     DBI,
     knitr,
     RSQLite,
     testthat
-RoxygenNote: 5.0.1
+RoxygenNote: 6.0.1

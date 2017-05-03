@@ -31,4 +31,3 @@ library("httr")
 list_metadataformats(id = "oai:oai.datacite.org:32348", config = verbose())
 }
 }
-

@@ -39,4 +39,3 @@ library("httr")
 count_identifiers(config = verbose())
 }
 }
-

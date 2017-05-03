@@ -70,4 +70,3 @@ get_records(ids="oai:zenodo.org:159890", prefix="oai_datacite",
 get_records(ids="oai:oai.datacite.org:32255", prefix="oai_datacite")
 }
 }
-

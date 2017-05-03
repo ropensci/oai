@@ -30,4 +30,3 @@ url_list <- list(
 sapply(url_list, oai_available)
 }
 }
-

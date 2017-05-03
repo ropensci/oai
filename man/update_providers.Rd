@@ -35,4 +35,3 @@ load_providers()
 \seealso{
 \code{\link{load_providers}}
 }
-

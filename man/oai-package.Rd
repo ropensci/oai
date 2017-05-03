@@ -2,8 +2,8 @@
 % Please edit documentation in R/oai-package.R
 \docType{package}
 \name{oai-package}
-\alias{oai}
 \alias{oai-package}
+\alias{oai}
 \title{OAI-PMH Client}
 \description{
 oai
@@ -42,8 +42,8 @@ loop for you internally until we get all records. We may in the future
 expose e.g., a \code{limit} parameter so you can say how many records
 you want, but we haven't done this yet.
 }
+
 \author{
 Scott Chamberlain \email{myrmecocystus@gmail.com}
 }
 \keyword{package}
-

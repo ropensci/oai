@@ -16,4 +16,3 @@ A data.frame of three columns:
 Metadata providers data.frame.
 }
 \keyword{datasets}
-
