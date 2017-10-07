@@ -43,6 +43,12 @@ expose e.g., a \code{limit} parameter so you can say how many records
 you want, but we haven't done this yet.
 }
 
+\section{Acknowledgements}{
+
+Michal Bojanowski contributions were supported by (Polish) National Science
+Center (NCN) through grant 2012/07/D/HS6/01971.
+}
+
 \author{
 Scott Chamberlain \email{myrmecocystus@gmail.com}
 }
