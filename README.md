@@ -1,6 +1,5 @@
-
 oai
-===
+================
 
 [![Build Status](https://travis-ci.org/ropensci/oai.svg?branch=master)](https://travis-ci.org/ropensci/oai) [![Build status](https://ci.appveyor.com/api/projects/status/h5qu574ky0rk3xxv?svg=true)](https://ci.appveyor.com/project/sckott/oai) [![codecov.io](http://codecov.io/github/ropensci/oai/coverage.svg?branch=master)](http://codecov.io/github/ropensci/oai?branch=master) [![rstudio mirror downloads](http://cranlogs.r-pkg.org/badges/oai?color=2ED968)](https://github.com/metacran/cranlogs.app) [![cran version](http://www.r-pkg.org/badges/version/oai)](https://cran.r-project.org/package=oai) [![](https://badges.ropensci.org/19_status.svg)](https://github.com/ropensci/onboarding/issues/19)
 
@@ -77,7 +76,7 @@ Count Identifiers
 ``` r
 count_identifiers()
 #>                           url    count
-#> 1 http://oai.datacite.org/oai 11041661
+#> 1 http://oai.datacite.org/oai 11046022
 ```
 
 ListRecords
@@ -205,7 +204,7 @@ id("http://api.gbif.org/v1/oai-pmh/registry")
 #> 1  GBIF Registry http://api.gbif.org/v1/oai-pmh/registry             2.0
 #>     adminEmail    earliestDatestamp deletedRecord          granularity
 #> 1 dev@gbif.org 2007-01-01T00:00:01Z    persistent YYYY-MM-DDThh:mm:ssZ
-#>                                                                                                                                                                                                                                                                                                             description
+#>                                                                                                                                                                                                                                                                                                                    description
 #> 1 GBIF RegistryGlobal Biodiversity Information Facility Secretariat\n\t\tThe GBIF Registry — the entities that make up the GBIF network.\n\t\tThis OAI-PMH service exposes Datasets, organized into sets of country, installation and resource type.\n\t\tFor more information, see http://www.gbif.org/developer/registry\n\t
 ```
 

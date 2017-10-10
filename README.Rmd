@@ -1,10 +1,9 @@
 ---
-output: github_document
+title: "oai"
+output:
+  github_document: null
 ---
 
-
-oai
-===
 
 ```{r echo=FALSE}
 knitr::opts_chunk$set(
