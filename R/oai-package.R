@@ -41,6 +41,7 @@
 #' @docType package
 #' @title OAI-PMH Client
 #' @author Scott Chamberlain \email{myrmecocystus@@gmail.com}
+#' @author Michal Bojanowski \email{michal2992@@gmail.com}
 #' @keywords package
 NULL
 

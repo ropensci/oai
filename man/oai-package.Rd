@@ -51,5 +51,7 @@ Center (NCN) through grant 2012/07/D/HS6/01971.
 
 \author{
 Scott Chamberlain \email{myrmecocystus@gmail.com}
+
+Michal Bojanowski \email{michal2992@gmail.com}
 }
 \keyword{package}
