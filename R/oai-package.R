@@ -7,7 +7,7 @@
 #' See the OAI-PMH V2 specification at
 #' \url{http://www.openarchives.org/OAI/openarchivesprotocol.html}
 #'
-#' @section oai package details:
+#' @section Implementation details:
 #' oai is built on \code{xml2} and `httr`. In addition, we give back
 #' data.frame's whenever possible to make data comprehension, manipulation,
 #' and visualization easier. We also have functions to fetch a large directory
