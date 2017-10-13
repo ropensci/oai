@@ -76,7 +76,7 @@ Count Identifiers
 ``` r
 count_identifiers()
 #>                           url    count
-#> 1 http://oai.datacite.org/oai 11046022
+#> 1 http://oai.datacite.org/oai 11114343
 ```
 
 ListRecords
@@ -175,7 +175,7 @@ List Sets
 
 ``` r
 list_sets("http://oai.datacite.org/oai")
-#> # A tibble: 2,123 x 2
+#> # A tibble: 2,143 x 2
 #>                 setSpec
 #>                   <chr>
 #>  1           REFQUALITY
@@ -188,7 +188,7 @@ list_sets("http://oai.datacite.org/oai")
 #>  8            ANDS.C139
 #>  9 ANDS.C139.REFQUALITY
 #> 10            ANDS.C145
-#> # ... with 2,113 more rows, and 1 more variables: setName <chr>
+#> # ... with 2,133 more rows, and 1 more variables: setName <chr>
 ```
 
 Examples of other OAI providers
@@ -298,6 +298,11 @@ get_records(c("oai:biodiversitylibrary.org:item/7", "oai:biodiversitylibrary.org
 #> #   description <chr>, publisher <chr>, contributor <chr>, date <chr>,
 #> #   type <chr>, identifier <chr>, language <chr>, rights <chr>
 ```
+
+Acknowledgements
+----------------
+
+Michal Bojanowski thanks National Science Centre for support through grant 2012/07/D/HS6/01971.
 
 Meta
 ----

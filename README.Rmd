@@ -125,6 +125,11 @@ get_records(c("oai:biodiversitylibrary.org:item/7", "oai:biodiversitylibrary.org
 ```
 
 
+## Acknowledgements
+
+Michal Bojanowski thanks National Science Centre for support through grant 2012/07/D/HS6/01971.
+
+
 ## Meta
 
 * Please [report any issues or bugs](https://github.com/ropensci/oai/issues).
