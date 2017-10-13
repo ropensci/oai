@@ -1,5 +1,9 @@
-oai
-===
+---
+title: "oai"
+output:
+  github_document: null
+---
+
 
 ```{r echo=FALSE}
 knitr::opts_chunk$set(
@@ -119,6 +123,11 @@ Get records
 get_records(c("oai:biodiversitylibrary.org:item/7", "oai:biodiversitylibrary.org:item/9"),
             url = "http://www.biodiversitylibrary.org/oai")
 ```
+
+
+## Acknowledgements
+
+Michal Bojanowski thanks National Science Centre for support through grant 2012/07/D/HS6/01971.
 
 
 ## Meta

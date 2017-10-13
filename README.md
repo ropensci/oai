@@ -1,51 +1,42 @@
 oai
-===
+================
 
-
-
-[![Build Status](https://travis-ci.org/ropensci/oai.svg?branch=master)](https://travis-ci.org/ropensci/oai)
-[![Build status](https://ci.appveyor.com/api/projects/status/h5qu574ky0rk3xxv?svg=true)](https://ci.appveyor.com/project/sckott/oai)
-[![codecov.io](http://codecov.io/github/ropensci/oai/coverage.svg?branch=master)](http://codecov.io/github/ropensci/oai?branch=master)
-[![rstudio mirror downloads](http://cranlogs.r-pkg.org/badges/oai?color=2ED968)](https://github.com/metacran/cranlogs.app)
-[![cran version](http://www.r-pkg.org/badges/version/oai)](https://cran.r-project.org/package=oai)
-[![](https://badges.ropensci.org/19_status.svg)](https://github.com/ropensci/onboarding/issues/19)
+[![Build Status](https://travis-ci.org/ropensci/oai.svg?branch=master)](https://travis-ci.org/ropensci/oai) [![Build status](https://ci.appveyor.com/api/projects/status/h5qu574ky0rk3xxv?svg=true)](https://ci.appveyor.com/project/sckott/oai) [![codecov.io](http://codecov.io/github/ropensci/oai/coverage.svg?branch=master)](http://codecov.io/github/ropensci/oai?branch=master) [![rstudio mirror downloads](http://cranlogs.r-pkg.org/badges/oai?color=2ED968)](https://github.com/metacran/cranlogs.app) [![cran version](http://www.r-pkg.org/badges/version/oai)](https://cran.r-project.org/package=oai) [![](https://badges.ropensci.org/19_status.svg)](https://github.com/ropensci/onboarding/issues/19)
 
 `oai` is an R client to work with OAI-PMH (Open Archives Initiative Protocol for Metadata Harvesting) services, a protocol developed by the [Open Archives Initiative](https://en.wikipedia.org/wiki/Open_Archives_Initiative). OAI-PMH uses XML data format transported over HTTP.
 
 OAI-PMH Info:
 
-* [Wikipedia](https://en.wikipedia.org/wiki/Open_Archives_Initiative_Protocol_for_Metadata_Harvesting)
-* [OAI V2 specification](http://www.openarchives.org/OAI/openarchivesprotocol.html)
+-   [Wikipedia](https://en.wikipedia.org/wiki/Open_Archives_Initiative_Protocol_for_Metadata_Harvesting)
+-   [OAI V2 specification](http://www.openarchives.org/OAI/openarchivesprotocol.html)
 
 `oai` is built on `xml2` and `httr`. In addition, we give back data.frame's whenever possible to make data comprehension, manipulation, and visualization easier. We also have functions to fetch a large directory of OAI-PMH services - it isn't exhaustive, but does contain a lot.
 
 OAI-PMH instead of paging with e.g., `page` and `per_page` parameters, uses (optionally) `resumptionTokens`, optionally with an expiration date. These tokens can be used to continue on to the next chunk of data, if the first request did not get to the end. Often, OAI-PMH services limit each request to 50 records, but this may vary by provider, I don't know for sure. The API of this package is such that we `while` loop for you internally until we get all records. We may in the future expose e.g., a `limit` parameter so you can say how many records you want, but we haven't done this yet.
 
-## Install
+Install
+-------
 
 Install from CRAN
 
-
-```r
+``` r
 install.packages("oai")
 ```
 
 Development version
 
-
-```r
+``` r
 devtools::install_github("ropensci/oai")
 ```
 
-
-```r
+``` r
 library("oai")
 ```
 
-## Identify
+Identify
+--------
 
-
-```r
+``` r
 id("http://oai.datacite.org/oai")
 #>   repositoryName                     baseURL protocolVersion
 #> 1   DataCite MDS http://oai.datacite.org/oai             2.0
@@ -57,54 +48,54 @@ id("http://oai.datacite.org/oai")
 #> 1 oaioai.datacite.org:oai:oai.datacite.org:12425
 ```
 
-## ListIdentifiers
+ListIdentifiers
+---------------
 
-
-```r
+``` r
 list_identifiers(from = '2011-05-01T', until = '2011-09-01T')
-#> # A tibble: 889 × 6
+#> # A tibble: 888 x 6
 #>                    identifier            datestamp setSpec setSpec.1
 #>                         <chr>                <chr>   <chr>     <chr>
-#> 1  oai:oai.datacite.org:32153 2011-06-08T08:57:11Z     TIB  TIB.WDCC
-#> 2  oai:oai.datacite.org:32200 2011-06-20T08:12:41Z     TIB TIB.DAGST
-#> 3  oai:oai.datacite.org:32220 2011-06-28T14:11:08Z     TIB TIB.DAGST
-#> 4  oai:oai.datacite.org:32241 2011-06-30T13:24:45Z     TIB TIB.DAGST
-#> 5  oai:oai.datacite.org:32255 2011-07-01T12:09:24Z     TIB TIB.DAGST
-#> 6  oai:oai.datacite.org:32282 2011-07-05T09:08:10Z     TIB TIB.DAGST
-#> 7  oai:oai.datacite.org:32309 2011-07-06T12:30:54Z     TIB TIB.DAGST
-#> 8  oai:oai.datacite.org:32310 2011-07-06T12:42:32Z     TIB TIB.DAGST
-#> 9  oai:oai.datacite.org:32325 2011-07-07T11:17:46Z     TIB TIB.DAGST
+#>  1 oai:oai.datacite.org:32153 2011-06-08T08:57:11Z     TIB  TIB.WDCC
+#>  2 oai:oai.datacite.org:32200 2011-06-20T08:12:41Z     TIB TIB.DAGST
+#>  3 oai:oai.datacite.org:32220 2011-06-28T14:11:08Z     TIB TIB.DAGST
+#>  4 oai:oai.datacite.org:32241 2011-06-30T13:24:45Z     TIB TIB.DAGST
+#>  5 oai:oai.datacite.org:32255 2011-07-01T12:09:24Z     TIB TIB.DAGST
+#>  6 oai:oai.datacite.org:32282 2011-07-05T09:08:10Z     TIB TIB.DAGST
+#>  7 oai:oai.datacite.org:32309 2011-07-06T12:30:54Z     TIB TIB.DAGST
+#>  8 oai:oai.datacite.org:32310 2011-07-06T12:42:32Z     TIB TIB.DAGST
+#>  9 oai:oai.datacite.org:32325 2011-07-07T11:17:46Z     TIB TIB.DAGST
 #> 10 oai:oai.datacite.org:32326 2011-07-07T11:18:47Z     TIB TIB.DAGST
-#> # ... with 879 more rows, and 2 more variables: setSpec.2 <chr>,
+#> # ... with 878 more rows, and 2 more variables: setSpec.2 <chr>,
 #> #   setSpec.3 <chr>
 ```
 
-## Count Identifiers
+Count Identifiers
+-----------------
 
-
-```r
+``` r
 count_identifiers()
-#>                           url   count
-#> 1 http://oai.datacite.org/oai 8333894
+#>                           url    count
+#> 1 http://oai.datacite.org/oai 11114343
 ```
 
-## ListRecords
+ListRecords
+-----------
 
-
-```r
+``` r
 list_records(from = '2011-05-01T', until = '2011-08-15T')
-#> # A tibble: 109 × 44
+#> # A tibble: 109 x 44
 #>                    identifier            datestamp setSpec setSpec.1
 #>                         <chr>                <chr>   <chr>     <chr>
-#> 1  oai:oai.datacite.org:32153 2011-06-08T08:57:11Z     TIB  TIB.WDCC
-#> 2  oai:oai.datacite.org:32200 2011-06-20T08:12:41Z     TIB TIB.DAGST
-#> 3  oai:oai.datacite.org:32220 2011-06-28T14:11:08Z     TIB TIB.DAGST
-#> 4  oai:oai.datacite.org:32241 2011-06-30T13:24:45Z     TIB TIB.DAGST
-#> 5  oai:oai.datacite.org:32255 2011-07-01T12:09:24Z     TIB TIB.DAGST
-#> 6  oai:oai.datacite.org:32282 2011-07-05T09:08:10Z     TIB TIB.DAGST
-#> 7  oai:oai.datacite.org:32309 2011-07-06T12:30:54Z     TIB TIB.DAGST
-#> 8  oai:oai.datacite.org:32310 2011-07-06T12:42:32Z     TIB TIB.DAGST
-#> 9  oai:oai.datacite.org:32325 2011-07-07T11:17:46Z     TIB TIB.DAGST
+#>  1 oai:oai.datacite.org:32153 2011-06-08T08:57:11Z     TIB  TIB.WDCC
+#>  2 oai:oai.datacite.org:32200 2011-06-20T08:12:41Z     TIB TIB.DAGST
+#>  3 oai:oai.datacite.org:32220 2011-06-28T14:11:08Z     TIB TIB.DAGST
+#>  4 oai:oai.datacite.org:32241 2011-06-30T13:24:45Z     TIB TIB.DAGST
+#>  5 oai:oai.datacite.org:32255 2011-07-01T12:09:24Z     TIB TIB.DAGST
+#>  6 oai:oai.datacite.org:32282 2011-07-05T09:08:10Z     TIB TIB.DAGST
+#>  7 oai:oai.datacite.org:32309 2011-07-06T12:30:54Z     TIB TIB.DAGST
+#>  8 oai:oai.datacite.org:32310 2011-07-06T12:42:32Z     TIB TIB.DAGST
+#>  9 oai:oai.datacite.org:32325 2011-07-07T11:17:46Z     TIB TIB.DAGST
 #> 10 oai:oai.datacite.org:32326 2011-07-07T11:18:47Z     TIB TIB.DAGST
 #> # ... with 99 more rows, and 40 more variables: title <chr>,
 #> #   creator <chr>, creator.1 <chr>, creator.2 <chr>, creator.3 <chr>,
@@ -120,72 +111,94 @@ list_records(from = '2011-05-01T', until = '2011-08-15T')
 #> #   title.1 <chr>, contributor.1 <chr>
 ```
 
-## GetRecords
+GetRecords
+----------
 
-
-```r
+``` r
 get_records(c("oai:oai.datacite.org:32255", "oai:oai.datacite.org:32325"))
-#> # A tibble: 2 × 23
-#>                   identifier            datestamp setSpec setSpec.1
-#>                        <chr>                <chr>   <chr>     <chr>
-#> 1 oai:oai.datacite.org:32255 2011-07-01T12:09:24Z     TIB TIB.DAGST
-#> 2 oai:oai.datacite.org:32325 2011-07-07T11:17:46Z     TIB TIB.DAGST
-#> # ... with 19 more variables: title <chr>, creator <chr>, creator.1 <chr>,
-#> #   creator.2 <chr>, creator.3 <chr>, publisher <chr>, date <chr>,
-#> #   identifier.1 <chr>, subject <chr>, subject.1 <chr>, description <chr>,
-#> #   description.1 <chr>, contributor <chr>, language <chr>, type <chr>,
-#> #   type.1 <chr>, format <chr>, format.1 <chr>, rights <chr>
+#> $`oai:oai.datacite.org:32255`
+#> $`oai:oai.datacite.org:32255`$header
+#> # A tibble: 1 x 3
+#>                   identifier            datestamp       setSpec
+#>                        <chr>                <chr>         <chr>
+#> 1 oai:oai.datacite.org:32255 2011-07-01T12:09:24Z TIB;TIB.DAGST
+#> 
+#> $`oai:oai.datacite.org:32255`$metadata
+#> # A tibble: 1 x 12
+#>                                                                         title
+#>                                                                         <chr>
+#> 1 Combinatorial and Algorithmic Aspects of Sequence Processing (Dagstuhl Semi
+#> # ... with 11 more variables: creator <chr>, publisher <chr>, date <chr>,
+#> #   identifier <chr>, subject <chr>, description <chr>, contributor <chr>,
+#> #   language <chr>, type <chr>, format <chr>, rights <chr>
+#> 
+#> 
+#> $`oai:oai.datacite.org:32325`
+#> $`oai:oai.datacite.org:32325`$header
+#> # A tibble: 1 x 3
+#>                   identifier            datestamp       setSpec
+#>                        <chr>                <chr>         <chr>
+#> 1 oai:oai.datacite.org:32325 2011-07-07T11:17:46Z TIB;TIB.DAGST
+#> 
+#> $`oai:oai.datacite.org:32325`$metadata
+#> # A tibble: 1 x 12
+#>                                                              title
+#>                                                              <chr>
+#> 1 Frontmatter, Table of Contents, Preface, Conference Organization
+#> # ... with 11 more variables: creator <chr>, publisher <chr>, date <chr>,
+#> #   identifier <chr>, subject <chr>, description <chr>, contributor <chr>,
+#> #   language <chr>, type <chr>, format <chr>, rights <chr>
 ```
 
-## List MetadataFormats
+List MetadataFormats
+--------------------
 
-
-```r
+``` r
 list_metadataformats(id = "oai:oai.datacite.org:32348")
 #> $`oai:oai.datacite.org:32348`
 #>   metadataPrefix
 #> 1         oai_dc
-#> 2       datacite
-#> 3   oai_datacite
+#> 2   oai_datacite
+#> 3       datacite
 #>                                                        schema
 #> 1              http://www.openarchives.org/OAI/2.0/oai_dc.xsd
-#> 2 http://schema.datacite.org/meta/nonexistant/nonexistant.xsd
-#> 3              http://schema.datacite.org/oai/oai-1.0/oai.xsd
+#> 2              http://schema.datacite.org/oai/oai-1.0/oai.xsd
+#> 3 http://schema.datacite.org/meta/nonexistant/nonexistant.xsd
 #>                             metadataNamespace
 #> 1 http://www.openarchives.org/OAI/2.0/oai_dc/
-#> 2      http://datacite.org/schema/nonexistant
-#> 3     http://schema.datacite.org/oai/oai-1.0/
+#> 2     http://schema.datacite.org/oai/oai-1.0/
+#> 3      http://datacite.org/schema/nonexistant
 ```
 
-## List Sets
+List Sets
+---------
 
-
-```r
+``` r
 list_sets("http://oai.datacite.org/oai")
-#> # A tibble: 1,651 × 2
-#>                     setSpec
-#>                       <chr>
-#> 1                REFQUALITY
-#> 2                      ANDS
-#> 3           ANDS.REFQUALITY
-#> 4             ANDS.CENTRE-1
-#> 5  ANDS.CENTRE-1.REFQUALITY
-#> 6             ANDS.CENTRE-2
-#> 7  ANDS.CENTRE-2.REFQUALITY
-#> 8             ANDS.CENTRE-3
-#> 9  ANDS.CENTRE-3.REFQUALITY
-#> 10            ANDS.CENTRE-5
-#> # ... with 1,641 more rows, and 1 more variables: setName <chr>
+#> # A tibble: 2,143 x 2
+#>                 setSpec
+#>                   <chr>
+#>  1           REFQUALITY
+#>  2                 ANDS
+#>  3      ANDS.REFQUALITY
+#>  4            ANDS.C113
+#>  5 ANDS.C113.REFQUALITY
+#>  6            ANDS.C122
+#>  7 ANDS.C122.REFQUALITY
+#>  8            ANDS.C139
+#>  9 ANDS.C139.REFQUALITY
+#> 10            ANDS.C145
+#> # ... with 2,133 more rows, and 1 more variables: setName <chr>
 ```
 
-## Examples of other OAI providers
+Examples of other OAI providers
+-------------------------------
 
 ### Global Biodiversity Information Facility
 
 Identify
 
-
-```r
+``` r
 id("http://api.gbif.org/v1/oai-pmh/registry")
 #>   repositoryName                                 baseURL protocolVersion
 #> 1  GBIF Registry http://api.gbif.org/v1/oai-pmh/registry             2.0
@@ -197,35 +210,50 @@ id("http://api.gbif.org/v1/oai-pmh/registry")
 
 Get records
 
-
-```r
+``` r
 get_records(c("816f4734-6b49-41ab-8a1d-1b21e6b5486d", "95e3042f-f48d-4a04-8251-f755bebeced6"),
             url = "http://api.gbif.org/v1/oai-pmh/registry")
-#> # A tibble: 2 × 28
+#> $`816f4734-6b49-41ab-8a1d-1b21e6b5486d`
+#> $`816f4734-6b49-41ab-8a1d-1b21e6b5486d`$header
+#> # A tibble: 1 x 3
 #>                             identifier            datestamp
 #>                                  <chr>                <chr>
-#> 1 816f4734-6b49-41ab-8a1d-1b21e6b5486d 2016-01-28T15:36:07Z
-#> 2 95e3042f-f48d-4a04-8251-f755bebeced6 2016-08-30T13:43:31Z
-#> # ... with 26 more variables: setSpec <chr>, setSpec.1 <chr>,
-#> #   setSpec.2 <chr>, title <chr>, publisher <chr>, identifier.1 <chr>,
-#> #   source <chr>, description <chr>, description.1 <chr>, type <chr>,
-#> #   language <chr>, format <chr>, source.1 <chr>, subject <chr>,
-#> #   subject.1 <chr>, subject.2 <chr>, subject.3 <chr>, subject.4 <chr>,
-#> #   subject.5 <chr>, description.2 <chr>, creator <chr>, creator.1 <chr>,
-#> #   date <chr>, coverage <chr>, coverage.1 <chr>, coverage.2 <chr>
+#> 1 816f4734-6b49-41ab-8a1d-1b21e6b5486d 2017-03-08T15:04:24Z
+#> # ... with 1 more variables: setSpec <chr>
+#> 
+#> $`816f4734-6b49-41ab-8a1d-1b21e6b5486d`$metadata
+#> # A tibble: 0 x 0
+#> 
+#> 
+#> $`95e3042f-f48d-4a04-8251-f755bebeced6`
+#> $`95e3042f-f48d-4a04-8251-f755bebeced6`$header
+#> # A tibble: 1 x 3
+#>                             identifier            datestamp
+#>                                  <chr>                <chr>
+#> 1 95e3042f-f48d-4a04-8251-f755bebeced6 2017-08-14T10:26:13Z
+#> # ... with 1 more variables: setSpec <chr>
+#> 
+#> $`95e3042f-f48d-4a04-8251-f755bebeced6`$metadata
+#> # A tibble: 1 x 12
+#>                                                                       title
+#>                                                                       <chr>
+#> 1 WIWO (NL) - Monitoring and breeding ecology of arctic birds at Medusa Bay
+#> # ... with 11 more variables: publisher <chr>, identifier <chr>,
+#> #   subject <chr>, source <chr>, description <chr>, type <chr>,
+#> #   creator <chr>, date <chr>, language <chr>, coverage <chr>,
+#> #   format <chr>
 ```
 
 ### Biodiversity Heritage Library
 
 Identify
 
-
-```r
+``` r
 id("http://www.biodiversitylibrary.org/oai")
 #>                                 repositoryName
 #> 1 Biodiversity Heritage Library OAI Repository
-#>                                  baseURL protocolVersion
-#> 1 http://www.biodiversitylibrary.org/oai             2.0
+#>                                   baseURL protocolVersion
+#> 1 https://www.biodiversitylibrary.org/oai             2.0
 #>                    adminEmail earliestDatestamp deletedRecord granularity
 #> 1 oai@biodiversitylibrary.org        2006-01-01            no  YYYY-MM-DD
 #>                                                        description
@@ -234,27 +262,54 @@ id("http://www.biodiversitylibrary.org/oai")
 
 Get records
 
-
-```r
+``` r
 get_records(c("oai:biodiversitylibrary.org:item/7", "oai:biodiversitylibrary.org:item/9"),
             url = "http://www.biodiversitylibrary.org/oai")
-#> # A tibble: 2 × 17
+#> $`oai:biodiversitylibrary.org:item/7`
+#> $`oai:biodiversitylibrary.org:item/7`$header
+#> # A tibble: 1 x 3
 #>                           identifier            datestamp setSpec
 #>                                <chr>                <chr>   <chr>
-#> 1 oai:biodiversitylibrary.org:item/7 2016-07-13T08:13:41Z    item
-#> 2 oai:biodiversitylibrary.org:item/9 2016-07-13T08:13:41Z    item
-#> # ... with 14 more variables: title <chr>, creator <chr>, subject <chr>,
-#> #   subject.1 <chr>, subject.2 <chr>, description <chr>, publisher <chr>,
-#> #   contributor <chr>, date <chr>, type <chr>, type.1 <chr>,
-#> #   identifier.1 <chr>, language <chr>, rights <chr>
+#> 1 oai:biodiversitylibrary.org:item/7 2016-07-13T09:13:41Z    item
+#> 
+#> $`oai:biodiversitylibrary.org:item/7`$metadata
+#> # A tibble: 1 x 11
+#>                                                                    title
+#>                                                                    <chr>
+#> 1 Die Musci der Flora von Buitenzorg : zugleich Laubmoosflora von Java /
+#> # ... with 10 more variables: creator <chr>, subject <chr>,
+#> #   description <chr>, publisher <chr>, contributor <chr>, date <chr>,
+#> #   type <chr>, identifier <chr>, language <chr>, rights <chr>
+#> 
+#> 
+#> $`oai:biodiversitylibrary.org:item/9`
+#> $`oai:biodiversitylibrary.org:item/9`$header
+#> # A tibble: 1 x 3
+#>                           identifier            datestamp setSpec
+#>                                <chr>                <chr>   <chr>
+#> 1 oai:biodiversitylibrary.org:item/9 2016-07-13T09:13:41Z    item
+#> 
+#> $`oai:biodiversitylibrary.org:item/9`$metadata
+#> # A tibble: 1 x 11
+#>                                                                    title
+#>                                                                    <chr>
+#> 1 Die Musci der Flora von Buitenzorg : zugleich Laubmoosflora von Java /
+#> # ... with 10 more variables: creator <chr>, subject <chr>,
+#> #   description <chr>, publisher <chr>, contributor <chr>, date <chr>,
+#> #   type <chr>, identifier <chr>, language <chr>, rights <chr>
 ```
 
+Acknowledgements
+----------------
 
-## Meta
+Michal Bojanowski thanks National Science Centre for support through grant 2012/07/D/HS6/01971.
 
-* Please [report any issues or bugs](https://github.com/ropensci/oai/issues).
-* License: MIT
-* Get citation information for `oai` in R doing `citation(package = 'oai')`
-* Please note that this project is released with a [Contributor Code of Conduct](CONDUCT.md). By participating in this project you agree to abide by its terms.
+Meta
+----
 
-[![ropensci_footer](http://ropensci.org/public_images/github_footer.png)](http://ropensci.org)
+-   Please [report any issues or bugs](https://github.com/ropensci/oai/issues).
+-   License: MIT
+-   Get citation information for `oai` in R doing `citation(package = 'oai')`
+-   Please note that this project is released with a [Contributor Code of Conduct](CONDUCT.md). By participating in this project you agree to abide by its terms.
+
+[![ropensci\_footer](http://ropensci.org/public_images/github_footer.png)](http://ropensci.org)
