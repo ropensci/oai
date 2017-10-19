@@ -4,7 +4,7 @@
 \alias{list_identifiers}
 \title{List OAI-PMH identifiers}
 \usage{
-list_identifiers(url = "http://oai.datacite.org/oai", prefix = "oai_dc",
+list_identifiers(url = "https://oai.datacite.org/oai", prefix = "oai_dc",
   from = NULL, until = NULL, set = NULL, token = NULL, as = "df", ...)
 }
 \arguments{

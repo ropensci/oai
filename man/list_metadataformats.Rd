@@ -4,7 +4,7 @@
 \alias{list_metadataformats}
 \title{List available metadata formats from various providers.}
 \usage{
-list_metadataformats(url = "http://oai.datacite.org/oai", id = NULL, ...)
+list_metadataformats(url = "https://oai.datacite.org/oai", id = NULL, ...)
 }
 \arguments{
 \item{url}{(character) OAI-PMH base url}

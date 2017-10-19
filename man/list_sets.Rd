@@ -4,7 +4,7 @@
 \alias{list_sets}
 \title{List sets}
 \usage{
-list_sets(url = "http://oai.datacite.org/oai", token = NULL, as = "df",
+list_sets(url = "https://oai.datacite.org/oai", token = NULL, as = "df",
   ...)
 }
 \arguments{

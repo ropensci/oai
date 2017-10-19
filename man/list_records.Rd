@@ -4,7 +4,7 @@
 \alias{list_records}
 \title{List records}
 \usage{
-list_records(url = "http://oai.datacite.org/oai", prefix = "oai_dc",
+list_records(url = "https://oai.datacite.org/oai", prefix = "oai_dc",
   from = NULL, until = NULL, set = NULL, token = NULL, as = "df", ...)
 }
 \arguments{

@@ -4,7 +4,7 @@
 \alias{count_identifiers}
 \title{Count OAI-PMH identifiers for a data provider.}
 \usage{
-count_identifiers(url = "http://oai.datacite.org/oai", prefix = "oai_dc",
+count_identifiers(url = "https://oai.datacite.org/oai", prefix = "oai_dc",
   ...)
 }
 \arguments{

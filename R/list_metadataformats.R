@@ -16,7 +16,7 @@
 #' library("httr")
 #' list_metadataformats(id = "oai:oai.datacite.org:32348", config = verbose())
 #' }
-list_metadataformats <- function(url = "http://oai.datacite.org/oai", id = NULL, ...) {
+list_metadataformats <- function(url = "https://oai.datacite.org/oai", id = NULL, ...) {
   check_url(url)
   if (!is.null(id)) {
     stats::setNames(lapply(id, one_mf, url = url, ...), id)

@@ -26,7 +26,7 @@
 #' # set parameter - here, using ANDS - Australian National Data Service
 #' list_identifiers(from = '2011-09-01T', until = '2012-09-01T', set = "ANDS")
 #' }
-list_identifiers <- function(url = "http://oai.datacite.org/oai",
+list_identifiers <- function(url = "https://oai.datacite.org/oai",
                              prefix = "oai_dc", from = NULL,
                              until = NULL, set = NULL, token = NULL,
                              as = "df", ...) {

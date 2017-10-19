@@ -32,7 +32,7 @@
 #' # list_records(token =
 #' #  "1443799900201,2015-09-01T00:00:00Z,2015-10-01T23:59:59Z,50,null,oai_dc")
 #' }
-list_records <- function(url = "http://oai.datacite.org/oai", prefix = "oai_dc",
+list_records <- function(url = "https://oai.datacite.org/oai", prefix = "oai_dc",
   from = NULL, until = NULL, set = NULL, token = NULL, as = "df", ...) {
 
   check_url(url)

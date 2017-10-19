@@ -19,7 +19,7 @@
 #' library("httr")
 #' list_sets(config = verbose())
 #' }
-list_sets <- function(url = "http://oai.datacite.org/oai", token = NULL, as = "df", ...) {
+list_sets <- function(url = "https://oai.datacite.org/oai", token = NULL, as = "df", ...) {
   check_url(url)
   args <- sc(list(verb = "ListSets", resumptionToken = token))
   out <- while_oai(url, args, token, as, ...)
