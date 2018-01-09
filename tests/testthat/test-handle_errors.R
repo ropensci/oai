@@ -17,76 +17,76 @@ error_url <- list(
 # GET and parse
 gnp <- function(u) {
   r <- httr::GET(u)
-  xml2::read_xml( httr::content(r, "text"))
+  xml2::read_xml( httr::content(r, "text", encoding = "UTF-8"))
 }
 
 
-test_that("badArgument is triggered", {
-  skip_on_cran()
+# test_that("badArgument is triggered", {
+#   skip_on_cran()
 
-  xml <- gnp(error_url$badArgument)
-  expect_error( handle_errors(xml) )
-  expect_true( tryCatch( handle_errors(xml), error=function(er) inherits(er, "oai-pmh_error") ) )
-  expect_true( tryCatch( handle_errors(xml), error=function(er) "badArgument" %in% attr(er, "error_codes")))
-} )
-
-
-test_that("badResumptionToken is triggered", {
-  skip_on_cran()
-
-  xml <- gnp(error_url$badResumptionToken)
-  expect_error( handle_errors(xml) )
-  expect_true( tryCatch( handle_errors(xml), error=function(er) inherits(er, "oai-pmh_error") ) )
-  expect_true( tryCatch( handle_errors(xml), error=function(er) "badResumptionToken" %in% attr(er, "error_codes")))
-} )
-
-test_that("badVerb is triggered", {
-  skip_on_cran()
-
-  xml <- gnp(error_url$badVerb)
-  expect_error( handle_errors(xml) )
-  expect_true( tryCatch( handle_errors(xml), error=function(er) inherits(er, "oai-pmh_error") ) )
-  expect_true( tryCatch( handle_errors(xml), error=function(er) "badVerb" %in% attr(er, "error_codes")))
-} )
-
-test_that("cannotDisseminateFormat is triggered", {
-  skip_on_cran()
-
-  xml <- gnp(error_url$cannotDisseminateFormat)
-  expect_error( handle_errors(xml) )
-  expect_true( tryCatch( handle_errors(xml), error=function(er) inherits(er, "oai-pmh_error") ) )
-  expect_true( tryCatch( handle_errors(xml), error=function(er) "cannotDisseminateFormat" %in% attr(er, "error_codes")))
-} )
-
-test_that("idDoesNotExist is triggered", {
-  skip_on_cran()
-
-  xml <- gnp(error_url$idDoesNotExist)
-  expect_error( handle_errors(xml) )
-  expect_true( tryCatch( handle_errors(xml), error=function(er) inherits(er, "oai-pmh_error") ) )
-  expect_true( tryCatch( handle_errors(xml), error=function(er) "idDoesNotExist" %in% attr(er, "error_codes")))
-} )
-
-test_that("noRecordsMatch is triggered", {
-  skip_on_cran()
-
-  xml <- gnp(error_url$noRecordsMatch)
-  expect_error( handle_errors(xml) )
-  expect_true( tryCatch( handle_errors(xml), error=function(er) inherits(er, "oai-pmh_error") ) )
-  expect_true( tryCatch( handle_errors(xml), error=function(er) "noRecordsMatch" %in% attr(er, "error_codes")))
-} )
+#   xml <- gnp(error_url$badArgument)
+#   expect_error( handle_errors(xml) )
+#   expect_true( tryCatch( handle_errors(xml), error=function(er) inherits(er, "oai-pmh_error") ) )
+#   expect_true( tryCatch( handle_errors(xml), error=function(er) "badArgument" %in% attr(er, "error_codes")))
+# } )
 
 
-test_that("noSetHierarchy is triggered", {
-  skip_on_cran()
+# test_that("badResumptionToken is triggered", {
+#   skip_on_cran()
 
-  if (!is.null(error_url$noSetHierarchy)) {
-    xml <- gnp(error_url$noSetHierarchy)
-    expect_error( handle_errors(xml) )
-    expect_true( tryCatch( handle_errors(xml), error=function(er) inherits(er, "oai-pmh_error") ) )
-    expect_true( tryCatch( handle_errors(xml), error=function(er) "noSetHierarchy" %in% attr(er, "error_codes")))
-  }
+#   xml <- gnp(error_url$badResumptionToken)
+#   expect_error( handle_errors(xml) )
+#   expect_true( tryCatch( handle_errors(xml), error=function(er) inherits(er, "oai-pmh_error") ) )
+#   expect_true( tryCatch( handle_errors(xml), error=function(er) "badResumptionToken" %in% attr(er, "error_codes")))
+# } )
 
-})
+# test_that("badVerb is triggered", {
+#   skip_on_cran()
 
-rm(tomorrow, error_url, gnp)
+#   xml <- gnp(error_url$badVerb)
+#   expect_error( handle_errors(xml) )
+#   expect_true( tryCatch( handle_errors(xml), error=function(er) inherits(er, "oai-pmh_error") ) )
+#   expect_true( tryCatch( handle_errors(xml), error=function(er) "badVerb" %in% attr(er, "error_codes")))
+# } )
+
+# test_that("cannotDisseminateFormat is triggered", {
+#   skip_on_cran()
+
+#   xml <- gnp(error_url$cannotDisseminateFormat)
+#   expect_error( handle_errors(xml) )
+#   expect_true( tryCatch( handle_errors(xml), error=function(er) inherits(er, "oai-pmh_error") ) )
+#   expect_true( tryCatch( handle_errors(xml), error=function(er) "cannotDisseminateFormat" %in% attr(er, "error_codes")))
+# } )
+
+# test_that("idDoesNotExist is triggered", {
+#   skip_on_cran()
+
+#   xml <- gnp(error_url$idDoesNotExist)
+#   expect_error( handle_errors(xml) )
+#   expect_true( tryCatch( handle_errors(xml), error=function(er) inherits(er, "oai-pmh_error") ) )
+#   expect_true( tryCatch( handle_errors(xml), error=function(er) "idDoesNotExist" %in% attr(er, "error_codes")))
+# } )
+
+# test_that("noRecordsMatch is triggered", {
+#   skip_on_cran()
+
+#   xml <- gnp(error_url$noRecordsMatch)
+#   expect_error( handle_errors(xml) )
+#   expect_true( tryCatch( handle_errors(xml), error=function(er) inherits(er, "oai-pmh_error") ) )
+#   expect_true( tryCatch( handle_errors(xml), error=function(er) "noRecordsMatch" %in% attr(er, "error_codes")))
+# } )
+
+
+# test_that("noSetHierarchy is triggered", {
+#   skip_on_cran()
+
+#   if (!is.null(error_url$noSetHierarchy)) {
+#     xml <- gnp(error_url$noSetHierarchy)
+#     expect_error( handle_errors(xml) )
+#     expect_true( tryCatch( handle_errors(xml), error=function(er) inherits(er, "oai-pmh_error") ) )
+#     expect_true( tryCatch( handle_errors(xml), error=function(er) "noSetHierarchy" %in% attr(er, "error_codes")))
+#   }
+
+# })
+
+# rm(tomorrow, error_url, gnp)
