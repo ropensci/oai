@@ -7,6 +7,6 @@ README.Rmd
 appveyor.yml
 Makefile
 ^.*-providers.rda
-^CONDUCT\.md$
+^CODE_OF_CONDUCT\.md$
 revdep
 ^cran-comments\.md$
