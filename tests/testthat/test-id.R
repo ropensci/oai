@@ -26,6 +26,19 @@ test_that("id - url param works", {
   expect_equal(NROW(cc), 1)
 })
 
+test_that("id - as param works", {
+  skip_on_cran()
+
+  expect_error(id("http://oai.datacite.org/oai", as = "stuff"), 
+    "'as' must be one of")
+
+  aa <- id("http://oai.datacite.org/oai", as = "raw")
+  bb <- id("http://oai.datacite.org/oai", as = "parsed")
+
+  expect_is(aa, "character")
+  expect_is(bb, "data.frame")
+})
+
 test_that("id fails well", {
   skip_on_cran()
 
