@@ -1,19 +1,14 @@
----
-title: "oai"
-output:
-  github_document: null
----
-
-
 ```{r echo=FALSE}
 knitr::opts_chunk$set(
   warning = FALSE,
   message = FALSE,
   collapse = TRUE,
-  comment = "#>"
+  comment = "#>",
+  cache.path = "inst/cache/"
 )
 ```
 
+[![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)
 [![Build Status](https://travis-ci.org/ropensci/oai.svg?branch=master)](https://travis-ci.org/ropensci/oai) 
 [![Build status](https://ci.appveyor.com/api/projects/status/h5qu574ky0rk3xxv?svg=true)](https://ci.appveyor.com/project/sckott/oai) 
 [![cran checks](https://cranchecks.info/badges/worst/oai)](https://cranchecks.info/pkgs/oai)
@@ -60,55 +55,41 @@ id("http://oai.datacite.org/oai")
 ## ListIdentifiers
 
 ```{r}
-list_identifiers(from = '2011-05-01T', until = '2011-09-01T')
+list_identifiers(from = '2018-05-01T', until = '2018-06-01T')
 ```
 
 ## Count Identifiers
 
-```{r}
+```{r cache=TRUE}
 count_identifiers()
 ```
 
 ## ListRecords
 
 ```{r}
-list_records(from = '2011-05-01T', until = '2011-08-15T')
+list_records(from = '2018-05-01T', until = '2018-05-15T')
 ```
 
 ## GetRecords
 
 ```{r}
-get_records(c("oai:oai.datacite.org:32255", "oai:oai.datacite.org:32325"))
+ids <- c("87832186-00ea-44dd-a6bf-c2896c4d09b4", "d981c07d-bc43-40a2-be1f-e786e25106ac")
+get_records(ids)
 ```
 
 ## List MetadataFormats
 
 ```{r}
-list_metadataformats(id = "oai:oai.datacite.org:32348")
+list_metadataformats(id = "87832186-00ea-44dd-a6bf-c2896c4d09b4")
 ```
 
 ## List Sets
 
 ```{r}
-list_sets("http://oai.datacite.org/oai")
+list_sets("http://api.gbif.org/v1/oai-pmh/registry")
 ```
 
 ## Examples of other OAI providers
-
-### Global Biodiversity Information Facility
-
-Identify
-
-```{r}
-id("http://api.gbif.org/v1/oai-pmh/registry")
-```
-
-Get records
-
-```{r}
-get_records(c("816f4734-6b49-41ab-8a1d-1b21e6b5486d", "95e3042f-f48d-4a04-8251-f755bebeced6"),
-            url = "http://api.gbif.org/v1/oai-pmh/registry")
-```
 
 ### Biodiversity Heritage Library
 
@@ -136,6 +117,9 @@ Michal Bojanowski thanks National Science Centre for support through grant 2012/
 * Please [report any issues or bugs](https://github.com/ropensci/oai/issues).
 * License: MIT
 * Get citation information for `oai` in R doing `citation(package = 'oai')`
-* Please note that this project is released with a [Contributor Code of Conduct](CODE_OF_CONDUCT.md). By participating in this project you agree to abide by its terms.
+* Please note that this project is released with a [Contributor Code of Conduct][coc].
+By participating in this project you agree to abide by its terms.
 
 [![ropensci_footer](http://ropensci.org/public_images/github_footer.png)](http://ropensci.org)
+
+[coc]: https://github.com/ropensci/oai/blob/master/CODE_OF_CONDUCT.md

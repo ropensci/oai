@@ -10,3 +10,4 @@ Makefile
 ^CODE_OF_CONDUCT\.md$
 revdep
 ^cran-comments\.md$
+inst/cache
