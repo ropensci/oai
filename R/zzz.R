@@ -36,7 +36,7 @@ oai_give <- function(x, as) {
   }
   switch(
     as,
-    df = tibble::as_data_frame(rbind.fill(x)),
+    df = tibble::as_tibble(rbind.fill(x)),
     list = x,
     raw = x
   )

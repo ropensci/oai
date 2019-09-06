@@ -16,8 +16,8 @@ parse_oai_dc <- function(x) {
   meta <- uniqify(meta)
 
   list(
-    header = tibble::as_data_frame(header),
-    metadata = tibble::as_data_frame(meta)
+    header = tibble::as_tibble(header),
+    metadata = tibble::as_tibble(meta)
   )
 }
 
@@ -44,7 +44,7 @@ parse_oai_datacite <- function(x) {
   )
 
   list(
-    header = tibble::as_data_frame(header),
+    header = tibble::as_tibble(header),
     metadata = meta
   )
 }
