@@ -11,20 +11,17 @@
 #' know.
 #' @examples \dontrun{
 #' count_identifiers()
-#' count_identifiers(c(
-#'  "http://oai.datacite.org/oai",
-#'  "http://archivesic.ccsd.cnrs.fr/oai/oai.php",
-#'  "http://www.hindawi.com/oai-pmh/oai.aspx"
-#' ))
 #'
 #' # curl options
 #' library("httr")
 #' count_identifiers(config = verbose())
 #' }
-count_identifiers <- function(url = "https://oai.datacite.org/oai", prefix = 'oai_dc', ...) {
+count_identifiers <- function(url = "http://export.arxiv.org/oai2", 
+  prefix = 'oai_dc', ...) {
+
   check_url(url)
   args <- sc(list(verb = 'ListIdentifiers', metadataPrefix = prefix))
-  rbind.fill(lapply(url, ci, args = args, ...))
+  plyr::rbind.fill(lapply(url, ci, args = args, ...))
 }
 
 ci <- function(x, args, ...) {
