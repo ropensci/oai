@@ -7,3 +7,6 @@ src/*.o
 src/*.so
 src/*.a
 inst/cache
+revdep/checks.noindex
+revdep/data.sqlite
+revdep/library.noindex

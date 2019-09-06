@@ -8,6 +8,6 @@ appveyor.yml
 Makefile
 ^.*-providers.rda
 ^CODE_OF_CONDUCT\.md$
-revdep
+^revdep$
 ^cran-comments\.md$
 inst/cache
