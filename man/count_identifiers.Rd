@@ -9,7 +9,8 @@ count_identifiers(url = "http://export.arxiv.org/oai2",
 }
 \arguments{
 \item{url}{(character) OAI-PMH base url. Defaults to the URL for 
-arXiv's OAI-PMH server (http://export.arxiv.org/oai2)}
+arXiv's OAI-PMH server (http://export.arxiv.org/oai2)
+or GBIF's OAI-PMH server (http://api.gbif.org/v1/oai-pmh/registry)}
 
 \item{prefix}{Specifies the metadata format that the records will be
 returned in.}
