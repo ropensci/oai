@@ -44,7 +44,7 @@ test_that("get_records fails well", {
   expect_error(get_records(),
                "argument \"ids\" is missing, with no default")
   expect_error(get_records(5, url = "http://api.gbif.org/v1/oai-pmh/registry"),
-               "idDoesNotExist: The given id does not exist")
+               "idDoesNotExist: The given id does not exist", class = "error")
   expect_error(get_records("oai:oai.datacite.org:32255", url = "stuff"),
                "One or more of your URLs")
 })

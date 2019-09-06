@@ -35,7 +35,8 @@ test_that("list_sets fails well", {
   skip_on_cran()
 
   expect_error(list_sets(token = 454),
-               "The value of the resumptionToken argument is invalid or expired")
+    "OAI-PMH errors: badResumptionToken",
+    class = "error")
   expect_error(list_sets("stuff"),
                "One or more of your URLs")
 })

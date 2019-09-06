@@ -16,8 +16,8 @@ test_that("list_metadataformats - basic functionality works", {
 test_that("list_metadataformats - no formats avail. vs. avail", {
   skip_on_cran()
 
-  aa <- list_metadataformats(id = "oai:oai.datacite.org:22")
-  bb <- list_metadataformats(id = "oai:oai.datacite.org:32348")
+  aa <- list_metadataformats(id = "foo-bar")
+  bb <- list_metadataformats(id = "ad7295e0-3261-4028-8308-b2047d51d408")
 
   expect_null(aa[[1]])
   expect_is(bb[[1]], "data.frame")
@@ -28,7 +28,8 @@ test_that("list_metadataformats - curl options", {
 
   library("httr")
 
-  expect_error(list_metadataformats(config = timeout(0.001)), "Timeout was reached")
+  expect_error(list_metadataformats(config = timeout(0.001)),
+    "Timeout was reached")
 })
 
 test_that("list_metadataformats fails well", {
