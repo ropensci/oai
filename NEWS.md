@@ -1,3 +1,23 @@
+oai 0.3.0
+=========
+
+### NEW FEATURES
+
+* `id()` gains `as` parameter so user can ask for different outputs (parsed list/data.frame, or raw xml/text) (#54)
+* most OAI functions changed their default url to `http://api.gbif.org/v1/oai-pmh/registry`, while `count_identifiers()` changed it's default url to `http://export.arxiv.org/oai2`. the previous default url for Datacite was too unreliable (was often unresponsive)
+
+### MINOR IMPROVEMENTS
+
+* add grant information for one author (#48) (#49)
+* code of conduct urls fixed
+* now using markdown supported documentation (#56)
+* replace `tibble::as_data_frame` with `tibble::as_tibble` throughout package
+
+### BUG FIXES
+
+* fix to `update_providers()`; html page that we scrape had changed (#57)
+
+
 oai 0.2.2
 =========
 
