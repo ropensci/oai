@@ -7,16 +7,14 @@
 #' list_metadataformats()
 #'
 #' # no metadatformats for an identifier
-#' list_metadataformats(id = "oai:oai.datacite.org:22")
+#' list_metadataformats(id = "9da8a65a-1b9b-487c-a564-d184a91a2705")
 #'
 #' # metadatformats available for an identifier
-#' list_metadataformats(id = "oai:oai.datacite.org:32348")
-#'
-#' # curl options
-#' library("httr")
-#' list_metadataformats(id = "oai:oai.datacite.org:32348", config = verbose())
+#' list_metadataformats(id = "ad7295e0-3261-4028-8308-b2047d51d408")
 #' }
-list_metadataformats <- function(url = "https://oai.datacite.org/oai", id = NULL, ...) {
+list_metadataformats <- function(url="http://api.gbif.org/v1/oai-pmh/registry",
+  id = NULL, ...) {
+
   check_url(url)
   if (!is.null(id)) {
     stats::setNames(lapply(id, one_mf, url = url, ...), id)

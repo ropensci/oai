@@ -3,8 +3,8 @@
 #' @export
 #' @template url_ddd
 #' @template as
-#' @param token (character) a token previously provided by the server to resume a request
-#'     where it last left off.
+#' @param token (character) a token previously provided by the server to
+#' resume a request where it last left off
 #' @examples \dontrun{
 #' # Get back a data.frame
 #' list_sets()
@@ -19,7 +19,9 @@
 #' library("httr")
 #' list_sets(config = verbose())
 #' }
-list_sets <- function(url = "https://oai.datacite.org/oai", token = NULL, as = "df", ...) {
+list_sets <- function(url = "http://api.gbif.org/v1/oai-pmh/registry",
+  token = NULL, as = "df", ...) {
+
   check_url(url)
   args <- sc(list(verb = "ListSets", resumptionToken = token))
   out <- while_oai(url, args, token, as, ...)

@@ -17,23 +17,23 @@
 #' asked for.
 #' @examples \dontrun{
 #' # By default you get back a single data.frame
-#' list_records(from = '2011-05-01T', until = '2011-08-15T')
-#' list_records(from = '2011-05-01T', until = '2011-07-15T')
-#' list_records(from = '2011-06-01T', until = '2011-07-01T')
+#' list_records(from = '2018-05-01T00:00:00Z', until = '2018-05-03T00:00:00Z')
+#' list_records(from = '2018-05-01T', until = '2018-05-04T')
 #'
 #' # Get a list
-#' list_records(from = '2011-06-01T', until = '2011-07-01T', as = "list")
+#' list_records(from = '2018-05-01T', until = '2018-05-04T', as = "list")
 #'
 #' # Get raw text
-#' list_records(from = '2011-06-01T', until = '2011-07-01T', as = "raw")
-#' list_records(from = '2011-06-01T', until = '2011-07-30T', as = "raw")
+#' list_records(from = '2018-05-01T', until = '2018-05-04T', as = "raw")
+#' list_records(from = '2018-05-01T', until = '2018-05-04T', as = "raw")
 #'
 #' # Use a resumption token
 #' # list_records(token =
 #' #  "1443799900201,2015-09-01T00:00:00Z,2015-10-01T23:59:59Z,50,null,oai_dc")
 #' }
-list_records <- function(url = "https://oai.datacite.org/oai", prefix = "oai_dc",
-  from = NULL, until = NULL, set = NULL, token = NULL, as = "df", ...) {
+list_records <- function(url = "http://api.gbif.org/v1/oai-pmh/registry",
+  prefix = "oai_dc", from = NULL, until = NULL, set = NULL, token = NULL,
+  as = "df", ...) {
 
   check_url(url)
   if (!is.null(token)) from <- until <- set <- prefix <- NULL

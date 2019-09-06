@@ -4,14 +4,15 @@
 \alias{list_sets}
 \title{List sets}
 \usage{
-list_sets(url = "https://oai.datacite.org/oai", token = NULL, as = "df",
-  ...)
+list_sets(url = "http://api.gbif.org/v1/oai-pmh/registry",
+  token = NULL, as = "df", ...)
 }
 \arguments{
-\item{url}{(character) OAI-PMH base url}
+\item{url}{(character) OAI-PMH base url. Defaults to the URL for 
+arXiv's OAI-PMH server (http://export.arxiv.org/oai2)}
 
-\item{token}{(character) a token previously provided by the server to resume a request
-where it last left off.}
+\item{token}{(character) a token previously provided by the server to
+resume a request where it last left off}
 
 \item{as}{(character) What to return. One of "df" (for data.frame; default),
 "list", or "raw" (raw text)}

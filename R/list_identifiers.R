@@ -18,15 +18,13 @@
 #' list_identifiers(from = recently)
 #'
 #' # from and until
-#' list_identifiers(from = '2011-06-01T', until = '2011-07-01T')
-#'
-#' # longer time span
-#' list_identifiers(from = '2011-06-01T', until = '2011-09-01T')
+#' list_identifiers(from = '2018-06-01T', until = '2018-06-14T')
 #'
 #' # set parameter - here, using ANDS - Australian National Data Service
-#' list_identifiers(from = '2011-09-01T', until = '2012-09-01T', set = "ANDS")
+#' list_identifiers(from = '2018-09-01T', until = '2018-09-05T',
+#'   set = "dataset_type:CHECKLIST")
 #' }
-list_identifiers <- function(url = "https://oai.datacite.org/oai",
+list_identifiers <- function(url = "http://api.gbif.org/v1/oai-pmh/registry",
                              prefix = "oai_dc", from = NULL,
                              until = NULL, set = NULL, token = NULL,
                              as = "df", ...) {

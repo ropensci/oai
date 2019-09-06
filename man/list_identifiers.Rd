@@ -4,11 +4,13 @@
 \alias{list_identifiers}
 \title{List OAI-PMH identifiers}
 \usage{
-list_identifiers(url = "https://oai.datacite.org/oai", prefix = "oai_dc",
-  from = NULL, until = NULL, set = NULL, token = NULL, as = "df", ...)
+list_identifiers(url = "http://api.gbif.org/v1/oai-pmh/registry",
+  prefix = "oai_dc", from = NULL, until = NULL, set = NULL,
+  token = NULL, as = "df", ...)
 }
 \arguments{
-\item{url}{(character) OAI-PMH base url}
+\item{url}{(character) OAI-PMH base url. Defaults to the URL for 
+arXiv's OAI-PMH server (http://export.arxiv.org/oai2)}
 
 \item{prefix}{Specifies the metadata format that the records will be
 returned in.}
@@ -39,12 +41,10 @@ recently <- format(Sys.Date() - 1, "\%Y-\%m-\%d")
 list_identifiers(from = recently)
 
 # from and until
-list_identifiers(from = '2011-06-01T', until = '2011-07-01T')
-
-# longer time span
-list_identifiers(from = '2011-06-01T', until = '2011-09-01T')
+list_identifiers(from = '2018-06-01T', until = '2018-06-14T')
 
 # set parameter - here, using ANDS - Australian National Data Service
-list_identifiers(from = '2011-09-01T', until = '2012-09-01T', set = "ANDS")
+list_identifiers(from = '2018-09-01T', until = '2018-09-05T',
+  set = "dataset_type:CHECKLIST")
 }
 }

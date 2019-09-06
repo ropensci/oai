@@ -4,10 +4,12 @@
 \alias{list_metadataformats}
 \title{List available metadata formats from various providers.}
 \usage{
-list_metadataformats(url = "https://oai.datacite.org/oai", id = NULL, ...)
+list_metadataformats(url = "http://api.gbif.org/v1/oai-pmh/registry",
+  id = NULL, ...)
 }
 \arguments{
-\item{url}{(character) OAI-PMH base url}
+\item{url}{(character) OAI-PMH base url. Defaults to the URL for 
+arXiv's OAI-PMH server (http://export.arxiv.org/oai2)}
 
 \item{id}{The OAI-PMH identifier for the record. Optional.}
 
@@ -21,13 +23,9 @@ List available metadata formats from various providers.
 list_metadataformats()
 
 # no metadatformats for an identifier
-list_metadataformats(id = "oai:oai.datacite.org:22")
+list_metadataformats(id = "9da8a65a-1b9b-487c-a564-d184a91a2705")
 
 # metadatformats available for an identifier
-list_metadataformats(id = "oai:oai.datacite.org:32348")
-
-# curl options
-library("httr")
-list_metadataformats(id = "oai:oai.datacite.org:32348", config = verbose())
+list_metadataformats(id = "ad7295e0-3261-4028-8308-b2047d51d408")
 }
 }
