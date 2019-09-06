@@ -22,9 +22,10 @@
 #' duplicated node names, separated by a semicolon (\code{;}) with no
 #' spaces. You can seprarate them yourself easily.
 #' @examples \dontrun{
-#' get_records("oai:oai.datacite.org:32255")
+#' get_records("87832186-00ea-44dd-a6bf-c2896c4d09b4")
 #'
-#' ids <- c("oai:oai.datacite.org:32255", "oai:oai.datacite.org:32325")
+#' ids <- c("87832186-00ea-44dd-a6bf-c2896c4d09b4", 
+#'   "d981c07d-bc43-40a2-be1f-e786e25106ac")
 #' (res <- get_records(ids))
 #' lapply(res, "[[", "header")
 #' lapply(res, "[[", "metadata")
@@ -32,28 +33,15 @@
 #' do.call(rbind, lapply(res, "[[", "metadata"))
 #'
 #' # Get raw text
-#' get_records("oai:oai.datacite.org:32255", as = "raw")
+#' get_records("d981c07d-bc43-40a2-be1f-e786e25106ac", as = "raw")
 #'
 #' # from arxiv.org
 #' get_records("oai:arXiv.org:0704.0001", url = "http://export.arxiv.org/oai2")
-#'
-#' # GBIF - http://www.gbif.org
-#' get_records(
-#'   c("816f4734-6b49-41ab-8a1d-1b21e6b5486d",
-#'   "95e3042f-f48d-4a04-8251-f755bebeced6"),
-#'   url = "http://api.gbif.org/v1/oai-pmh/registry")
-#'
-#' # oai_datacite
-#' get_records(ids="oai:zenodo.org:159890", prefix="oai_datacite",
-#'   url = "https://zenodo.org/oai2d")
-#'
-#' get_records(ids="oai:oai.datacite.org:32255", prefix="oai_datacite")
 #' }
-get_records <- function(ids, prefix = "oai_dc", url = "http://oai.datacite.org/oai",
+get_records <- function(ids, prefix = "oai_dc", url = "http://api.gbif.org/v1/oai-pmh/registry",
                         as = "parsed", ...) {
   check_url(url)
   if (as %in% c('list', 'df')) as <- "parsed"
-  #if (!as %in% c('parsed', 'raw')) stop("'as' must be one of 'parsed' or 'raw'", call. = FALSE)
   stats::setNames(
     lapply(ids, each_record, url = url, prefix = prefix, as = as, ...),
     ids
