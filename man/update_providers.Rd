@@ -19,12 +19,12 @@ down here, but you can grab the name using example below.
 }
 \details{
 This table is scraped from
-		\url{http://www.openarchives.org/Register/BrowseSites}.
-		I would get it from \url{http://www.openarchives.org/Register/ListFriends},
-		but it does not include repository names.
+\url{http://www.openarchives.org/Register/BrowseSites}.
+I would get it from \url{http://www.openarchives.org/Register/ListFriends},
+but it does not include repository names.
 
-		This function updates the table for you. Does take a while though, so
-		go get a coffee.
+This function updates the table for you. Does take a while though, so
+go get a coffee.
 }
 \examples{
 \dontrun{

@@ -7,12 +7,12 @@
 #'
 #' @export
 #' @details This table is scraped from
-#' 		\url{http://www.openarchives.org/Register/BrowseSites}.
-#' 		I would get it from \url{http://www.openarchives.org/Register/ListFriends},
-#' 		but it does not include repository names.
+#' \url{http://www.openarchives.org/Register/BrowseSites}.
+#' I would get it from \url{http://www.openarchives.org/Register/ListFriends},
+#' but it does not include repository names.
 #'
-#' 		This function updates the table for you. Does take a while though, so
-#' 		go get a coffee.
+#' This function updates the table for you. Does take a while though, so
+#' go get a coffee.
 #' @param path Path to put data in.
 #' @param ... Curl options passed on to \code{\link[httr]{GET}}
 #' @seealso \code{\link{load_providers}}
@@ -26,14 +26,16 @@ update_providers <- function(path = ".", ...) {
   stop_for_status(tt)
   temp <- content(tt, "text", encoding = "UTF-8")
   prov <- xml2::read_html(temp)
-  tab <- xml2::xml_find_all(prov, "//table")[[2]]
+  tab <- xml2::xml_find_all(prov, "//table[@class=\"registration-table\"]")
   children <- xml2::xml_children(tab)
   providers <- rbind.fill(lapply(children[-1], function(z) {
-    data.frame(t(gsub("\n|\\s\\s+", "", xml2::xml_text(xml2::xml_children(z)[3:5]))),
-               stringsAsFactors = FALSE)
+    data.frame(
+      t(gsub("\n|\\s\\s+", "", xml2::xml_text(xml2::xml_children(z)[3:5]))),
+      stringsAsFactors = FALSE)
   }))
   names(providers) <- c("repo_name", "base_url", "oai_identifier")
-  save(providers, file = paste(path, "/", Sys.Date(), "-providers.rda", sep = ""))
+  save(providers, file = paste(path, "/", Sys.Date(), "-providers.rda",
+    sep = ""))
 }
 
 oai_base <- function() "http://www.openarchives.org/Register/BrowseSites"
