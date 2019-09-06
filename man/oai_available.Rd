@@ -9,7 +9,7 @@ oai_available(u, ...)
 \arguments{
 \item{u}{base URL to OAI-PMH service}
 
-\item{...}{other arguments passed to \code{\link{id}}}
+\item{...}{other arguments passed to \code{\link[=id]{id()}}}
 }
 \value{
 \code{TRUE} or \code{FALSE} if the service is available.

@@ -5,21 +5,21 @@
 #' @template url_ddd
 #' @param ids The OAI-PMH identifier for the record. One or more. Required.
 #' @param prefix specifies the metadata format that the records will be
-#'     returned in. Default: \code{oai_dc}
+#' returned in. Default: `oai_dc`
 #' @param as (character) What to return. One of "parsed" (default),
-#'     or "raw" (raw text)
+#' or "raw" (raw text)
 #' @return a named list of data.frame's, or lists, or raw text
 #' @details There are some finite set of results based on the OAI prefix.
 #' We will provide parsers as we have time, and as users express interest.
 #' For prefix types we have parsers for we return a list of data.frame's,
-#' for each identifier, one data.frame for the \code{header} bits of data, and
-#' one data.frame for the \code{metadata} bits of data.
+#' for each identifier, one data.frame for the `header` bits of data, and
+#' one data.frame for the `metadata` bits of data.
 #'
 #' For prefixes we don't have parsers for, we fall back to returning raw
 #' XML, so you can at least parse the XML yourself.
 #'
 #' Because some XML nodes are duplicated, we join values together of
-#' duplicated node names, separated by a semicolon (\code{;}) with no
+#' duplicated node names, separated by a semicolon (`;`) with no
 #' spaces. You can seprarate them yourself easily.
 #' @examples \dontrun{
 #' get_records("87832186-00ea-44dd-a6bf-c2896c4d09b4")

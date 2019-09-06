@@ -6,9 +6,10 @@
 \alias{oai}
 \title{OAI-PMH Client}
 \description{
-oai is an R client to work with OAI-PMH (Open Archives Initiative Protocol
-for Metadata Harvesting) services, a protocol developed by the
-[Open Archives Initiative](https://en.wikipedia.org/wiki/Open_Archives_Initiative).
+oai is an R client to work with OAI-PMH (Open Archives
+Initiative Protocol for Metadata Harvesting) services, a protocol
+developed by the Open Archives Initiative
+(https://en.wikipedia.org/wiki/Open_Archives_Initiative).
 OAI-PMH uses XML data format transported over HTTP.
 }
 \section{OAI-PMH Info}{
@@ -19,7 +20,7 @@ See the OAI-PMH V2 specification at
 
 \section{Implementation details}{
 
-oai is built on \code{xml2} and `httr`. In addition, we give back
+oai is built on \pkg{xml2} and \pkg{httr}. In addition, we give back
 data.frame's whenever possible to make data comprehension, manipulation,
 and visualization easier. We also have functions to fetch a large directory
 of OAI-PMH services - it isn't exhaustive, but does contain a lot.

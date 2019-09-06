@@ -10,7 +10,7 @@
 #' created/update/deleted on or before this date.
 #' @param set specifies the set that returned records must belong to.
 #' @param prefix specifies the metadata format that the records will be
-#'     returned in. Default: oai_dc
+#' returned in. Default: `oai_dc`
 #' @param token (character) a token previously provided by the server to
 #' resume a request where it last left off. 50 is max number of records
 #' returned. We will loop for you internally to get all the records you

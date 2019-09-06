@@ -9,12 +9,12 @@ list_records(url = "http://api.gbif.org/v1/oai-pmh/registry",
   token = NULL, as = "df", ...)
 }
 \arguments{
-\item{url}{(character) OAI-PMH base url. Defaults to the URL for 
+\item{url}{(character) OAI-PMH base url. Defaults to the URL for
 arXiv's OAI-PMH server (http://export.arxiv.org/oai2)
 or GBIF's OAI-PMH server (http://api.gbif.org/v1/oai-pmh/registry)}
 
 \item{prefix}{specifies the metadata format that the records will be
-returned in. Default: oai_dc}
+returned in. Default: \code{oai_dc}}
 
 \item{from}{specifies that records returned must have been
 created/update/deleted on or after this date.}

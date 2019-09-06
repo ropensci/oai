@@ -7,8 +7,8 @@
 load_providers(path = NULL, envir = .GlobalEnv)
 }
 \arguments{
-\item{path}{location where cache is located. Leaving to NULL loads the version
-in the installed package.}
+\item{path}{location where cache is located. Leaving to NULL loads
+the version in the installed package}
 
 \item{envir}{R environment to load data in to.}
 }
@@ -33,5 +33,5 @@ load_providers()
 }
 }
 \seealso{
-\code{\link{update_providers}}
+\code{\link[=update_providers]{update_providers()}}
 }

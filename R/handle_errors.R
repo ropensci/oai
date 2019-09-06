@@ -13,9 +13,6 @@
 # }
 #
 
-
-
-
 handle_errors <- function(xml) {
   # find error tags
   req <- xml2::xml_text(xml2::xml_find_first(xml, ".//*[local-name()='request']" ))

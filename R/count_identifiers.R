@@ -3,10 +3,10 @@
 #' @export
 #' @template url_ddd
 #' @param prefix Specifies the metadata format that the records will be
-#'     returned in.
+#' returned in
 #' @details Note that some OAI providers do not include the entry
-#' \code{completeListSize}
-#' (\url{http://www.openarchives.org/OAI/openarchivesprotocol.html#FlowControl})
+#' `completeListSize`
+#' (<http://www.openarchives.org/OAI/openarchivesprotocol.html#FlowControl>)
 #' in which case we return an NA - which does not mean 0, but rather we don't
 #' know.
 #' @examples \dontrun{
