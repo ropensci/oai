@@ -32,7 +32,7 @@ know.
 count_identifiers()
 
 # curl options
-library("httr")
-count_identifiers(config = verbose())
+# library("httr")
+# count_identifiers(config = verbose())
 }
 }

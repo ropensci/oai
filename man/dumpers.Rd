@@ -106,8 +106,8 @@ arguments are passed to \code{\link[DBI]{dbWriteTable}}.
 ### Dumping raw XML to text files
 
 # This will write a set of XML files to a temporary directory
-fnames <- list_identifiers(from="2015-09-01",
-                           until="2015-09-01",
+fnames <- list_identifiers(from="2018-06-01T",
+                           until="2018-06-14T",
                            as="raw",
                            dumper=dump_raw_to_txt,
                            dumper_args=list(file_dir=tempdir()))
@@ -123,8 +123,8 @@ unlink(fnames)
 # Connect to in-memory SQLite database
 con <- DBI::dbConnect(RSQLite::SQLite(), dbname=":memory:")
 # Harvest and dump the results into field "bar" of table "foo"
-list_identifiers(from="2015-09-01",
-                 until="2015-09-01",
+list_identifiers(from="2018-06-01T",
+                 until="2018-06-14T",
                  as="raw",
                  dumper=dump_raw_to_db,
                  dumper_args=list(dbcon=con,

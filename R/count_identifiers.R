@@ -13,8 +13,8 @@
 #' count_identifiers()
 #'
 #' # curl options
-#' library("httr")
-#' count_identifiers(config = verbose())
+#' # library("httr")
+#' # count_identifiers(config = verbose())
 #' }
 count_identifiers <- function(url = "http://export.arxiv.org/oai2", 
   prefix = 'oai_dc', ...) {
