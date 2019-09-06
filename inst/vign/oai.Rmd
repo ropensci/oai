@@ -16,7 +16,11 @@ knitr::opts_chunk$set(
 oai introduction
 ================
 
-A general purpose client to work with any 'OAI-PMH' service. The 'OAI-PMH' protocol is described at [http://www.openarchives.org/OAI/openarchivesprotocol.html](http://www.openarchives.org/OAI/openarchivesprotocol.html). The main functions follow the OAI-PMH verbs:
+A general purpose client to work with any 'OAI-PMH' service. 
+
+The 'OAI-PMH' protocol is described at <http://www.openarchives.org/OAI/openarchivesprotocol.html>.
+
+The main functions follow the OAI-PMH verbs:
 
 * `GetRecord`
 * `Identify`
@@ -54,54 +58,38 @@ id("http://oai.datacite.org/oai")
 ## ListIdentifiers
 
 ```{r}
-list_identifiers(from = '2011-05-01T', until = '2011-09-01T')
+list_identifiers(from = '2018-05-01T', until = '2018-09-01T')
 ```
 
 ## Count Identifiers
 
-```{r}
+```{r eval=FALSE}
 count_identifiers()
 ```
 
 ## ListRecords
 
 ```{r}
-list_records(from = '2011-05-01T', until = '2011-08-15T')
+list_records(from = '2018-05-01T', until = '2018-05-15T')
 ```
 
 ## GetRecords
 
 ```{r}
-get_records(c("oai:oai.datacite.org:32255", "oai:oai.datacite.org:32325"))
+ids <- c("87832186-00ea-44dd-a6bf-c2896c4d09b4", "d981c07d-bc43-40a2-be1f-e786e25106ac")
+get_records(ids)
 ```
 
 ## List MetadataFormats
 
 ```{r}
-list_metadataformats(id = "oai:oai.datacite.org:32348")
+list_metadataformats(id = "87832186-00ea-44dd-a6bf-c2896c4d09b4")
 ```
 
 ## List Sets
 
 ```{r}
-list_sets("http://oai.datacite.org/oai")
-```
-
-## Examples of other OAI providers
-
-### Global Biodiversity Information Facility
-
-Identify
-
-```{r}
-id("http://api.gbif.org/v1/oai-pmh/registry")
-```
-
-Get records
-
-```{r}
-get_records(c("816f4734-6b49-41ab-8a1d-1b21e6b5486d", "95e3042f-f48d-4a04-8251-f755bebeced6"),
-            url = "http://api.gbif.org/v1/oai-pmh/registry")
+list_sets("http://api.gbif.org/v1/oai-pmh/registry")
 ```
 
 ### Biodiversity Heritage Library

@@ -4,11 +4,11 @@ RSCRIPT = Rscript --no-init-file
 all: move rmd2md
 
 move:
-		cp inst/vign/oai_vignette.md vignettes
+		cp inst/vign/oai.md vignettes
 
 rmd2md:
 		cd vignettes;\
-		mv oai_vignette.md oai_vignette.Rmd
+		mv oai.md oai.Rmd
 
 test:
 	${RSCRIPT} -e 'library(methods); devtools::test()'
