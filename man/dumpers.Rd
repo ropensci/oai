@@ -7,8 +7,8 @@
 \alias{dump_raw_to_db}
 \title{Result dumpers}
 \usage{
-dump_raw_to_txt(res, args, as, file_pattern = "oaidump", file_dir = ".",
-  file_ext = ".xml")
+dump_raw_to_txt(res, args, as, file_pattern = "oaidump",
+  file_dir = ".", file_ext = ".xml")
 
 dump_to_rds(res, args, as, file_pattern = "oaidump", file_dir = ".",
   file_ext = ".rds")
