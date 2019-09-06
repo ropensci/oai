@@ -9,12 +9,12 @@
 [![cran version](http://www.r-pkg.org/badges/version/oai)](https://cran.r-project.org/package=oai)
 [![](https://badges.ropensci.org/19_status.svg)](https://github.com/ropensci/onboarding/issues/19)
 
-`oai` is an R client to work with OAI-PMH (Open Archives Initiative Protocol for Metadata Harvesting) services, a protocol developed by the [Open Archives Initiative](https://en.wikipedia.org/wiki/Open_Archives_Initiative). OAI-PMH uses XML data format transported over HTTP.
+`oai` is an R client to work with OAI-PMH (Open Archives Initiative Protocol for Metadata Harvesting) services, a protocol developed by the Open Archives Initiative (https://en.wikipedia.org/wiki/Open_Archives_Initiative). OAI-PMH uses XML data format transported over HTTP.
 
 OAI-PMH Info:
 
-* [Wikipedia](https://en.wikipedia.org/wiki/Open_Archives_Initiative_Protocol_for_Metadata_Harvesting)
-* [OAI V2 specification](http://www.openarchives.org/OAI/openarchivesprotocol.html)
+* Wikipedia (https://en.wikipedia.org/wiki/Open_Archives_Initiative_Protocol_for_Metadata_Harvesting)
+* OAI V2 specification (http://www.openarchives.org/OAI/openarchivesprotocol.html)
 
 `oai` is built on `xml2` and `httr`. In addition, we give back data.frame's whenever possible to make data comprehension, manipulation, and visualization easier. We also have functions to fetch a large directory of OAI-PMH services - it isn't exhaustive, but does contain a lot.
 
