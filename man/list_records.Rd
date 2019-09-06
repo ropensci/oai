@@ -10,7 +10,8 @@ list_records(url = "http://api.gbif.org/v1/oai-pmh/registry",
 }
 \arguments{
 \item{url}{(character) OAI-PMH base url. Defaults to the URL for 
-arXiv's OAI-PMH server (http://export.arxiv.org/oai2)}
+arXiv's OAI-PMH server (http://export.arxiv.org/oai2)
+or GBIF's OAI-PMH server (http://api.gbif.org/v1/oai-pmh/registry)}
 
 \item{prefix}{specifies the metadata format that the records will be
 returned in. Default: oai_dc}
