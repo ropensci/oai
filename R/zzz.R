@@ -130,3 +130,17 @@ get_sets <- function(x, as = "df") {
     }
   )
 }
+
+check_as <- function(x) {
+  assert(x, "character")
+  if (!x %in% c("parsed", "raw")) stop("'as' must be one of 'parsed' or 'raw'")
+}
+
+assert <- function(x, y) {
+  if (!is.null(x)) {
+    if (!inherits(x, y)) {
+      stop(deparse(substitute(x)), " must be of class ",
+          paste0(y, collapse = ", "), call. = FALSE)
+    }
+  }
+}
