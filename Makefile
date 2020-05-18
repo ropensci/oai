@@ -29,12 +29,10 @@ check: build
 	@rm -rf ${PACKAGE}.Rcheck
 
 eg:
-	${RSCRIPT} -e "devtools::run_examples()"
+	${RSCRIPT} -e "devtools::run_examples(run=TRUE)"
 
-README.md: README.Rmd
-	${RSCRIPT} -e "library(methods); knitr::knit('$<')"
-	sed -i.bak 's/[[:space:]]*$$//' README.md
-	rm -f $@.bak
+readme:
+	${RSCRIPT} -e "knitr::knit('README.Rmd')"
 
 # No real targets!
 .PHONY: all test doc install
