@@ -4,8 +4,12 @@
 \alias{list_sets}
 \title{List sets}
 \usage{
-list_sets(url = "http://api.gbif.org/v1/oai-pmh/registry",
-  token = NULL, as = "df", ...)
+list_sets(
+  url = "http://api.gbif.org/v1/oai-pmh/registry",
+  token = NULL,
+  as = "df",
+  ...
+)
 }
 \arguments{
 \item{url}{(character) OAI-PMH base url. Defaults to the URL for

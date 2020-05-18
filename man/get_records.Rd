@@ -4,8 +4,13 @@
 \alias{get_records}
 \title{Get records}
 \usage{
-get_records(ids, prefix = "oai_dc",
-  url = "http://api.gbif.org/v1/oai-pmh/registry", as = "parsed", ...)
+get_records(
+  ids,
+  prefix = "oai_dc",
+  url = "http://api.gbif.org/v1/oai-pmh/registry",
+  as = "parsed",
+  ...
+)
 }
 \arguments{
 \item{ids}{The OAI-PMH identifier for the record. One or more. Required.}
@@ -39,7 +44,7 @@ For prefixes we don't have parsers for, we fall back to returning raw
 XML, so you can at least parse the XML yourself.
 
 Because some XML nodes are duplicated, we join values together of
-duplicated node names, separated by a semicolon (\code{;}) with no
+duplicated node names, separated by a semicolon (\verb{;}) with no
 spaces. You can seprarate them yourself easily.
 }
 \examples{

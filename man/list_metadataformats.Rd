@@ -4,8 +4,11 @@
 \alias{list_metadataformats}
 \title{List available metadata formats from various providers.}
 \usage{
-list_metadataformats(url = "http://api.gbif.org/v1/oai-pmh/registry",
-  id = NULL, ...)
+list_metadataformats(
+  url = "http://api.gbif.org/v1/oai-pmh/registry",
+  id = NULL,
+  ...
+)
 }
 \arguments{
 \item{url}{(character) OAI-PMH base url. Defaults to the URL for

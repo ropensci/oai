@@ -4,9 +4,16 @@
 \alias{list_records}
 \title{List records}
 \usage{
-list_records(url = "http://api.gbif.org/v1/oai-pmh/registry",
-  prefix = "oai_dc", from = NULL, until = NULL, set = NULL,
-  token = NULL, as = "df", ...)
+list_records(
+  url = "http://api.gbif.org/v1/oai-pmh/registry",
+  prefix = "oai_dc",
+  from = NULL,
+  until = NULL,
+  set = NULL,
+  token = NULL,
+  as = "df",
+  ...
+)
 }
 \arguments{
 \item{url}{(character) OAI-PMH base url. Defaults to the URL for

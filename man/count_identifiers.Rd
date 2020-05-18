@@ -4,8 +4,7 @@
 \alias{count_identifiers}
 \title{Count OAI-PMH identifiers for a data provider.}
 \usage{
-count_identifiers(url = "http://export.arxiv.org/oai2",
-  prefix = "oai_dc", ...)
+count_identifiers(url = "http://export.arxiv.org/oai2", prefix = "oai_dc", ...)
 }
 \arguments{
 \item{url}{(character) OAI-PMH base url. Defaults to the URL for

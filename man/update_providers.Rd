@@ -13,10 +13,10 @@ update_providers(path = ".", ...)
 }
 \description{
 Data comes from
-\url{http://www.openarchives.org/Register/BrowseSites}. Data includes
-oai-identifier (if they have one) and baes URL. The website has
+\url{http://www.openarchives.org/Register/BrowseSites}. It includes the
+oai-identifier (if they have one) and the base URL. The website has
 the name of the data provider too, but not provided in the data pulled
-down here, but you can grab the name using example below.
+down here, but you can grab the name using the example below.
 }
 \details{
 This table is scraped from
