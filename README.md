@@ -5,7 +5,7 @@
 [![Build status](https://ci.appveyor.com/api/projects/status/h5qu574ky0rk3xxv?svg=true)](https://ci.appveyor.com/project/sckott/oai) 
 [![cran checks](https://cranchecks.info/badges/worst/oai)](https://cranchecks.info/pkgs/oai)
 [![codecov.io](https://codecov.io/github/ropensci/oai/coverage.svg?branch=master)](https://codecov.io/github/ropensci/oai?branch=master) 
-[![rstudio mirror downloads](https://cranlogs.r-pkg.org/badges/oai?color=2ED968)](https://github.com/metacran/cranlogs.app) 
+[![rstudio mirror downloads](https://cranlogs.r-pkg.org/badges/oai?color=2ED968)](https://github.com/r-hub/cranlogs.app) 
 [![cran version](https://www.r-pkg.org/badges/version/oai)](https://cran.r-project.org/package=oai) 
 [![](https://badges.ropensci.org/19_status.svg)](https://github.com/ropensci/onboarding/issues/19)
 
@@ -59,20 +59,20 @@ id("http://oai.datacite.org/oai")
 
 ```r
 list_identifiers(from = '2018-05-01T', until = '2018-06-01T')
-#> # A tibble: 249 x 5
-#>    identifier          datestamp     setSpec             setSpec.1     setSpec.2
-#>    <chr>               <chr>         <chr>               <chr>         <chr>    
-#>  1 cf7fbc99-de82-41a5… 2018-05-31T1… installation:791e3… dataset_type… country:…
-#>  2 09d5405e-ca86-45f2… 2018-05-30T1… installation:804b8… dataset_type… country:…
-#>  3 4b64d1f2-31c2-40c9… 2018-05-30T1… installation:804b8… dataset_type… country:…
-#>  4 884378d6-d591-4760… 2018-05-29T1… installation:a1650… dataset_type… country:…
-#>  5 772de164-541d-4db6… 2018-05-22T1… installation:68845… dataset_type… country:…
-#>  6 9d022797-7aa4-40f4… 2018-05-18T1… installation:73ebc… dataset_type… country:…
-#>  7 18799ce9-1a66-40fc… 2018-05-14T1… installation:d1b0a… dataset_type… country:…
-#>  8 7e91aacb-c994-41ee… 2018-05-21T1… installation:d5b61… dataset_type… country:…
-#>  9 79f51633-b5e8-47c5… 2018-05-11T0… installation:68845… dataset_type… country:…
-#> 10 56c48715-9f8b-445a… 2018-05-15T1… installation:73ebc… dataset_type… country:…
-#> # … with 239 more rows
+#> # A tibble: 85 x 5
+#>    identifier         datestamp     setSpec             setSpec.1      setSpec.2
+#>    <chr>              <chr>         <chr>               <chr>          <chr>    
+#>  1 cf7fbc99-de82-41a… 2018-05-31T1… installation:791e3… dataset_type:… country:…
+#>  2 09d5405e-ca86-45f… 2018-05-30T1… installation:804b8… dataset_type:… country:…
+#>  3 4b64d1f2-31c2-40c… 2018-05-30T1… installation:804b8… dataset_type:… country:…
+#>  4 884378d6-d591-476… 2018-05-29T1… installation:a1650… dataset_type:… country:…
+#>  5 18799ce9-1a66-40f… 2018-05-14T1… installation:d1b0a… dataset_type:… country:…
+#>  6 7e91aacb-c994-41e… 2018-05-21T1… installation:d5b61… dataset_type:… country:…
+#>  7 f83746ee-4cf2-4e6… 2018-05-08T0… installation:c4195… dataset_type:… country:…
+#>  8 a3533a61-6f88-443… 2018-05-08T1… installation:06d75… dataset_type:… country:…
+#>  9 ba9b66a3-2d11-419… 2018-05-05T2… installation:d1b0a… dataset_type:… country:…
+#> 10 78b696d9-8f0d-41a… 2018-05-05T2… installation:d1b0a… dataset_type:… country:…
+#> # … with 75 more rows
 ```
 
 ## Count Identifiers
@@ -89,23 +89,23 @@ count_identifiers()
 
 ```r
 list_records(from = '2018-05-01T', until = '2018-05-15T')
-#> # A tibble: 44 x 26
+#> # A tibble: 42 x 26
 #>    identifier datestamp setSpec setSpec.1 setSpec.2 title publisher identifier.1
 #>    <chr>      <chr>     <chr>   <chr>     <chr>     <chr> <chr>     <chr>       
 #>  1 18799ce9-… 2018-05-… instal… dataset_… country:… Bird… Sokoine … https://www…
-#>  2 79f51633-… 2018-05-… instal… dataset_… country:… Impl… Aïgos SAS https://www…
-#>  3 f83746ee-… 2018-05-… instal… dataset_… country:… NDFF… Dutch Na… https://www…
-#>  4 a3533a61-… 2018-05-… instal… dataset_… country:… EDP … EDP - En… https://www…
-#>  5 ba9b66a3-… 2018-05-… instal… dataset_… country:… Ende… Sokoine … https://www…
-#>  6 78b696d9-… 2018-05-… instal… dataset_… country:… Ende… Sokoine … https://www…
-#>  7 c791b255-… 2018-05-… instal… dataset_… country:… Ende… Sokoine … https://www…
-#>  8 b929ccda-… 2018-05-… instal… dataset_… country:… List… Sokoine … https://www…
-#>  9 da285c2a-… 2018-05-… instal… dataset_… country:… Moni… Corporac… https://www…
-#> 10 87372877-… 2018-05-… instal… dataset_… country:… Moni… Corporac… https://www…
-#> # … with 34 more rows, and 18 more variables: subject <chr>, source <chr>,
+#>  2 f83746ee-… 2018-05-… instal… dataset_… country:… NDFF… Dutch Na… https://www…
+#>  3 a3533a61-… 2018-05-… instal… dataset_… country:… EDP … EDP - En… https://www…
+#>  4 ba9b66a3-… 2018-05-… instal… dataset_… country:… Ende… Sokoine … https://www…
+#>  5 78b696d9-… 2018-05-… instal… dataset_… country:… Ende… Sokoine … https://www…
+#>  6 c791b255-… 2018-05-… instal… dataset_… country:… Ende… Sokoine … https://www…
+#>  7 b929ccda-… 2018-05-… instal… dataset_… country:… List… Sokoine … https://www…
+#>  8 da285c2a-… 2018-05-… instal… dataset_… country:… Moni… Corporac… https://www…
+#>  9 87372877-… 2018-05-… instal… dataset_… country:… Moni… Corporac… https://www…
+#> 10 ed7d4c25-… 2018-05-… instal… dataset_… country:… Samo… Ministry… https://www…
+#> # … with 32 more rows, and 18 more variables: subject <chr>, source <chr>,
 #> #   description <chr>, description.1 <chr>, type <chr>, creator <chr>,
 #> #   date <chr>, language <chr>, coverage <chr>, coverage.1 <chr>, format <chr>,
-#> #   source.1 <chr>, subject.1 <chr>, coverage.2 <chr>, creator.1 <chr>,
+#> #   source.1 <chr>, subject.1 <chr>, creator.1 <chr>, coverage.2 <chr>,
 #> #   description.2 <chr>, creator.2 <chr>, subject.2 <chr>
 ```
 
@@ -135,9 +135,9 @@ get_records(ids)
 #> 
 #> $`d981c07d-bc43-40a2-be1f-e786e25106ac`$metadata
 #> # A tibble: 1 x 12
-#>   title publisher identifier subject source description type  creator date 
-#>   <chr> <chr>     <chr>      <chr>   <chr>  <chr>       <chr> <chr>   <chr>
-#> 1 Pece… Institut… https://w… peces,… http:… Caracteriz… Data… Fernan… 2018…
+#>   title  publisher  identifier  subject  source  description type  creator date 
+#>   <chr>  <chr>      <chr>       <chr>    <chr>   <chr>       <chr> <chr>   <chr>
+#> 1 Peces… Instituto… https://ww… peces, … http:/… Caracteriz… Data… Fernan… 2018…
 #> # … with 3 more variables: language <chr>, coverage <chr>, format <chr>
 ```
 
@@ -160,7 +160,7 @@ list_metadataformats(id = "87832186-00ea-44dd-a6bf-c2896c4d09b4")
 
 ```r
 list_sets("http://api.gbif.org/v1/oai-pmh/registry")
-#> # A tibble: 582 x 2
+#> # A tibble: 597 x 2
 #>    setSpec                     setName         
 #>    <chr>                       <chr>           
 #>  1 dataset_type                per dataset type
@@ -170,10 +170,10 @@ list_sets("http://api.gbif.org/v1/oai-pmh/registry")
 #>  5 dataset_type:SAMPLING_EVENT sampling_event  
 #>  6 country                     per country     
 #>  7 country:AD                  Andorra         
-#>  8 country:AO                  Angola          
-#>  9 country:AR                  Argentina       
-#> 10 country:AT                  Austria         
-#> # … with 572 more rows
+#>  8 country:AM                  Armenia         
+#>  9 country:AO                  Angola          
+#> 10 country:AR                  Argentina       
+#> # … with 587 more rows
 ```
 
 ## Examples of other OAI providers
@@ -206,13 +206,13 @@ get_records(c("oai:biodiversitylibrary.org:item/7", "oai:biodiversitylibrary.org
 #> # A tibble: 1 x 3
 #>   identifier                         datestamp            setSpec
 #>   <chr>                              <chr>                <chr>  
-#> 1 oai:biodiversitylibrary.org:item/7 2016-07-13T09:13:41Z item   
+#> 1 oai:biodiversitylibrary.org:item/7 2016-01-26T06:05:19Z item   
 #> 
 #> $`oai:biodiversitylibrary.org:item/7`$metadata
-#> # A tibble: 1 x 11
-#>   title creator subject description publisher contributor date  type  identifier
-#>   <chr> <chr>   <chr>   <chr>       <chr>     <chr>       <chr> <chr> <chr>     
-#> 1 Die … Fleisc… Bogor;… pt.5:v.1 (… Leiden :… Missouri B… 1900  text… https://w…
+#> # A tibble: 1 x 10
+#>   title   creator  subject  description  publisher contributor type  identifier 
+#>   <chr>   <chr>    <chr>    <chr>        <chr>     <chr>       <chr> <chr>      
+#> 1 Die Mu… Fleisch… Bogor;I… pt.5:v.1 (1… Leiden :… Missouri B… text… https://ww…
 #> # … with 2 more variables: language <chr>, rights <chr>
 #> 
 #> 
@@ -221,13 +221,13 @@ get_records(c("oai:biodiversitylibrary.org:item/7", "oai:biodiversitylibrary.org
 #> # A tibble: 1 x 3
 #>   identifier                         datestamp            setSpec
 #>   <chr>                              <chr>                <chr>  
-#> 1 oai:biodiversitylibrary.org:item/9 2016-07-13T09:13:41Z item   
+#> 1 oai:biodiversitylibrary.org:item/9 2016-01-26T06:05:19Z item   
 #> 
 #> $`oai:biodiversitylibrary.org:item/9`$metadata
-#> # A tibble: 1 x 11
-#>   title creator subject description publisher contributor date  type  identifier
-#>   <chr> <chr>   <chr>   <chr>       <chr>     <chr>       <chr> <chr> <chr>     
-#> 1 Die … Fleisc… Bogor;… pt.5:v.3 (… Leiden :… Missouri B… 1906  text… https://w…
+#> # A tibble: 1 x 10
+#>   title   creator  subject  description  publisher contributor type  identifier 
+#>   <chr>   <chr>    <chr>    <chr>        <chr>     <chr>       <chr> <chr>      
+#> 1 Die Mu… Fleisch… Bogor;I… pt.5:v.3 (1… Leiden :… Missouri B… text… https://ww…
 #> # … with 2 more variables: language <chr>, rights <chr>
 ```
 
@@ -242,9 +242,4 @@ Michal Bojanowski thanks National Science Centre for support through grant 2012/
 * Please [report any issues or bugs](https://github.com/ropensci/oai/issues).
 * License: MIT
 * Get citation information for `oai` in R doing `citation(package = 'oai')`
-* Please note that this project is released with a [Contributor Code of Conduct][coc].
-By participating in this project you agree to abide by its terms.
-
-[![ropensci_footer](https://ropensci.org/public_images/github_footer.png)](https://ropensci.org)
-
-[coc]: https://github.com/ropensci/oai/blob/master/CODE_OF_CONDUCT.md
+* Please note that this project is released with a [Contributor Code of Conduct](https://ropensci.org/code-of-conduct/). By participating in this project you agree to abide by its terms.
