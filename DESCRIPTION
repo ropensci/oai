@@ -8,7 +8,7 @@ Description: A general purpose client to work with any 'OAI-PMH'
     Functions are provided to work with the 'OAI-PMH' verbs: 'GetRecord',
     'Identify', 'ListIdentifiers', 'ListMetadataFormats', 'ListRecords', and
     'ListSets'.
-Version: 0.3.1.91
+Version: 0.3.2
 License: MIT + file LICENSE
 Authors@R: c(
     person("Scott", "Chamberlain", role = c("aut", "cre"),
@@ -16,7 +16,7 @@ Authors@R: c(
     person("Michal", "Bojanowski", role = "aut",
         comment="supported by NCN grant 2012/07/D/HS6/01971")
     )
-URL: https://docs.ropensci.org/oai, https://github.com/ropensci/oai
+URL: https://docs.ropensci.org/oai/, https://github.com/ropensci/oai
 BugReports: https://github.com/ropensci/oai/issues
 VignetteBuilder: knitr
 Roxygen: list(markdown = TRUE)
@@ -32,5 +32,6 @@ Suggests:
     DBI,
     knitr,
     RSQLite,
-    testthat
+    testthat,
+    markdown
 RoxygenNote: 7.1.1
