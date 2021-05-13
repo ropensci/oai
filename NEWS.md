@@ -1,3 +1,11 @@
+oai 0.3.2
+=========
+
+### MINOR IMPROVEMENTS
+
+* vignette fix, use markdown in suggests
+* update readme, use ropensci coc
+
 oai 0.3.0
 =========
 

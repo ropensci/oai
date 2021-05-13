@@ -1,7 +1,7 @@
 ## Test environments
 
-* local OS X install, R 3.6.1 patched
-* ubuntu 14.04 (on travis-ci), R 3.6.1
+* local macOS install, R 4.0.5 patched
+* ubuntu 14.04 (on GitHub Actions), R 4.0.5
 * win-builder (devel and release)
 
 ## R CMD check results
@@ -16,7 +16,7 @@ no problems related to this package. Results are at
 
 ------
 
-This version fixes some small issues and fixes a few bugs.
+This version fixes the rmarkdown/markdown dependency issue for vignettes that Kurt emailed maintainers about.
 
 Thanks!
 Scott Chamberlain
