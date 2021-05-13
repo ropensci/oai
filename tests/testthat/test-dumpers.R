@@ -85,6 +85,7 @@ test_that("list_identifiers saves raw XML to text files", {
 
 test_that("list_records saves raw XML to text files", {
   skip_on_cran()
+  skip_on_os("windows")
 
   fnames <- list_records("http://api.gbif.org/v1/oai-pmh/registry",
                          set = "dataset_type:SAMPLING_EVENT",
