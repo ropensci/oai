@@ -1,8 +1,7 @@
 
 
 [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
-[![Build Status](https://travis-ci.org/ropensci/oai.svg?branch=master)](https://travis-ci.org/ropensci/oai) 
-[![Build status](https://ci.appveyor.com/api/projects/status/h5qu574ky0rk3xxv?svg=true)](https://ci.appveyor.com/project/sckott/oai) 
+[![R-check](https://github.com/ropensci/oai/actions/workflows/R-check.yml/badge.svg)](https://github.com/ropensci/oai/actions/workflows/R-check.yml)
 [![cran checks](https://cranchecks.info/badges/worst/oai)](https://cranchecks.info/pkgs/oai)
 [![codecov.io](https://codecov.io/github/ropensci/oai/coverage.svg?branch=master)](https://codecov.io/github/ropensci/oai?branch=master) 
 [![rstudio mirror downloads](https://cranlogs.r-pkg.org/badges/oai?color=2ED968)](https://github.com/r-hub/cranlogs.app) 
