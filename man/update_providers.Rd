@@ -21,7 +21,7 @@ down here, but you can grab the name using the example below.
 \details{
 This table is scraped from
 \url{http://www.openarchives.org/Register/BrowseSites}.
-I would get it from \url{http://www.openarchives.org/Register/ListFriends},
+I would get it from \url{http://www.openarchives.org/pmh/registry/ListFriends},
 but it does not include repository names.
 
 This function updates the table for you. Does take a while though, so

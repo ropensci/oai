@@ -9,7 +9,7 @@
 #' @export
 #' @details This table is scraped from
 #' <http://www.openarchives.org/Register/BrowseSites>.
-#' I would get it from <http://www.openarchives.org/Register/ListFriends>,
+#' I would get it from <http://www.openarchives.org/pmh/registry/ListFriends>,
 #' but it does not include repository names.
 #'
 #' This function updates the table for you. Does take a while though, so

@@ -14,7 +14,7 @@ knitr::opts_chunk$set(
 [![codecov.io](https://codecov.io/github/ropensci/oai/coverage.svg?branch=master)](https://codecov.io/github/ropensci/oai?branch=master) 
 [![rstudio mirror downloads](https://cranlogs.r-pkg.org/badges/oai?color=2ED968)](https://github.com/r-hub/cranlogs.app) 
 [![cran version](https://www.r-pkg.org/badges/version/oai)](https://cran.r-project.org/package=oai) 
-[![](https://badges.ropensci.org/19_status.svg)](https://github.com/ropensci/onboarding/issues/19)
+[![](https://badges.ropensci.org/19_status.svg)](https://github.com/ropensci/software-review/issues/19)
 
 `oai` is an R client to work with OAI-PMH (Open Archives Initiative Protocol for Metadata Harvesting) services, a protocol developed by the Open Archives Initiative (https://en.wikipedia.org/wiki/Open_Archives_Initiative). OAI-PMH uses XML data format transported over HTTP.
 
