@@ -11,3 +11,4 @@ Makefile
 ^revdep$
 ^cran-comments\.md$
 inst/cache
+^LICENSE\.md$
