@@ -6,7 +6,7 @@ error_url <- list(
   badArgument="http://arXiv.org/oai2?verb=ListRecords&metadataPrefix=oai_dc&foo=bar",
   badResumptionToken="http://oai.datacite.org/oai?verb=ListRecords&resumptionToken=foobar",
   badVerb="http://arXiv.org/oai2?verb=someverb",
-  cannotDisseminateFormat="http://oai.datacite.org/oai?verb=GetRecord&metadataPrefix=foobar&identifier=oai:oai.datacite.org:32255",
+  cannotDisseminateFormat="http://oai.datacite.org/oai?verb=ListRecords&metadataPrefix=foobar",
   idDoesNotExist="http://arXiv.org/oai2?verb=GetRecord&identifier=foobar&metadataPrefix=oai_dc",
   noRecordsMatch=paste0("http://oai.datacite.org/oai?verb=ListIdentifiers&from=",
                         tomorrow, "&until=", tomorrow, "&metadataPrefix=oai_dc"),
@@ -49,15 +49,14 @@ test_that("badVerb is triggered", {
   expect_true( tryCatch( handle_errors(xml), error=function(er) "badVerb" %in% attr(er, "error_codes")))
 } )
 
-# FIXME: not working right now
-# test_that("cannotDisseminateFormat is triggered", {
-#   skip_on_cran()
+test_that("cannotDisseminateFormat is triggered", {
+  skip_on_cran()
 
-#   xml <- gnp(error_url$cannotDisseminateFormat)
-#   expect_error( handle_errors(xml) )
-#   expect_true( tryCatch( handle_errors(xml), error=function(er) inherits(er, "oai-pmh_error") ) )
-#   expect_true( tryCatch( handle_errors(xml), error=function(er) "cannotDisseminateFormat" %in% attr(er, "error_codes")))
-# } )
+  xml <- gnp(error_url$cannotDisseminateFormat)
+  expect_error( handle_errors(xml) )
+  expect_true( tryCatch( handle_errors(xml), error=function(er) inherits(er, "oai-pmh_error") ) )
+  expect_true( tryCatch( handle_errors(xml), error=function(er) "cannotDisseminateFormat" %in% attr(er, "error_codes")))
+} )
 
 test_that("idDoesNotExist is triggered", {
   skip_on_cran()
