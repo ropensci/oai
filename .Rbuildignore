@@ -13,3 +13,5 @@ Makefile
 inst/cache
 ^LICENSE\.md$
 .github
+^\.github$
+^codecov\.yml$
