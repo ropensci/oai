@@ -35,7 +35,7 @@
 #' @title OAI-PMH Client
 #' @keywords package
 #'
-#' @importFrom httr GET content stop_for_status
+#' @importFrom httr RETRY GET content stop_for_status
 #' @importFrom xml2 read_xml xml_children xml_text as_list xml_attrs
 #' xml_name xml_attr xml_ns
 #' @importFrom plyr rbind.fill
