@@ -11,9 +11,9 @@ Description: A general purpose client to work with any 'OAI-PMH'
 Version: 0.3.2
 License: MIT + file LICENSE
 Authors@R: c(
-    person("Scott", "Chamberlain", role = c("aut", "cre"),
+    person("Scott", "Chamberlain", role = "aut",
         email = "myrmecocystus@gmail.com"),
-    person("Michal", "Bojanowski", role = "aut",
+    person("Michal", "Bojanowski", role = c("aut", "cre"),
         comment=c(ORCID="0000-0001-7503-852X")),
     person("National Science Centre", role = "fnd",
         comment = "Supported MB through grant 2012/07/D/HS6/01971, <https://ncn.gov.pl>")
