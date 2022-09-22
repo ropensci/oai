@@ -41,50 +41,50 @@ Development version
 devtools::install_github("ropensci/oai")
 ```
 
-```{r}
+```{r pkg-load}
 library("oai")
 ```
 
 ## Identify
 
-```{r}
+```{r identify}
 id("http://oai.datacite.org/oai")
 ```
 
 ## ListIdentifiers
 
-```{r}
+```{r list-identifiers}
 list_identifiers(from = '2018-05-01T', until = '2018-06-01T')
 ```
 
 ## Count Identifiers
 
-```{r cache=TRUE}
+```{r count-identifiers, cache=TRUE}
 count_identifiers()
 ```
 
 ## ListRecords
 
-```{r}
+```{r list-records}
 list_records(from = '2018-05-01T', until = '2018-05-15T')
 ```
 
 ## GetRecords
 
-```{r}
+```{r get-records}
 ids <- c("87832186-00ea-44dd-a6bf-c2896c4d09b4", "d981c07d-bc43-40a2-be1f-e786e25106ac")
 get_records(ids)
 ```
 
 ## List MetadataFormats
 
-```{r}
+```{r list-metadataformats}
 list_metadataformats(id = "87832186-00ea-44dd-a6bf-c2896c4d09b4")
 ```
 
 ## List Sets
 
-```{r}
+```{r list-sets}
 list_sets("http://api.gbif.org/v1/oai-pmh/registry")
 ```
 
@@ -94,13 +94,13 @@ list_sets("http://api.gbif.org/v1/oai-pmh/registry")
 
 Identify
 
-```{r}
+```{r bhl-identify}
 id("http://www.biodiversitylibrary.org/oai")
 ```
 
 Get records
 
-```{r}
+```{r bhl-get-records}
 get_records(c("oai:biodiversitylibrary.org:item/7", "oai:biodiversitylibrary.org:item/9"),
             url = "http://www.biodiversitylibrary.org/oai")
 ```
@@ -108,7 +108,7 @@ get_records(c("oai:biodiversitylibrary.org:item/7", "oai:biodiversitylibrary.org
 
 ## Acknowledgements
 
-Michal Bojanowski thanks National Science Centre for support through grant 2012/07/D/HS6/01971.
+Michał Bojanowski thanks National Science Centre for support through grant 2012/07/D/HS6/01971.
 
 
 ## Meta
