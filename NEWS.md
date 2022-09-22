@@ -1,3 +1,19 @@
+oai 0.4.0
+=========
+
+### NEW FEATURES
+
+* the requests are now made using `httr::RETRY()` rather than `httr::GET()` to
+  facilitate retrying with delay control etc. Consult further the documentation
+  of 'httr' package (#64)
+* @mbojan takes over package maintenance from @sckott
+
+### MINOR IMPROVEMENTS
+
+* update packages test to catch the 'cannotDisseminateFormat' OAI-PMH-level
+  error correctly
+
+
 oai 0.3.2
 =========
 

@@ -9,7 +9,7 @@ knitr::opts_chunk$set(
 ```
 
 [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
-[![R-check](https://github.com/ropensci/oai/actions/workflows/R-check.yml/badge.svg)](https://github.com/ropensci/oai/actions/workflows/R-check.yml)
+[![R-check](https://github.com/ropensci/oai/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/ropensci/oai/actions/workflows/R-CMD-check.yaml)
 [![cran checks](https://cranchecks.info/badges/worst/oai)](https://cranchecks.info/pkgs/oai)
 [![codecov.io](https://codecov.io/github/ropensci/oai/coverage.svg?branch=master)](https://codecov.io/github/ropensci/oai?branch=master) 
 [![rstudio mirror downloads](https://cranlogs.r-pkg.org/badges/oai?color=2ED968)](https://github.com/r-hub/cranlogs.app) 
