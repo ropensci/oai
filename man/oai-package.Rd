@@ -3,10 +3,13 @@
 \docType{package}
 \name{oai-package}
 \alias{oai-package}
+\alias{_PACKAGE}
 \alias{oai}
 \title{OAI-PMH Client}
 \description{
-oai is an R client to work with OAI-PMH (Open Archives
+\if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
+
+\pkg{oai} is an R client to work with OAI-PMH (Open Archives
 Initiative Protocol for Metadata Harvesting) services, a protocol
 developed by the Open Archives Initiative
 (https://en.wikipedia.org/wiki/Open_Archives_Initiative).
@@ -45,6 +48,15 @@ Michal Bojanowski contributions were supported by (Polish) National Science
 Center (NCN) through grant 2012/07/D/HS6/01971.
 }
 
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://docs.ropensci.org/oai/}
+  \item \url{https://github.com/ropensci/oai}
+  \item Report bugs at \url{https://github.com/ropensci/oai/issues}
+}
+
+}
 \author{
 Scott Chamberlain \email{myrmecocystus@gmail.com}
 
