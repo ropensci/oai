@@ -1,3 +1,9 @@
+---
+output: github_document
+editor_options: 
+  chunk_output_type: console
+---
+
 ```{r echo=FALSE}
 knitr::opts_chunk$set(
   warning = FALSE,
@@ -7,6 +13,8 @@ knitr::opts_chunk$set(
   cache.path = "inst/cache/"
 )
 ```
+
+# `oai`: General Purpose 'Oai-PMH' Services Client <img src="man/figures/logo.png" align="right" width="20%" />
 
 [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 [![R-check](https://github.com/ropensci/oai/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/ropensci/oai/actions/workflows/R-CMD-check.yaml)
@@ -117,3 +125,33 @@ Michał Bojanowski thanks National Science Centre for support through grant 2012
 * License: MIT
 * Get citation information for `oai` in R doing `citation(package = 'oai')`
 * Please note that this project is released with a [Contributor Code of Conduct](https://ropensci.org/code-of-conduct/). By participating in this project you agree to abide by its terms.
+
+```{r logo, include = FALSE, eval = FALSE}
+library(hexSticker)
+library(magick)
+download.file(
+  "https://wiki.epc.ub.uu.se/download/thumbnails/34212946/images.png?version=1&modificationDate=1511952524492&api=v2",
+  dest = fig <- tempfile()
+)
+
+image_read(fig) |>
+  image_crop(geometry = "x90%") |>
+  image_write(path = fig2 <- tempfile())
+
+sticker(
+  fig2,
+  package = "oai",
+  url = "https://docs.ropensci.org/oai/",
+  s_x = 1,
+  s_y = 0.83, 
+  s_width = 0.7,
+  p_size = 25,
+  p_y = 1.5,
+  u_color = "#ffffff",
+  u_size = 5,
+  h_fill = "#0C0F2E",
+  h_color = "black",
+  filename = "man/figures/logo.png"
+)
+```
+
