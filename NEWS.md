@@ -12,7 +12,7 @@ oai 0.4.0
 
 * update packages test to catch the 'cannotDisseminateFormat' OAI-PMH-level
   error correctly
-
+* added package hex logo
 
 oai 0.3.2
 =========
